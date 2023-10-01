@@ -77,9 +77,10 @@ public class Movep1st : MonoBehaviour
             Vector3 desiredForward = Vector3.RotateTowards(transform.forward, m_Movement, turnSpeed * Time.fixedDeltaTime, 0f);
             m_Rotation = Quaternion.LookRotation(desiredForward);
             m_Rigidbody.MoveRotation(m_Rotation);
-        }
+        } 
 
-        if (playerJumped)
+        // disable jump
+        if (false && playerJumped)
         {
             m_Rigidbody.AddForce(Vector3.up, ForceMode.VelocityChange);
             playerJumped = false;
