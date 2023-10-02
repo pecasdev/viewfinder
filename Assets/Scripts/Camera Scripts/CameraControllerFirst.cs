@@ -10,6 +10,8 @@ public class CameraControllerFirst : MonoBehaviour
     [Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
     [Range(0f, 90f)][SerializeField] float yRotationLimit = 90f;
     Vector2 rotation = Vector2.zero;
+    public bool isPastCamera;
+    public float pastCameraDisplacement = 15f;
 
 
     void Start()
@@ -29,8 +31,23 @@ public class CameraControllerFirst : MonoBehaviour
 
         transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
 
-        // Ensure camera holder position matches the player's position
-        transform.position = player.position;
+        if (isPastCamera)
+        {
+            // Get the player's position
+            Vector3 playerPosition = player.position;
+
+            // Create a new position with the y-coordinate 15 units less than the player's y-coordinate
+            Vector3 newPosition = new Vector3(player.position.x, playerPosition.y - pastCameraDisplacement, player.position.z);
+
+            // Update the object's position
+            transform.position = newPosition;
+        }
+        else
+        {
+            // Ensure camera holder position matches the player's position
+            transform.position = new Vector3(player.position.x, player.position.y + 0.6f, player.position.z); ;
+        }
+        
     }
 }
 
