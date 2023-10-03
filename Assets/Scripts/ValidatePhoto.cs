@@ -17,7 +17,7 @@ public class ValidatePhoto : MonoBehaviour
         camera = GameObject.FindGameObjectsWithTag("1st person camera")[0];
     }
 
-    private bool IsAttemptAcceptable(Vector3 attemptPos, Vector3 attemptAngle)
+    public bool IsAttemptAcceptable(Vector3 attemptPos, Vector3 attemptAngle)
     {
         float posDeviation = (attemptPos - GameManager.Instance.GetPositionSolution()).magnitude;
         float angDeviation = angleDeviation(attemptAngle, GameManager.Instance.GetAngleSolution()).magnitude;
@@ -34,24 +34,33 @@ public class ValidatePhoto : MonoBehaviour
     }
 
     // Update is called once per frame
+
+    public virtual bool validatePhoto()
+    {
+        Vector3 attemptPos = camera.transform.position;
+        Vector3 attemptAngle = camera.transform.eulerAngles;
+
+        Debug.Log(string.Format("POS: {0} ANG: {1}", attemptPos, attemptAngle));
+
+        if (IsAttemptAcceptable(attemptPos, attemptAngle))
+        {
+            Debug.Log("REWARD");
+            GameManager.Instance.UpdateStage();
+            return true;
+        }
+        else
+        {
+            Debug.Log("NO REWARD");
+            return false;
+        }
+    }
     void Update()
     {
+        /*
         if (Input.GetKeyDown("p"))
         {
-            Vector3 attemptPos = camera.transform.position;
-            Vector3 attemptAngle = camera.transform.eulerAngles;
-
-            Debug.Log(string.Format("POS: {0} ANG: {1}", attemptPos, attemptAngle));
-
-            if (IsAttemptAcceptable(attemptPos, attemptAngle))
-            {
-                Debug.Log("REWARD");
-                GameManager.Instance.UpdateStage();
-            }
-            else
-            {
-                Debug.Log("NO REWARD");
-            }
+            validatePhoto();
         }
+        */
     }
 }

@@ -66,7 +66,6 @@ public class GameManager : MonoBehaviour
 
     public void UpdateStage()
     {
-        currentStage++;
         // Disable hint after tutorial stage
         hintText.SetActive(false);
         // Level Complete Logic
@@ -78,6 +77,7 @@ public class GameManager : MonoBehaviour
         // Update Stage
         else
         {
+            currentStage++;
             stageText.GetComponent<TextMeshProUGUI>().text = "Stage " + (currentStage + 1);
             SetNextSolution();
         }

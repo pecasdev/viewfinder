@@ -7,6 +7,7 @@ public class ModelCameraController : MonoBehaviour
 {
     [SerializeField] private GameObject _camInterface, _aperture;
     [SerializeField] private PostProcessVolume _volume;
+    [SerializeField] private ValidatePhoto _photoValidator;
     private Vignette _vignetting;
     private Animator _cameraAnims;
     private bool _canTakePhoto, _printing;
@@ -46,6 +47,7 @@ public class ModelCameraController : MonoBehaviour
     public void TakePhoto()
     {
         StartCoroutine(ShowAperture());
+        _photoValidator.validatePhoto();
     }
 
     public IEnumerator ShowAperture()
