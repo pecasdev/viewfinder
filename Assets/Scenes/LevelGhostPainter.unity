@@ -556,7 +556,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: d467c4f38c4b79b489dcd1798cd1427d, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -2463,11 +2463,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   stageText: {fileID: 212088685}
   hintText: {fileID: 318107459}
-  promptGameObject: {fileID: 863433617}
-  promptSprites:
-  - {fileID: 21300000, guid: e2121d4ffd24deb4e84154b01f53b412, type: 3}
-  - {fileID: 21300000, guid: 30013baaed5b60e498ccb8d082a3d41c, type: 3}
-  - {fileID: 21300000, guid: e70d048b127c5fb448238fa4029a308a, type: 3}
+  promptGameObject: {fileID: 0}
+  promptTextures: []
   levelJson: {fileID: 4900000, guid: 28e89a098d43d584d906ff3c323167f7, type: 3}
 --- !u!4 &437994238
 Transform:
@@ -5069,7 +5066,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 4929624d819f2724380404506f4846e6, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -5652,7 +5649,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1461066267
 Transform:
   m_ObjectHideFlags: 0
@@ -7000,7 +6997,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: 94772d2440ea5cc4d96d2122a3609160, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
