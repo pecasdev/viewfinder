@@ -1,17 +1,16 @@
 {
-	"solutions":
-		[
-			{ 
-				"posSolutionText": "-10.34,1.01,-3.09",
-				"angleSolutionText": "1.60,270.00,0.00"
-			},
-			{ 
-				"posSolutionText": "-6.43,2.50,5.50",
-				"angleSolutionText": "18.60,316.80,0.00"
-			},
-			{ 
-				"posSolutionText": "-19.39,5.78,18.40",
-				"angleSolutionText": "28.00,132.20,0.00"
-			}
-		]
+  "solutions": [
+    {
+      "posSolutionText": "-7.03, 2.12, 11.13",
+      "angleSolutionText": "7.80, 332.00, 0.00"
+    },
+    {
+      "posSolutionText": "-6.52, 2.12, 6.15",
+      "angleSolutionText": "358.60, 182.00, 0.00"
+    },
+    {
+      "posSolutionText": "-6.43, 2.12, 6.69",
+      "angleSolutionText": "29.20, 180.20, 0.00"
+    }
+  ]
 }

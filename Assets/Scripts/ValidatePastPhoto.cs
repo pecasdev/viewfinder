@@ -17,7 +17,7 @@ public class ValidatePastPhoto : ValidatePhoto
     private bool _additionalValidation()
     {
         // later on will use this to check if objects are in correct spots etc.
-        // based on the GameManager.currentStage
+        // based on the the current photo prompt / GameManager.currentStage
         return true;
     }
 
