@@ -49,19 +49,19 @@ public class PromptController : MonoBehaviour
             Color borderCol = promptImageBorder.GetComponent<Image>().color;
             borderCol.a = 1;
             promptImageBorder.GetComponent<Image>().color = borderCol;
-            Color promptCol = promptImage.GetComponent<Image>().color;
+            Color promptCol = promptImage.GetComponent<RawImage>().color;
             promptCol.a = 1;
-            promptImage.GetComponent<Image>().color = promptCol;
+            promptImage.GetComponent<RawImage>().color = promptCol;
             promptIsTransparent = false;
         }
         else
         {
             Color borderCol = promptImageBorder.GetComponent<Image>().color;
-            borderCol.a = 0.4f;
+            borderCol.a = 0.3f;
             promptImageBorder.GetComponent<Image>().color = borderCol;
-            Color promptCol = promptImage.GetComponent<Image>().color;
-            promptCol.a = 0.4f;
-            promptImage.GetComponent<Image>().color = promptCol;
+            Color promptCol = promptImage.GetComponent<RawImage>().color;
+            promptCol.a = 0.3f;
+            promptImage.GetComponent<RawImage>().color = promptCol;
             promptIsTransparent = true;
         }
     }
