@@ -593,7 +593,7 @@ GameObject:
   - component: {fileID: 8330346122701346292}
   - component: {fileID: 7272303493350502538}
   m_Layer: 5
-  m_Name: Image
+  m_Name: PromptImageBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -614,9 +614,9 @@ RectTransform:
   - {fileID: 5910977360780005692}
   m_Father: {fileID: 146680428639560643}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -769, y: 382.5}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 191, y: -157}
   m_SizeDelta: {x: 310, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8330346122701346292
@@ -666,6 +666,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 146680428639560643}
+  - component: {fileID: 1361675127938713304}
   m_Layer: 5
   m_Name: Prompt
   m_TagString: Untagged
@@ -694,3 +695,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1361675127938713304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9008411263746103608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f7e52ea7c4e854eaae49eccfb8f31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptImageBorder: {fileID: 7018126872334622521}
+  promptImage: {fileID: 1901114159150939852}
