@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject stageText;
     public GameObject hintText;
-    public Image promptGameObject;
-    public Sprite[] promptSprites;
+    public RawImage promptGameObject;
+    public RenderTexture[] promptTextures;
     public TextAsset levelJson;
     private int currentStage = 0;
     private List<Solution> solutions = new();
@@ -60,13 +60,14 @@ public class GameManager : MonoBehaviour
     {
         // Temporary home for this logic
         stageText.GetComponent<TextMeshProUGUI>().text = "Stage " + (currentStage + 1);
-        hintText.GetComponent<TextMeshProUGUI>().text = "Press P to take a photo!";
+        //hintText.GetComponent<TextMeshProUGUI>().text = "Press P to take a photo!";
         SetPromptSprite();
     }
 
     public void UpdateStage()
     {
         // Disable hint after tutorial stage
+        currentStage++;
         hintText.SetActive(false);
         // Level Complete Logic
         if (currentStage >= solutions.Count)
@@ -77,11 +78,11 @@ public class GameManager : MonoBehaviour
         // Update Stage
         else
         {
-            currentStage++;
             stageText.GetComponent<TextMeshProUGUI>().text = "Stage " + (currentStage + 1);
             SetNextSolution();
+            SetPromptSprite();
         }
-        SetPromptSprite();
+        
     }
 
     public Vector3 GetPositionSolution()
@@ -99,7 +100,7 @@ public class GameManager : MonoBehaviour
 
     private void SetPromptSprite()
     {
-        promptGameObject.sprite = promptSprites[currentStage];
+        promptGameObject.texture = promptTextures[currentStage];
     }
 
     public int GetCurrentStage() { return currentStage; }

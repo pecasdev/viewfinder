@@ -56,11 +56,6 @@ public class ValidatePhoto : MonoBehaviour
     }
     void Update()
     {
-        /*
-        if (Input.GetKeyDown("p"))
-        {
-            validatePhoto();
-        }
-        */
+      
     }
 }
