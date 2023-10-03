@@ -78,7 +78,6 @@ public class GameManager : MonoBehaviour
         // Update Stage
         else
         {
-            currentStage++;
             stageText.GetComponent<TextMeshProUGUI>().text = "Stage " + (currentStage + 1);
             SetNextSolution();
             SetPromptSprite();

@@ -26,6 +26,8 @@ public class ValidatePastPhoto : ValidatePhoto
         Vector3 attemptPos = camera.transform.position;
         Vector3 attemptAngle = camera.transform.eulerAngles;
 
+        Vector3 past_attemptPos = past_camera.transform.position;
+
         Debug.Log(string.Format("POS: {0} ANG: {1}", attemptPos, attemptAngle));
 
         if (base.IsAttemptAcceptable(attemptPos, attemptAngle) && _additionalValidation())
