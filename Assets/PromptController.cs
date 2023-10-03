@@ -1,13 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PromptController : MonoBehaviour
 {
     public GameObject promptImageBorder;
     public GameObject promptImage;
     private bool promptIsMaxmimzed = false;
+    private bool promptIsTransparent = false;
     private Vector2 borderMinSize = new Vector2(310f, 160f);
     private Vector2 borderMinPos = new Vector2(191f, -157f);
     private Vector2 borderMaxSize = new Vector2(1845, 965);
@@ -26,32 +29,60 @@ public class PromptController : MonoBehaviour
     {
         if (Input.GetKeyDown("m"))
         {
-            AdjustPromptSize();
+            TogglePromptSize();
         }
         if (Input.GetKeyDown("n")) 
         {
-            AdjustPromptOpacity();
+            TogglePromptOpacity();
         }
     }
 
-    private void AdjustPromptOpacity()
+    private void TogglePromptOpacity()
     {
-        Color newColor = promptImageBorder.GetComponent<Color>();
-        newColor.a = 0.4f;
-        // promptImageBorder.GetComponent<Color>() = newColor;
-        throw new NotImplementedException();
+        if (!promptIsMaxmimzed)
+        {
+            return;
+        }
+
+        if (promptIsTransparent)
+        {
+            Color borderCol = promptImageBorder.GetComponent<Image>().color;
+            borderCol.a = 1;
+            promptImageBorder.GetComponent<Image>().color = borderCol;
+            Color promptCol = promptImage.GetComponent<Image>().color;
+            promptCol.a = 1;
+            promptImage.GetComponent<Image>().color = promptCol;
+            promptIsTransparent = false;
+        }
+        else
+        {
+            Color borderCol = promptImageBorder.GetComponent<Image>().color;
+            borderCol.a = 0.4f;
+            promptImageBorder.GetComponent<Image>().color = borderCol;
+            Color promptCol = promptImage.GetComponent<Image>().color;
+            promptCol.a = 0.4f;
+            promptImage.GetComponent<Image>().color = promptCol;
+            promptIsTransparent = true;
+        }
     }
 
-    private void AdjustPromptSize()
+    private void TogglePromptSize()
     {
+        // Minimize the prompt
         if (promptIsMaxmimzed)
         {
+            // Make prompt opaque when minimizing
+            if (promptIsTransparent)
+            {
+                TogglePromptOpacity();
+            }
             promptImageBorder.GetComponent<RectTransform>().sizeDelta = borderMinSize;
             promptImageBorder.GetComponent<RectTransform>().anchoredPosition = borderMinPos;
             promptSize[0] = borderMinSize[0] - 10;
             promptSize[1] = borderMinSize[1] - 10;
             promptIsMaxmimzed = false;
         }
+        // Maximize the prompt
         else 
         {
             promptImageBorder.GetComponent<RectTransform>().sizeDelta = borderMaxSize;
