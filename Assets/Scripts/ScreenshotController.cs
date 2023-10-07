@@ -52,7 +52,7 @@ public class ScreenshotController : MonoBehaviour
                 _usePastCamera = false;
                 break;
         }
-        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p")))
+        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown("Right Button")))
         {
             _modelCameraController.SetCameraState(false);
             RenderTexture rt = new RenderTexture(_resWidth, _resHeight, 24);

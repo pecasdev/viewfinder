@@ -23,8 +23,28 @@ public class CameraControllerFirst : MonoBehaviour
 
     void Update()
     {
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
+        float mouseX;
+        float mouseY;
+        
+        if(Input.GetAxis("RightStickHorizontal") != 0.0f || Input.GetAxis("RightStickVertical") != 0)
+        {
+            
+            mouseX = Input.GetAxis("RightStickHorizontal");
+            mouseY = Input.GetAxis("RightStickVertical");
+            // mouseX = Input.GetAxis("Mouse X");
+            // mouseY = Input.GetAxis("Mouse Y");
+        }
+        else
+        {
+            // mouseX = Input.GetAxis("RightStickHorizontal");
+            // mouseY = Input.GetAxis("RightStickVertical");
+            mouseX = Input.GetAxis("Mouse X");
+            mouseY = Input.GetAxis("Mouse Y");
+        }
+        mouseX = mouseX * sensitivity;
+        mouseY = mouseY * sensitivity;
+        // float mouseX = Input.GetAxis("Mouse X") * sensitivity;
+        // float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
         rotation.x += mouseX * sensitivity;
         rotation.y += mouseY * sensitivity;
         rotation.y = Mathf.Clamp(rotation.y, -yRotationLimit, yRotationLimit);
@@ -37,7 +57,7 @@ public class CameraControllerFirst : MonoBehaviour
             Vector3 playerPosition = player.position;
 
             // Create a new position with the y-coordinate 15 units less than the player's y-coordinate
-            Vector3 newPosition = new Vector3(player.position.x, playerPosition.y - pastCameraDisplacement, player.position.z);
+            Vector3 newPosition = new Vector3(player.position.x, playerPosition.y - pastCameraDisplacement + 0.6f, player.position.z);
 
             // Update the object's position
             transform.position = newPosition;

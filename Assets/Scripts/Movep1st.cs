@@ -13,8 +13,9 @@ public class Movep1st : MonoBehaviour
 
     public float moveSpeed = 5.0f;  // Player movement speed
     public float turnSpeed = 20.0f;  // Player turning speed
-    public float jumpForce = 5.0f;
+    public float jumpForce = 3.0f;
     public bool firstPersonViewOn = true;
+    public LayerMask groundLayer;
 
     Rigidbody m_Rigidbody;
 
@@ -28,24 +29,24 @@ public class Movep1st : MonoBehaviour
 
     void Update()
     {
-        bool switchView = Input.GetKeyDown(KeyCode.Q);
-        if (switchView)
-        {
-            UnityEngine.Debug.Log("key pressed");
-            firstPersonCamera.enabled = !firstPersonCamera.enabled;
-            thirdPersonCamera.enabled = !thirdPersonCamera.enabled;
-            if (firstPersonCamera.enabled)
-            {
-                mainCamera = firstPersonCamera;
-                firstPersonViewOn = true;
-            }
-            else
-            {
-                mainCamera = thirdPersonCamera;
-                firstPersonViewOn = false;
-            }
-            switchView = false;
-        }
+        // bool switchView = Input.GetKeyDown(KeyCode.Q);
+        // if (switchView)
+        // {
+        //     UnityEngine.Debug.Log("key pressed");
+        //     firstPersonCamera.enabled = !firstPersonCamera.enabled;
+        //     thirdPersonCamera.enabled = !thirdPersonCamera.enabled;
+        //     if (firstPersonCamera.enabled)
+        //     {
+        //         mainCamera = firstPersonCamera;
+        //         firstPersonViewOn = true;
+        //     }
+        //     else
+        //     {
+        //         mainCamera = thirdPersonCamera;
+        //         firstPersonViewOn = false;
+        //     }
+        //     switchView = false;
+        // }
     }
 
     void FixedUpdate()
@@ -79,11 +80,15 @@ public class Movep1st : MonoBehaviour
             m_Rigidbody.MoveRotation(m_Rotation);
         }
 
-        if (playerJumped)
+        if (playerJumped && IsGrounded())
         {
-            m_Rigidbody.AddForce(Vector3.up, ForceMode.VelocityChange);
-            playerJumped = false;
+            m_Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
         }
 
+    }
+    bool IsGrounded()
+    {
+        float extraHeight = 0.1f;
+        return Physics.Raycast(transform.position, Vector3.down, GetComponent<Collider>().bounds.extents.y + extraHeight, groundLayer);
     }
 }

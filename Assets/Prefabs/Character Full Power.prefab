@@ -397,8 +397,8 @@ MonoBehaviour:
   player: {fileID: 2986764036308628696}
   sensitivity: 2
   yRotationLimit: 90
-  isPastCamera: 0
-  pastCameraDisplacement: 15
+  isPastCamera: 1
+  pastCameraDisplacement: 50
 --- !u!1 &4644104982958690516
 GameObject:
   m_ObjectHideFlags: 0
@@ -732,7 +732,7 @@ GameObject:
   - component: {fileID: 4833069273280204389}
   m_Layer: 0
   m_Name: 1st person camera
-  m_TagString: MainCamera
+  m_TagString: 1st person camera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -866,6 +866,7 @@ MonoBehaviour:
   _camInterface: {fileID: 111204588144573491}
   _aperture: {fileID: 1500991552070259228}
   _volume: {fileID: 4833069273280204389}
+  _photoValidator: {fileID: 5275289740548755901}
 --- !u!114 &4833069273280204389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1109,8 +1110,11 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 3251602683093017716}
   moveSpeed: 5
   turnSpeed: 20
-  jumpForce: 5
+  jumpForce: 3
   firstPersonViewOn: 1
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!114 &5275289740548755901
 MonoBehaviour:
   m_ObjectHideFlags: 0
