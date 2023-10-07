@@ -26,7 +26,8 @@ public class ModelCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        float triggerValue = Input.GetAxis("Left Trigger");
+        if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
         {
             _cameraAnims.SetBool("TakingPhoto", true);
         }
