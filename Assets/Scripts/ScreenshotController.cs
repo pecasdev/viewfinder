@@ -9,6 +9,8 @@ using System.Linq;
 
 public class ScreenshotController : MonoBehaviour
 {
+    string rightButton;
+
     [SerializeField] private int _resWidth = 1920;
     [SerializeField] private int _resHeight = 1080;
     [SerializeField] private GameObject _cardPrefab;
@@ -16,6 +18,8 @@ public class ScreenshotController : MonoBehaviour
     [SerializeField] private ModelCameraController _modelCameraController;
     private bool _usePastCamera = false; // Bool variable to switch between cameras.
     [SerializeField] private bool _teleport = false; // Bool variable to switch between cameras.
+    // for saving screenshots
+    [SerializeField] private bool _savePhotoToLocal = false;
     // Define an enumeration for the three choices
     public enum Choices
     {
@@ -39,6 +43,20 @@ public class ScreenshotController : MonoBehaviour
         {
             UnityEngine.Debug.LogError("No camera found with the tag Past camera");
         }
+
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                rightButton = "Right Button Windows";
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                rightButton = "Right Button Mac";
+                break;
+        }
+
     }
 
     public void LateUpdate()
@@ -52,7 +70,7 @@ public class ScreenshotController : MonoBehaviour
                 _usePastCamera = false;
                 break;
         }
-        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown("Right Button")))
+        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton)))
         {
             _modelCameraController.SetCameraState(false);
             RenderTexture rt = new RenderTexture(_resWidth, _resHeight, 24);
@@ -96,6 +114,23 @@ public class ScreenshotController : MonoBehaviour
             RenderTexture.active = null;
             screenShot.Apply();
             Destroy(rt);
+
+            // Save the screenshot to a file
+            if (_savePhotoToLocal)
+            {
+                byte[] bytes = screenShot.EncodeToPNG();
+                Vector3 camPosition = cameraToUse.transform.position; // the camera that is active
+                Quaternion camRotation = cameraToUse.transform.rotation;
+
+                // position (x,y,z) and rotation (quaternion values: x,y,z,w)
+                string filename = string.Format("Screenshot_CamPos({0:F2},{1:F2},{2:F2})_CamRot({3:F2},{4:F2},{5:F2},{6:F2})_{7}.png",
+                    camPosition.x, camPosition.y, camPosition.z,
+                    camRotation.x, camRotation.y, camRotation.z, camRotation.w);
+                string path = System.IO.Path.Combine(UnityEngine.Application.persistentDataPath, filename);
+                System.IO.File.WriteAllBytes(path, bytes);
+                UnityEngine.Debug.Log("Screenshot saved to: " + path);
+            }
+
 
             Sprite targetSp = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), Vector2.one * 0.5f, 1000f);
             if (_createdPhoto != null)

@@ -7,6 +7,8 @@ TagManager:
   - 3rd person camera
   - 1st person camera
   - TextOverlay
+  - Past Camera
+  - Ground
   layers:
   - Default
   - TransparentFX

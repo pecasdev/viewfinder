@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security;
 using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
+using static System.Net.Mime.MediaTypeNames;
 
 public class ModelCameraController : MonoBehaviour
 {
+    string leftTrigger;
+
     [SerializeField] private GameObject _camInterface, _aperture;
     [SerializeField] private PostProcessVolume _volume;
     [SerializeField] private ValidatePhoto _photoValidator;
@@ -21,12 +25,24 @@ public class ModelCameraController : MonoBehaviour
         CanTakePhoto = false;
         _volume.profile.TryGetSettings(out _vignetting);
         _cameraAnims = GetComponent<Animator>();
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                leftTrigger = "Left Trigger Windows";
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                leftTrigger = "Left Trigger Mac";
+                break;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        float triggerValue = Input.GetAxis("Left Trigger");
+        float triggerValue = Input.GetAxis(leftTrigger);
         if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
         {
             _cameraAnims.SetBool("TakingPhoto", true);
