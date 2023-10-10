@@ -13,9 +13,11 @@ public class Movep1st : MonoBehaviour
 
     public float moveSpeed = 5.0f;  // Player movement speed
     public float turnSpeed = 20.0f;  // Player turning speed
-    public float jumpForce = 3.0f;
+    public float jumpForce = 5.0f;
     public bool firstPersonViewOn = true;
     public LayerMask groundLayer;
+
+    bool playerGrounded = true;
 
     Rigidbody m_Rigidbody;
 
@@ -80,15 +82,18 @@ public class Movep1st : MonoBehaviour
             m_Rigidbody.MoveRotation(m_Rotation);
         }
 
-        if (playerJumped && IsGrounded())
+        if (playerJumped && playerGrounded)
         {
-            m_Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+            m_Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            playerGrounded = false;
         }
 
     }
-    bool IsGrounded()
+    void OnCollisionEnter(Collision collision)
     {
-        float extraHeight = 0.1f;
-        return Physics.Raycast(transform.position, Vector3.down, GetComponent<Collider>().bounds.extents.y + extraHeight, groundLayer);
+        if (collision.gameObject.layer == LayerMask.NameToLayer("Default"))
+        {
+            playerGrounded = true;
+        }
     }
 }

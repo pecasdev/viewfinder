@@ -11,7 +11,10 @@ public class CameraControllerFirst : MonoBehaviour
     [Range(0f, 90f)][SerializeField] float yRotationLimit = 90f;
     Vector2 rotation = Vector2.zero;
     public bool isPastCamera;
-    public float pastCameraDisplacement = 15f;
+    public float pastCameraDisplacement = 50f;
+    string RightStickHorizontal;
+    string RightStickVertical;
+    bool dpad_pressed = false;
 
 
     void Start()
@@ -19,6 +22,20 @@ public class CameraControllerFirst : MonoBehaviour
 
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                RightStickHorizontal = "RightStickHorizontal Windows";
+                RightStickVertical = "RightStickVertical Windows";
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                RightStickHorizontal = "RightStickHorizontal Mac";
+                RightStickVertical = "RightStickVertical Mac";
+                break;
+        }
     }
 
     void Update()
@@ -26,11 +43,11 @@ public class CameraControllerFirst : MonoBehaviour
         float mouseX;
         float mouseY;
         
-        if(Input.GetAxis("RightStickHorizontal") != 0.0f || Input.GetAxis("RightStickVertical") != 0)
+        if(Input.GetAxis(RightStickHorizontal) != 0.0f || Input.GetAxis(RightStickVertical) != 0)
         {
             
-            mouseX = Input.GetAxis("RightStickHorizontal");
-            mouseY = Input.GetAxis("RightStickVertical");
+            mouseX = Input.GetAxis(RightStickHorizontal);
+            mouseY = Input.GetAxis(RightStickVertical);
             // mouseX = Input.GetAxis("Mouse X");
             // mouseY = Input.GetAxis("Mouse Y");
         }
@@ -51,23 +68,50 @@ public class CameraControllerFirst : MonoBehaviour
 
         transform.localEulerAngles = new Vector3(-rotation.y, rotation.x, 0);
 
+        /*if (playerInPast)
+        {
+            pastCameraDisplacement = -pastCameraDisplacement;
+        }*/
+
         if (isPastCamera)
         {
-            // Get the player's position
             Vector3 playerPosition = player.position;
 
-            // Create a new position with the y-coordinate 15 units less than the player's y-coordinate
             Vector3 newPosition = new Vector3(player.position.x, playerPosition.y - pastCameraDisplacement + 0.6f, player.position.z);
 
-            // Update the object's position
             transform.position = newPosition;
         }
         else
         {
-            // Ensure camera holder position matches the player's position
             transform.position = new Vector3(player.position.x, player.position.y + 0.6f, player.position.z); ;
         }
-        
+
+        // player jumps from past and present
+        float dpad_up_Value = Input.GetAxis("DPAD_up Windows");
+        if (dpad_up_Value == 0)
+        {
+            dpad_pressed = false;
+        }
+        bool switchView = Input.GetKeyDown(KeyCode.Q) || (dpad_up_Value == 1 && !dpad_pressed);
+        if (switchView)
+        {
+            dpad_pressed = true;
+            Vector3 tempPlayer = player.position;
+            if (isPastCamera)
+            {
+                Vector3 futurePosition = new Vector3(transform.position.x, transform.position.y + pastCameraDisplacement, transform.position.z);
+                transform.position = futurePosition;
+            }
+            else
+            {
+                Vector3 pastPosition = new Vector3(player.position.x, player.position.y - pastCameraDisplacement, player.position.z);
+                player.position = pastPosition;
+            }
+            pastCameraDisplacement = -pastCameraDisplacement;
+
+        }
+
+
     }
 }
 
