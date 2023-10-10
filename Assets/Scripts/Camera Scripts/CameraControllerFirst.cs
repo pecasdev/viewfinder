@@ -86,8 +86,17 @@ public class CameraControllerFirst : MonoBehaviour
             transform.position = new Vector3(player.position.x, player.position.y + 0.6f, player.position.z); ;
         }
 
+        /*if (Input.GetAxis("DPAD_h Windows") == -1)
+        {
+            UnityEngine.Debug.Log("dpad left");
+        }else if (Input.GetAxis("DPAD_h Windows") == 1)
+        {
+            UnityEngine.Debug.Log("dpad right");
+        }*/
+        
+
         // player jumps from past and present
-        float dpad_up_Value = Input.GetAxis("DPAD_up Windows");
+        float dpad_up_Value = Input.GetAxis("DPAD_v Windows");
         if (dpad_up_Value == 0)
         {
             dpad_pressed = false;
