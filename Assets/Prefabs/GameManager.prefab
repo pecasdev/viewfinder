@@ -44,9 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765b92f531f594b4ea4c1cc7a50b4361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stageText: {fileID: 0}
-  hintText: {fileID: 0}
-  promptGameObject: {fileID: 0}
   promptSprites:
   - {fileID: 21300000, guid: e2121d4ffd24deb4e84154b01f53b412, type: 3}
   - {fileID: 21300000, guid: 30013baaed5b60e498ccb8d082a3d41c, type: 3}

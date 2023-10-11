@@ -33,7 +33,7 @@ public class ValidatePastPhoto : ValidatePhoto
         if (base.IsAttemptAcceptable(attemptPos, attemptAngle) && _additionalValidation())
         {
             Debug.Log("REWARD");
-            GameManager.Instance.UpdateStage();
+            GameManager.Instance.PromptSolved();
             return true;
         }
         else
