@@ -829,7 +829,7 @@ MonoBehaviour:
   sensitivity: 2
   yRotationLimit: 90
   isPastCamera: 0
-  pastCameraDisplacement: 15
+  pastCameraDisplacement: 50
 --- !u!95 &3106924693001514487
 Animator:
   serializedVersion: 5
@@ -934,7 +934,8 @@ MonoBehaviour:
   _creationPoint: {fileID: 613625156478915546}
   _modelCameraController: {fileID: 107001132694106131}
   _teleport: 0
-  CameraAbility: 1
+  _savePhotoToLocal: 0
+  CameraAbility: 0
 --- !u!1001 &7412084251317305716
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1009,6 +1010,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 9212654044968833753}
     m_Modifications:
+    - target: {fileID: -7078933489613949676, guid: dc8c54f863d2acb4fb0eb7d0c74ace5d, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: -4848113422654242534, guid: dc8c54f863d2acb4fb0eb7d0c74ace5d, type: 3}
       propertyPath: mainCamera
       value: 
@@ -1110,7 +1115,7 @@ MonoBehaviour:
   thirdPersonCamera: {fileID: 3251602683093017716}
   moveSpeed: 5
   turnSpeed: 20
-  jumpForce: 3
+  jumpForce: 5
   firstPersonViewOn: 1
   groundLayer:
     serializedVersion: 2
