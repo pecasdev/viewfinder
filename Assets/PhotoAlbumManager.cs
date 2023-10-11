@@ -21,6 +21,7 @@ public class PhotoAlbumManager : MonoBehaviour
     private TextMeshProUGUI promptLabelText;
     private bool y_button_pressed = false;
     private bool dpad_v_button_pressed = false;
+    private bool dpad_h_button_pressed = false;
     public static PhotoAlbumManager Instance
     {
         get
@@ -72,7 +73,28 @@ public class PhotoAlbumManager : MonoBehaviour
             ClosePhotoAlbum();
         }
 
-            float y_button_val = Input.GetAxis("Xbox_Y_Button");
+        // dpad horizontal to cycle prompts
+        float dpad_h_Value = Input.GetAxis("DPAD_h Windows");
+        if (dpad_h_Value == 0)
+        {
+            dpad_h_button_pressed = false;
+        }
+
+        if (Input.GetAxis("DPAD_h Windows") == -1 && !dpad_h_button_pressed)
+        {
+            Debug.Log("DPAD_h left");
+            dpad_h_button_pressed = true;
+            ChangeStage(GameManager.StageOrder.Previous);
+        }
+        else if (Input.GetAxis("DPAD_h Windows") == 1 && !dpad_h_button_pressed)
+        {
+            Debug.Log("DPAD_h right");
+            dpad_h_button_pressed = true;
+            ChangeStage(GameManager.StageOrder.Next);
+        }
+
+        // Y button to teleport player between worlds
+        float y_button_val = Input.GetAxis("Xbox_Y_Button");
         if (y_button_val == 0)
         {
             y_button_pressed = false;
@@ -81,8 +103,10 @@ public class PhotoAlbumManager : MonoBehaviour
         if (Input.GetAxis("Xbox_Y_Button") == 1 && !y_button_pressed)
         {
             y_button_pressed = true;
-            OpenPhotoAlbum();
+            
         }
+
+
     }
 
     public void ChangeStage(GameManager.StageOrder stageOrder)
