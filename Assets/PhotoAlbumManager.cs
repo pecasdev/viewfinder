@@ -21,6 +21,7 @@ public class PhotoAlbumManager : MonoBehaviour
     private TextMeshProUGUI promptLabelText;
     private bool dpad_v_button_pressed = false;
     private bool dpad_h_button_pressed = false;
+    private bool b_button_pressed = false;
     public static PhotoAlbumManager Instance
     {
         get
@@ -90,6 +91,19 @@ public class PhotoAlbumManager : MonoBehaviour
             Debug.Log("DPAD_h right");
             dpad_h_button_pressed = true;
             ChangeStage(GameManager.StageOrder.Next);
+        }
+
+        // b button to exit prompt
+        float b_button_val = Input.GetAxis("Xbox_B_Button");
+        if (b_button_val == 0)
+        {
+            b_button_pressed = false;
+        }
+
+        if (Input.GetAxis("Xbox_B_Button") == 1 && !b_button_pressed)
+        {
+            b_button_pressed = true;
+            ClosePhotoAlbum();
         }
 
         // Y button to teleport player between worlds
