@@ -9,17 +9,18 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     private static GameManager instance = null;
-
-    public GameObject stageText;
-    public GameObject hintText;
-    public RawImage promptGameObject;
-    public RenderTexture[] promptTextures;
+    public Sprite[] promptSprites;
     public TextAsset levelJson;
+    private int solvedPrompts = 0;
     private int currentStage = 0;
     private List<Solution> solutions = new();
+    private List<Prompt> prompts = new List<Prompt>();
 
-
-    public delegate void OnLevelChangeHandler();
+    public enum StageOrder
+    {
+        Previous,
+        Next
+    }
     public static GameManager Instance
     {
         get
@@ -31,6 +32,10 @@ public class GameManager : MonoBehaviour
             return instance;
         }
     }
+
+    public int SolvedPrompts { get => solvedPrompts; set => solvedPrompts = value; }
+    public List<Prompt> Prompts { get => prompts; set => prompts = value; }
+    public int CurrentStage { get => currentStage; set => currentStage = value; }
 
     public void OnApplicationQuit()
     {
@@ -47,69 +52,124 @@ public class GameManager : MonoBehaviour
     {
         SolutionsText solutionsText = JsonUtility.FromJson<SolutionsText>(levelJson.text);
 
+        int i = 0;
         foreach (SolutionText solutionText in solutionsText.solutions)
         {
             Debug.Log("Position Solution: " + solutionText.posSolutionText + " , Camera Position: " + solutionText.angleSolutionText);
             Solution solution = new Solution();
             solution.SetSolution(solutionText.posSolutionText, solutionText.angleSolutionText);
             solutions.Add(solution);
+
+            Prompt newPrompt = new(false, solutionText.descriptionText, promptSprites[i]);
+            prompts.Add(newPrompt);
+            i += 1;
         }
     }
 
     private void Start()
     {
-        // Temporary home for this logic
-        stageText.GetComponent<TextMeshProUGUI>().text = "Stage " + (currentStage + 1);
         //hintText.GetComponent<TextMeshProUGUI>().text = "Press P to take a photo!";
-        SetPromptSprite();
+        PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+        PromptPreviewManager.Instance.UpdatePromptPreview(false);
     }
 
-    public void UpdateStage()
+    public void PromptSolved()
     {
         // Disable hint after tutorial stage
-        currentStage++;
-        hintText.SetActive(false);
+        SolvedPrompts++;
+        prompts[currentStage].IsSolved = true;
         // Level Complete Logic
-        if (currentStage >= solutions.Count)
+        if (SolvedPrompts >= solutions.Count)
         {
-            stageText.GetComponent<TextMeshProUGUI>().text = "You Win!";
-            return;
+            PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+            PromptPreviewManager.Instance.UpdatePromptPreview(true);
         }
-        // Update Stage
         else
         {
-            stageText.GetComponent<TextMeshProUGUI>().text = "Stage " + (currentStage + 1);
-            SetNextSolution();
-            SetPromptSprite();
+            // Adjust this to set the next prompt (unfinished prompt)
+            currentStage = GetNextUnfinishedPromptIndex();
+            //
+            PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+            PromptPreviewManager.Instance.UpdatePromptPreview(false);
         }
-        
     }
 
     public Vector3 GetPositionSolution()
     {
-        return solutions[currentStage].GetPositionSolution();
+        return solutions[CurrentStage].GetPositionSolution();
     }
     public Vector3 GetAngleSolution()
     {
-        return solutions[currentStage].GetAngleSolution();
+        return solutions[CurrentStage].GetAngleSolution();
     }
-    private void SetNextSolution()
+
+    public void ChangeStage(StageOrder stageOrder)
     {
+        if (stageOrder == StageOrder.Previous)
+        {
+            if (currentStage == 0)
+            {
+                currentStage = solutions.Count - 1;
+            }
+            else
+            {
+                currentStage--;
+            }
+        }
+        else if (stageOrder == StageOrder.Next)
+        {
+            if (currentStage == solutions.Count - 1)
+            {
+                currentStage = 0;
+            }
+            else
+            {
+                currentStage++;
+            }
+        }
 
+        PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+        if (SolvedPrompts >= solutions.Count)
+        {
+            PromptPreviewManager.Instance.UpdatePromptPreview(true);
+        }
+        else
+        {
+            PromptPreviewManager.Instance.UpdatePromptPreview(false);
+        }
     }
 
-    private void SetPromptSprite()
+    public Prompt GetCurrentPrompt()
     {
-        promptGameObject.texture = promptTextures[currentStage];
+        return prompts[CurrentStage];
     }
 
-    public int GetCurrentStage() { return currentStage; }
+    public int GetTotalStages()
+    {
+        return solutions.Count;
+    }
+
+    public int GetNextUnfinishedPromptIndex()
+    {
+        int count = 0;
+        foreach (Prompt prompt in prompts)
+        {
+            if (!prompt.IsSolved)
+            {
+                return count;
+            }
+            count++;
+        }
+
+        return -1;
+    }
 }
 
 public class Solution
 {
     Vector3 posSolution;
     Vector3 angleSolution;
+    string description;
 
     public void SetSolution(string posSolutionText, string angleSolutionText)
     {
@@ -136,10 +196,29 @@ public class SolutionText
 {
     public string posSolutionText;
     public string angleSolutionText;
+    public string descriptionText;
 }
 
 [System.Serializable]
 public class SolutionsText
 {
     public SolutionText[] solutions;
+}
+
+public class Prompt
+{
+    bool isSolved;
+    string descriptionText;
+    Sprite promptImage;
+
+    public Prompt(bool isSolved, string descriptionText, Sprite promptImage)
+    {
+        this.isSolved = isSolved;
+        this.descriptionText = descriptionText;
+        this.promptImage = promptImage;
+    }
+
+    public string DescriptionText { get => descriptionText; set => descriptionText = value; }
+    public bool IsSolved { get => isSolved; set => isSolved = value; }
+    public Sprite PromptImage { get => promptImage; set => promptImage = value; }
 }

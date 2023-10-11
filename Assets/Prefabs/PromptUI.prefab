@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 484}
-  m_SizeDelta: {x: 200, y: 50}
+  m_SizeDelta: {x: 500, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1910925626294887217
 CanvasRenderer:
@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Stage #
+  m_text: 'Prompts Completed: 0/X'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 6892742180052914574}
   - component: {fileID: 8128463744473242927}
   - component: {fileID: 7655037507330600806}
+  - component: {fileID: 5785867625013193389}
   m_Layer: 5
   m_Name: PromptUI
   m_TagString: Untagged
@@ -508,6 +509,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8402520243291684568}
   - {fileID: 5119642665567197241}
   - {fileID: 2866873990405225146}
   - {fileID: 146680428639560643}
@@ -581,6 +583,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5785867625013193389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514764016554274675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47f7e52ea7c4e854eaae49eccfb8f31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptImageBorder: {fileID: 0}
+  promptImage: {fileID: 0}
+  stageText: {fileID: 0}
+  hintText: {fileID: 0}
 --- !u!1 &7018126872334622521
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,6 +675,41 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &8165353974189513556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8402520243291684568}
+  m_Layer: 5
+  m_Name: PromptPreviewContainer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8402520243291684568
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8165353974189513556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8618379223249646918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &9008411263746103608
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,7 +719,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 146680428639560643}
-  - component: {fileID: 1361675127938713304}
   m_Layer: 5
   m_Name: Prompt
   m_TagString: Untagged
@@ -695,17 +747,3 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1361675127938713304
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9008411263746103608}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47f7e52ea7c4e854eaae49eccfb8f31f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  promptImageBorder: {fileID: 7018126872334622521}
-  promptImage: {fileID: 1901114159150939852}
