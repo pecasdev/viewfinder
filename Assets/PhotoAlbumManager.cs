@@ -66,10 +66,10 @@ public class PhotoAlbumManager : MonoBehaviour
         isPromptSolved = currentPrompt.IsSolved;
         if (isPromptSolved)
         {
-            promptLabelText.text = currentPrompt.DescriptionText;
+            promptDescription.text = currentPrompt.DescriptionText;
             // increase alpha of the sprite (phantom photo)
             Color promptCol = promptImage.color;
-            promptCol.a = 1;
+            //promptCol.a = 1;
             promptCol.r = 1;
             promptCol.g = 1;
             promptCol.b = 1;
@@ -79,7 +79,7 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             // decrease alpha of the sprite
             Color promptCol = promptImage.color;
-            promptCol.a = 0.75f;
+            //promptCol.a = 0.75f;
             promptCol.r = 0.5f;
             promptCol.g = 0.5f;
             promptCol.b = 0.9f;
@@ -105,11 +105,11 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             photoAlbumContainer.SetActive(true);
         }
-        else if (photoAlbumContainer.activeInHierarchy)
-        {
-            photoAlbumContainer.SetActive(false);
-            promptImageBig.SetActive(true);
-        }
+        //else if (photoAlbumContainer.activeInHierarchy)
+        //{
+        //    photoAlbumContainer.SetActive(false);
+        //    promptImageBig.SetActive(true);
+        //}
     }
 
     public void ClosePhotoAlbum()
@@ -132,7 +132,7 @@ public class PhotoAlbumManager : MonoBehaviour
             photoAlbumContainer.SetActive(false);
             promptImageBig.SetActive(true);
             Color promptCol = promptImageBig.GetComponent<Image>().color;
-            promptCol.a = 0.3f;
+            //promptCol.a = 0.3f;
             if (isPromptSolved)
             {
                 promptCol.r = 1;

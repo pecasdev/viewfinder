@@ -45,7 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptSprites:
-  - {fileID: 21300000, guid: e2121d4ffd24deb4e84154b01f53b412, type: 3}
-  - {fileID: 21300000, guid: 30013baaed5b60e498ccb8d082a3d41c, type: 3}
-  - {fileID: 21300000, guid: e70d048b127c5fb448238fa4029a308a, type: 3}
-  levelJson: {fileID: 4900000, guid: 28e89a098d43d584d906ff3c323167f7, type: 3}
+  - {fileID: 21300000, guid: f3f52cf5a33529b42af1e657e04cdd05, type: 3}
+  - {fileID: 21300000, guid: 103bcf2f4c6b4d249833eb667f549243, type: 3}
+  - {fileID: 21300000, guid: 4a0795d13cff6484793aaa741275258d, type: 3}
+  - {fileID: 21300000, guid: 19fdd92afb1a3e541891e52b58f7b828, type: 3}
+  - {fileID: 21300000, guid: edd1257e0b5446f4bbc3fec2847492bf, type: 3}
+  levelJson: {fileID: 4900000, guid: 8f63ec239620aa14b997b51643eeb508, type: 3}
