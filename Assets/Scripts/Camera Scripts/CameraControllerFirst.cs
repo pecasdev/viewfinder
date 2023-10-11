@@ -42,10 +42,10 @@ public class CameraControllerFirst : MonoBehaviour
     {
         float mouseX;
         float mouseY;
-
-        if (Input.GetAxis(RightStickHorizontal) != 0.0f || Input.GetAxis(RightStickVertical) != 0)
+        
+        if(Input.GetAxis(RightStickHorizontal) != 0.0f || Input.GetAxis(RightStickVertical) != 0)
         {
-
+            
             mouseX = Input.GetAxis(RightStickHorizontal);
             mouseY = Input.GetAxis(RightStickVertical);
             // mouseX = Input.GetAxis("Mouse X");
@@ -86,39 +86,25 @@ public class CameraControllerFirst : MonoBehaviour
             transform.position = new Vector3(player.position.x, player.position.y + 0.6f, player.position.z); ;
         }
 
+        /*if (Input.GetAxis("DPAD_h Windows") == -1)
+        {
+            UnityEngine.Debug.Log("dpad left");
+        }else if (Input.GetAxis("DPAD_h Windows") == 1)
+        {
+            UnityEngine.Debug.Log("dpad right");
+        }*/
+        
 
         // player jumps from past and present
-        float dpad_v_Value = Input.GetAxis("DPAD_v Windows");
-        float dpad_h_Value = Input.GetAxis("DPAD_h Windows");
-        if (dpad_v_Value == 0 && dpad_h_Value == 0)
+        float dpad_up_Value = Input.GetAxis("DPAD_v Windows");
+        if (dpad_up_Value == 0)
         {
             dpad_pressed = false;
         }
-
-        if (Input.GetAxis("DPAD_h Windows") == 1 && !dpad_pressed)
-        {
-            dpad_pressed = true;
-            PhotoAlbumManager.Instance.ChangeStage(GameManager.StageOrder.Previous);
-        }
-        else if (Input.GetAxis("DPAD_h Windows") == -1 && !dpad_pressed)
-        {
-            dpad_pressed = true;
-            PhotoAlbumManager.Instance.ChangeStage(GameManager.StageOrder.Next);
-        } 
-        else if (Input.GetAxis("DPAD_v Windows") == -1 && !dpad_pressed)
-        {
-            dpad_pressed = true;
-            PhotoAlbumManager.Instance.OpenPhotoAlbum();
-        }
-        else if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_pressed)
-        {
-            dpad_pressed = true;
-            PhotoAlbumManager.Instance.ClosePhotoAlbum();
-        }
-        //bool switchView = Input.GetKeyDown(KeyCode.Q) || (dpad_up_Value == 1 && !dpad_pressed);
-        bool switchView = Input.GetKeyDown(KeyCode.Q);
+        bool switchView = Input.GetKeyDown(KeyCode.Q) || (dpad_up_Value == 1 && !dpad_pressed);
         if (switchView)
         {
+            dpad_pressed = true;
             Vector3 tempPlayer = player.position;
             if (isPastCamera)
             {
