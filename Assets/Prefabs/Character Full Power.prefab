@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2986764036308628696}
-  sensitivity: 2
+  sensitivity: 0.5
   yRotationLimit: 90
   isPastCamera: 1
   pastCameraDisplacement: 50
@@ -826,7 +826,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2986764036308628696}
-  sensitivity: 2
+  sensitivity: 0.5
   yRotationLimit: 90
   isPastCamera: 0
   pastCameraDisplacement: 50
