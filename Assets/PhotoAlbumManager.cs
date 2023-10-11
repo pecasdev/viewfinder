@@ -19,6 +19,8 @@ public class PhotoAlbumManager : MonoBehaviour
     private GameObject photoAlbumContainer;
     [SerializeField]
     private TextMeshProUGUI promptLabelText;
+    private bool y_button_pressed = false;
+    private bool dpad_v_button_pressed = false;
     public static PhotoAlbumManager Instance
     {
         get
@@ -47,6 +49,40 @@ public class PhotoAlbumManager : MonoBehaviour
         }
         if (Input.GetKeyDown("9")) { ChangeStage(GameManager.StageOrder.Previous); }
         if (Input.GetKeyDown("0")) { ChangeStage(GameManager.StageOrder.Next); }
+
+
+        // xbox controls
+        // dpad vertical to open/close album
+        float dpad_v_Value = Input.GetAxis("DPAD_v Windows");
+        if (dpad_v_Value == 0)
+        {
+            dpad_v_button_pressed = false;
+        }
+
+        if (Input.GetAxis("DPAD_v Windows") == -1 && !dpad_v_button_pressed)
+        {
+            Debug.Log("Dbad V down");
+            dpad_v_button_pressed = true;
+            OpenPhotoAlbum();
+        }
+        else if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_v_button_pressed)
+        {
+            Debug.Log("Dbad V up");
+            dpad_v_button_pressed = true;
+            ClosePhotoAlbum();
+        }
+
+            float y_button_val = Input.GetAxis("Xbox_Y_Button");
+        if (y_button_val == 0)
+        {
+            y_button_pressed = false;
+        }
+
+        if (Input.GetAxis("Xbox_Y_Button") == 1 && !y_button_pressed)
+        {
+            y_button_pressed = true;
+            OpenPhotoAlbum();
+        }
     }
 
     public void ChangeStage(GameManager.StageOrder stageOrder)
@@ -77,6 +113,7 @@ public class PhotoAlbumManager : MonoBehaviour
         }
         else
         {
+            promptDescription.text = "Maybe if I retook this phantom photo I'll learn about what happened...";
             // decrease alpha of the sprite
             Color promptCol = promptImage.color;
             //promptCol.a = 0.75f;
@@ -94,7 +131,7 @@ public class PhotoAlbumManager : MonoBehaviour
         if (!promptImageBig.activeInHierarchy)
         {
             photoAlbumContainer.SetActive(!photoAlbumContainer.activeInHierarchy);
-            PromptPreviewManager.Instance.TogglePromptPreview();
+            //PromptPreviewManager.Instance.TogglePromptPreview();
         }
 
     }
@@ -105,11 +142,10 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             photoAlbumContainer.SetActive(true);
         }
-        //else if (photoAlbumContainer.activeInHierarchy)
-        //{
-        //    photoAlbumContainer.SetActive(false);
-        //    promptImageBig.SetActive(true);
-        //}
+        else if (photoAlbumContainer.activeInHierarchy)
+        {
+            TogglePromptSize();
+        }
     }
 
     public void ClosePhotoAlbum()
@@ -120,8 +156,7 @@ public class PhotoAlbumManager : MonoBehaviour
         }
         else if (promptImageBig.activeInHierarchy)
         {
-            photoAlbumContainer.SetActive(true);
-            promptImageBig.SetActive(false);
+            TogglePromptSize();
         }
     }
 
@@ -131,8 +166,9 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             photoAlbumContainer.SetActive(false);
             promptImageBig.SetActive(true);
+            PromptPreviewManager.Instance.TogglePromptPreview();
             Color promptCol = promptImageBig.GetComponent<Image>().color;
-            //promptCol.a = 0.3f;
+            promptCol.a = 0.5f;
             if (isPromptSolved)
             {
                 promptCol.r = 1;
@@ -151,6 +187,7 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             promptImageBig.SetActive(false);
             photoAlbumContainer.SetActive(true);
+            PromptPreviewManager.Instance.TogglePromptPreview();
         }
 
     }
