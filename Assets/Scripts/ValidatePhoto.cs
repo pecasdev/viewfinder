@@ -45,7 +45,7 @@ public class ValidatePhoto : MonoBehaviour
         if (IsAttemptAcceptable(attemptPos, attemptAngle))
         {
             Debug.Log("REWARD");
-            GameManager.Instance.UpdateStage();
+            GameManager.Instance.PromptSolved();
             return true;
         }
         else
