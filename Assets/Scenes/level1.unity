@@ -2204,12 +2204,32 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2424586981024430640, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: sensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2424586981024430640, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: pastCameraDisplacement
       value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3792222725587810398, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4515862103645248968, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: jumpForce
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026912593635445493, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026912593635445493, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: sensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026912593635445493, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: isPastCamera
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6923926290313133263, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: m_Name
