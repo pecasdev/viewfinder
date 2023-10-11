@@ -49,7 +49,7 @@ public class PhotoAlbumManager : MonoBehaviour
         if (Input.GetKeyDown("0")) { ChangeStage(GameManager.StageOrder.Next); }
     }
 
-    private void ChangeStage(GameManager.StageOrder stageOrder)
+    public void ChangeStage(GameManager.StageOrder stageOrder)
     {
         if (photoAlbumContainer.activeInHierarchy && !promptImageBig.activeInHierarchy)
         {
@@ -97,6 +97,32 @@ public class PhotoAlbumManager : MonoBehaviour
             PromptPreviewManager.Instance.TogglePromptPreview();
         }
         
+    }
+
+    public void OpenPhotoAlbum()
+    {
+        if (!promptImageBig.activeInHierarchy && !photoAlbumContainer.activeInHierarchy)
+        {
+            photoAlbumContainer.SetActive(true);
+        } 
+        else if (photoAlbumContainer.activeInHierarchy)
+        {
+            photoAlbumContainer.SetActive(false);
+            promptImageBig.SetActive(true);
+        }
+    }
+
+    public void ClosePhotoAlbum()
+    {
+        if (!promptImageBig.activeInHierarchy)
+        {
+            photoAlbumContainer.SetActive(false);
+        }
+        else if (promptImageBig.activeInHierarchy)
+        {
+            photoAlbumContainer.SetActive(true);
+            promptImageBig.SetActive(false);
+        }
     }
 
     private void TogglePromptSize()
