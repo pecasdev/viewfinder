@@ -9,6 +9,7 @@ TagManager:
   - TextOverlay
   - Past Camera
   - Ground
+  - Watering Can
   layers:
   - Default
   - TransparentFX
