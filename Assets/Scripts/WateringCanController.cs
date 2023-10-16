@@ -13,24 +13,33 @@ interface IPlantToWater
 public class WateringCanController : MonoBehaviour
 {
     [SerializeField] private float _wateringRange = 5.0f;
-    private bool _canWater = false;
+    [SerializeField] private bool _canWater = false;
+    private GameObject watering_can;
+
+    private void Start()
+    {
+        watering_can = GameObject.FindGameObjectWithTag("Watering Can");
+    }
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+
+        Ray r = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(r, out RaycastHit hitInfo, _wateringRange))
         {
-            Debug.Log("Interact");
-            Ray r = new Ray(transform.position, transform.forward);
-            if (Physics.Raycast(r, out RaycastHit hitInfo, _wateringRange))
+            
+            if (Input.GetKeyDown(KeyCode.E))
             {
+
                 if (hitInfo.collider.gameObject.CompareTag("Watering Can"))
                 {
                     Debug.Log("Watering Can");
                     _canWater = true;
-                    GameObject.FindGameObjectWithTag("Watering Can").SetActive(false);
+                    watering_can.SetActive(false);
                 }
+
                 if (hitInfo.collider.gameObject.TryGetComponent(out IPlantToWater plant) && _canWater)
                 {
                     plant.Bloom();

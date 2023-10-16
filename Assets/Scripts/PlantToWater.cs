@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlantToWater : MonoBehaviour, IPlantToWater
 {
-    bool _isWilted = true;
+    private bool _isWilted = true;
 
     // Start is called before the first frame update
     void Start()
@@ -25,6 +25,10 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         {
             // play bloom animation
             _isWilted = false;
+            if (transform.GetComponent<Animator>())
+            {
+                transform.GetComponent<Animator>().SetTrigger("Bloom");
+            }
         }
     }
 }
