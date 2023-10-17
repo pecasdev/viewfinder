@@ -7,12 +7,15 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class ModelCameraController : MonoBehaviour
 {
+    public AudioClip[] shutterSounds;
+    private AudioSource audioSource;
+
     string leftTrigger;
 
     [SerializeField] private GameObject _camInterface, _aperture;
-    [SerializeField] private PostProcessVolume _volume;
+    //[SerializeField] private PostProcessVolume _volume;
     [SerializeField] private ValidatePhoto _photoValidator;
-    private Vignette _vignetting;
+    //private Vignette _vignetting;
     private Animator _cameraAnims;
     private bool _canTakePhoto, _printing;
     public bool CanTakePhoto
@@ -23,7 +26,7 @@ public class ModelCameraController : MonoBehaviour
     private void Start()
     {
         CanTakePhoto = false;
-        _volume.profile.TryGetSettings(out _vignetting);
+        //_volume.profile.TryGetSettings(out _vignetting);
         _cameraAnims = GetComponent<Animator>();
         switch (UnityEngine.Application.platform)
         {
@@ -37,6 +40,8 @@ public class ModelCameraController : MonoBehaviour
                 leftTrigger = "Left Trigger Mac";
                 break;
         }
+
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -55,6 +60,13 @@ public class ModelCameraController : MonoBehaviour
         }
     }
 
+    private void playCameraShutterSound()
+    {
+        int index = Random.Range(0, shutterSounds.Length);
+        audioSource.clip = shutterSounds[index];
+        audioSource.Play();
+    }
+
     public void OnCameraActive()
     {
         SetCameraState(true);
@@ -65,6 +77,7 @@ public class ModelCameraController : MonoBehaviour
     {
         StartCoroutine(ShowAperture());
         _photoValidator.validatePhoto();
+        playCameraShutterSound();  
     }
 
     public IEnumerator ShowAperture()
@@ -87,6 +100,6 @@ public class ModelCameraController : MonoBehaviour
     public void SetCameraState(bool state)
     {
         _camInterface.SetActive(state);
-        _vignetting.enabled.value = state;
+        //_vignetting.enabled.value = state;
     }
 }
