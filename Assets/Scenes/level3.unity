@@ -216,8 +216,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765b92f531f594b4ea4c1cc7a50b4361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  promptSprites: []
-  levelJson: {fileID: 4900000, guid: 8f63ec239620aa14b997b51643eeb508, type: 3}
+  promptSprites:
+  - {fileID: 21300000, guid: 14b08bcda81fa4f4988a929f5bcce146, type: 3}
+  - {fileID: 21300000, guid: d052379167434044c93b225ed549fa8c, type: 3}
+  - {fileID: 21300000, guid: e9381233fae18234682fe7a8762b5534, type: 3}
+  levelJson: {fileID: 4900000, guid: 7c71c14dda7418f4a8a9303ed15a150d, type: 3}
 --- !u!4 &645719717
 Transform:
   m_ObjectHideFlags: 0
@@ -616,13 +619,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 979818277970017310, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6514764016554274675, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
       propertyPath: m_Name
       value: PhotoAlbumUI
       objectReference: {fileID: 0}
     - target: {fileID: 6514764016554274675, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8618379223249646918, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
       propertyPath: m_Pivot.x
@@ -724,6 +731,10 @@ PrefabInstance:
     - target: {fileID: 6923926290313133263, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: m_Name
       value: Character Full Power
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592513454632006196, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: _savePhotoToLocal
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9212654044968833753, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: m_LocalPosition.x

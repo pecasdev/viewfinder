@@ -120,12 +120,11 @@ public class ScreenshotController : MonoBehaviour
             {
                 byte[] bytes = screenShot.EncodeToPNG();
                 Vector3 camPosition = cameraToUse.transform.position; // the camera that is active
-                Quaternion camRotation = cameraToUse.transform.rotation;
+                Vector3 camRotation = cameraToUse.transform.eulerAngles;
 
                 // position (x,y,z) and rotation (quaternion values: x,y,z,w)
-                string filename = string.Format("Screenshot_CamPos({0:F2},{1:F2},{2:F2})_CamRot({3:F2},{4:F2},{5:F2},{6:F2}).png",
-                    camPosition.x, camPosition.y, camPosition.z,
-                    camRotation.x, camRotation.y, camRotation.z, camRotation.w);
+                string filename = string.Format("Screenshot_POS_{0}_ANG_{1}.png",
+                    camPosition, camRotation);
                 string path = System.IO.Path.Combine(UnityEngine.Application.persistentDataPath, filename);
                 System.IO.File.WriteAllBytes(path, bytes);
                 UnityEngine.Debug.Log("Screenshot saved to: " + path);
