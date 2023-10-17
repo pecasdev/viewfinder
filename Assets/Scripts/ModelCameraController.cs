@@ -11,6 +11,9 @@ public class ModelCameraController : MonoBehaviour
     private AudioSource audioSource;
 
     string leftTrigger;
+    string rightTrigger;
+    string leftButton;
+    string rightButton;
 
     [SerializeField] private GameObject _camInterface, _aperture;
     //[SerializeField] private PostProcessVolume _volume;
@@ -32,12 +35,14 @@ public class ModelCameraController : MonoBehaviour
         {
             case RuntimePlatform.WindowsPlayer:
             case RuntimePlatform.WindowsEditor:
-                leftTrigger = "Left Trigger Windows";
+                rightButton = "Right Button Windows";
+                leftButton = "Left Button Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
             case RuntimePlatform.OSXEditor:
-                leftTrigger = "Left Trigger Mac";
+                rightButton = "Right Button Mac";
+                leftButton = "Left Button Mac";
                 break;
         }
 
@@ -47,7 +52,7 @@ public class ModelCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float triggerValue = Input.GetAxis(leftTrigger);
+        float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
         if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
         {
             _cameraAnims.SetBool("TakingPhoto", true);

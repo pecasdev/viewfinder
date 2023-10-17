@@ -9,6 +9,7 @@ using System.Linq;
 
 public class ScreenshotController : MonoBehaviour
 {
+    string leftButton;
     string rightButton;
 
     [SerializeField] private int _resWidth = 1920;
@@ -49,11 +50,13 @@ public class ScreenshotController : MonoBehaviour
             case RuntimePlatform.WindowsPlayer:
             case RuntimePlatform.WindowsEditor:
                 rightButton = "Right Button Windows";
+                leftButton = "Left Button Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
             case RuntimePlatform.OSXEditor:
                 rightButton = "Right Button Mac";
+                leftButton = "Left Button Mac";
                 break;
         }
 
@@ -70,7 +73,7 @@ public class ScreenshotController : MonoBehaviour
                 _usePastCamera = false;
                 break;
         }
-        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton)))
+        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetButtonDown(leftButton)))
         {
             _modelCameraController.SetCameraState(false);
             RenderTexture rt = new RenderTexture(_resWidth, _resHeight, 24);
