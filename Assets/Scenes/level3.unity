@@ -187,6 +187,52 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
+--- !u!1 &645719715
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 645719717}
+  - component: {fileID: 645719716}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &645719716
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645719715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765b92f531f594b4ea4c1cc7a50b4361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  promptSprites: []
+  levelJson: {fileID: 4900000, guid: 8f63ec239620aa14b997b51643eeb508, type: 3}
+--- !u!4 &645719717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 645719715}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -37.60329, y: 1.9180112, z: -4.908063}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &981168836
 Mesh:
   m_ObjectHideFlags: 0
@@ -735,6 +781,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1664870191902845137, guid: e3d63b581fe4e0e489c4f2503142633c, type: 3}
+      propertyPath: _bloomColor.b
+      value: 0.14556777
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664870191902845137, guid: e3d63b581fe4e0e489c4f2503142633c, type: 3}
+      propertyPath: _bloomColor.g
+      value: 0.48223057
+      objectReference: {fileID: 0}
+    - target: {fileID: 1664870191902845137, guid: e3d63b581fe4e0e489c4f2503142633c, type: 3}
+      propertyPath: _bloomColor.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
     - target: {fileID: 1991998959398478725, guid: e3d63b581fe4e0e489c4f2503142633c, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -805,3 +863,4 @@ SceneRoots:
   - {fileID: 2063318503}
   - {fileID: 1955756194}
   - {fileID: 1239345907}
+  - {fileID: 645719717}
