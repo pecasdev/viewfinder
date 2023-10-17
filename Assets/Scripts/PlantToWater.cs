@@ -12,7 +12,12 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
     [SerializeField] private Color _bloomColor = new Color(89f, 181f, 56f, 1f);
     [SerializeField] private float _bloomingSeconds = 2f;
     private float _targetPoint = 0f;
-    
+
+    public bool isWilted
+    {
+        get => _isWilted;
+    }
+
 
     // Start is called before the first frame update
     void Start()
