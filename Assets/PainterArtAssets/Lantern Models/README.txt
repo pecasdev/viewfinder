@@ -1,0 +1,1 @@
+PR_LanternBroken_01 consists of broken shards that could be physic simulated to scatter on the floor, let me know if they are stuck together or if there are other issues.
