@@ -62,13 +62,11 @@ public class PhotoAlbumManager : MonoBehaviour
 
         if (Input.GetAxis("DPAD_v Windows") == -1 && !dpad_v_button_pressed)
         {
-            Debug.Log("Dbad V down");
             dpad_v_button_pressed = true;
             OpenPhotoAlbum();
         }
         else if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_v_button_pressed)
         {
-            Debug.Log("Dbad V up");
             dpad_v_button_pressed = true;
             ClosePhotoAlbum();
         }
@@ -94,17 +92,21 @@ public class PhotoAlbumManager : MonoBehaviour
         }
 
         // b button to exit prompt
-        float b_button_val = Input.GetAxis("Xbox_B_Button");
-        if (b_button_val == 0)
+        if (!PauseMenu.gameIsPaused)
         {
-            b_button_pressed = false;
-        }
+            float b_button_val = Input.GetAxis("Xbox_B_Button");
+            if (b_button_val == 0)
+            {
+                b_button_pressed = false;
+            }
 
-        if (Input.GetAxis("Xbox_B_Button") == 1 && !b_button_pressed)
-        {
-            b_button_pressed = true;
-            ClosePhotoAlbum();
+            if (Input.GetAxis("Xbox_B_Button") == 1 && !b_button_pressed)
+            {
+                b_button_pressed = true;
+                ClosePhotoAlbum();
+            }
         }
+        
 
         // Y button to teleport player between worlds
         //float y_button_val = Input.GetAxis("Xbox_Y_Button");
