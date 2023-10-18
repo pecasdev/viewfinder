@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5313097293426868091}
-  - component: {fileID: 7518971015894506043}
   - component: {fileID: 6108741214390788140}
   m_Layer: 0
   m_Name: MusicPlayer
@@ -33,19 +32,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7518971015894506043
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5618331940232818822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 120df50491025de4e89e20513e4b0ba2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audioSource: {fileID: 6108741214390788140}
 --- !u!82 &6108741214390788140
 AudioSource:
   m_ObjectHideFlags: 0
@@ -55,12 +41,12 @@ AudioSource:
   m_GameObject: {fileID: 5618331940232818822}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 10a79155ffabcde4b916c106f89621e8, type: 2}
   m_audioClip: {fileID: 8300000, guid: e5b415244ff107f42ad70ffec31b61b8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.5
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
