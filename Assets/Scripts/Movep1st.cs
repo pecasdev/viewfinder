@@ -53,7 +53,7 @@ public class Movep1st : MonoBehaviour
 
     void FixedUpdate()
     {
-
+        if (PauseMenu.gameIsPaused) return;
         // get keyboard input
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");

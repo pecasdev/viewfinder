@@ -1,16 +1,29 @@
 {
   "solutions": [
     {
-      "posSolutionText": "-7.92, 2.13, 11.20",
-      "angleSolutionText": "9.80, 35.20, 0.00"
+      "posSolutionText": "78.84, -43.05, 8.42",
+      "angleSolutionText": "24.40, 318, 0",
+      "descriptionText": "This person was a painter.. Not very organised."
     },
     {
-      "posSolutionText": "-6.47, 2.13, 6.85",
-      "angleSolutionText": "1.20, 182.40, 0.00"
+      "posSolutionText": "63.78, 4.8, 4.86",
+      "angleSolutionText": "10.6, 252.6, 0",
+      "descriptionText": "Scorched beyond recognition, just like most of the things here."
     },
     {
-      "posSolutionText": "-6.75, 2.13, 8.89",
-      "angleSolutionText": "14.00, 272.40, 0.00"
+      "posSolutionText": "59.25, -46.28, 6.12",
+      "angleSolutionText": "3, 350.8, 0",
+      "descriptionText": "The whole room is covered in art that uses this stuff, no wonder it went up in a blaze."
+    },
+    {
+      "posSolutionText": "73.95, -46.28, 5.86",
+      "angleSolutionText": "317.4, 197.6, 0",
+      "descriptionText": "That doesn't look like it's going to hold much longer."
+    },
+    {
+      "posSolutionText": "73.39, 3.72, -12.7",
+      "angleSolutionText": "18.4, 341.8, 0",
+      "descriptionText": "That must be how the fire started."
     }
   ]
 }

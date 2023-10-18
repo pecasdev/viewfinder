@@ -1,0 +1,16 @@
+{
+  "solutions": [
+    {
+      "posSolutionText": "-7.92, 2.13, 11.20",
+      "angleSolutionText": "9.80, 35.20, 0.00"
+    },
+    {
+      "posSolutionText": "-6.47, 2.13, 6.85",
+      "angleSolutionText": "1.20, 182.40, 0.00"
+    },
+    {
+      "posSolutionText": "-6.75, 2.13, 8.89",
+      "angleSolutionText": "14.00, 272.40, 0.00"
+    }
+  ]
+}

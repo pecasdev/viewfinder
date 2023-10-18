@@ -43,6 +43,7 @@ public class CameraControllerFirst : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
         float mouseX;
         float mouseY;
 
