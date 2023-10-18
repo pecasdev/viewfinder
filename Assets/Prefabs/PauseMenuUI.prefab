@@ -866,13 +866,25 @@ MonoBehaviour:
   m_FillRect: {fileID: 9201270261624728067}
   m_HandleRect: {fileID: 1052774161551542504}
   m_Direction: 0
-  m_MinValue: 0.0001
-  m_MaxValue: 1
-  m_WholeNumbers: 0
-  m_Value: 0.5
+  m_MinValue: 1
+  m_MaxValue: 16
+  m_WholeNumbers: 1
+  m_Value: 8
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1837279623480649655}
+        m_TargetAssemblyTypeName: SetSensitivity, Assembly-CSharp
+        m_MethodName: UpdateSensitivity
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2770113378665321222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +1032,7 @@ GameObject:
   - component: {fileID: 1368885533865747396}
   - component: {fileID: 6761920647310587023}
   - component: {fileID: 9050047358105122987}
+  - component: {fileID: 1837279623480649655}
   m_Layer: 5
   m_Name: PauseMenuUI
   m_TagString: Untagged
@@ -1141,6 +1154,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixer: {fileID: 24100000, guid: 10a79155ffabcde4b916c106f89621e8, type: 2}
   slider: {fileID: 5650380627937473341}
+--- !u!114 &1837279623480649655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2811685210726173614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f83a57fc4c341e44b83e23cb14ef3455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 2402593452280497993}
+  presentCamera: {fileID: 0}
+  pastCamera: {fileID: 0}
 --- !u!1 &2834356870344215971
 GameObject:
   m_ObjectHideFlags: 0

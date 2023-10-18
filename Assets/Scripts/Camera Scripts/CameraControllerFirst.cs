@@ -16,6 +16,7 @@ public class CameraControllerFirst : MonoBehaviour
     string RightStickVertical;
     bool y_button_pressed = false;
 
+    public float Sensitivity { get => sensitivity; set => sensitivity = value; }
 
     void Start()
     {
@@ -36,6 +37,8 @@ public class CameraControllerFirst : MonoBehaviour
                 RightStickVertical = "RightStickVertical Mac";
                 break;
         }
+
+        sensitivity = PlayerPrefs.GetFloat("Sensitivty", 2f);
     }
 
     void Update()
@@ -119,4 +122,6 @@ public class CameraControllerFirst : MonoBehaviour
 
 
     }
+
+
 }
