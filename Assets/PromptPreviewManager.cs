@@ -59,10 +59,10 @@ public class PromptPreviewManager : MonoBehaviour
             else
             {
                 Color promptCol = promptImage.color;
-                promptCol.a = 0.75f;
-                promptCol.r = 0.5f;
-                promptCol.g = 0.5f;
-                promptCol.b = 0.9f;
+                // promptCol.a = 0.75f;
+                promptCol.r = 0.8f;
+                promptCol.g = 0.8f;
+                promptCol.b = 0.8f;
                 promptImage.GetComponent<Image>().color = promptCol;
             }
         }

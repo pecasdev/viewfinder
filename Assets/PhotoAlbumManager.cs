@@ -40,6 +40,7 @@ public class PhotoAlbumManager : MonoBehaviour
 
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
         if (Input.GetKeyDown("m"))
         {
             TogglePhotoAlbum();
@@ -155,9 +156,9 @@ public class PhotoAlbumManager : MonoBehaviour
             // decrease alpha of the sprite
             Color promptCol = promptImage.color;
             //promptCol.a = 0.75f;
-            promptCol.r = 0.5f;
-            promptCol.g = 0.5f;
-            promptCol.b = 0.9f;
+            promptCol.r = 0.8f;
+            promptCol.g = 0.8f;
+            promptCol.b = 0.8f;
             promptImage.GetComponent<Image>().color = promptCol;
         }
         promptLabelText.text = "Prompt " + (GameManager.Instance.CurrentStage + 1) + "/" + GameManager.Instance.GetTotalStages();

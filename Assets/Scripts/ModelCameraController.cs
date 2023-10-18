@@ -35,12 +35,16 @@ public class ModelCameraController : MonoBehaviour
         {
             case RuntimePlatform.WindowsPlayer:
             case RuntimePlatform.WindowsEditor:
+                leftTrigger = "Left Trigger Windows";
+                rightTrigger = "Right Trigger Windows";
                 rightButton = "Right Button Windows";
                 leftButton = "Left Button Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
             case RuntimePlatform.OSXEditor:
+                leftTrigger = "Left Trigger Mac";
+                rightTrigger = "Right Trigger Mac";
                 rightButton = "Right Button Mac";
                 leftButton = "Left Button Mac";
                 break;
@@ -52,7 +56,9 @@ public class ModelCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (PauseMenu.gameIsPaused) return;
         float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
+        //float triggerValue = Input.GetAxis(leftTrigger);
         if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
         {
             _cameraAnims.SetBool("TakingPhoto", true);
