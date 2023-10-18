@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.2264151, g: 0.2264151, b: 0.2264151, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.05
+  m_FogDensity: 0.03
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -293,12 +293,12 @@ LightingSettings:
   m_FinalGatherFiltering: 1
   m_PVRCulling: 1
   m_PVRSampling: 1
-  m_PVRDirectSampleCount: 32
-  m_PVRSampleCount: 512
-  m_PVREnvironmentSampleCount: 256
+  m_PVRDirectSampleCount: 16
+  m_PVRSampleCount: 256
+  m_PVREnvironmentSampleCount: 128
   m_PVREnvironmentReferencePointCount: 2048
-  m_LightProbeSampleCountMultiplier: 4
-  m_PVRBounces: 2
+  m_LightProbeSampleCountMultiplier: 2
+  m_PVRBounces: 1
   m_PVRMinBounces: 1
   m_PVREnvironmentImportanceSampling: 0
   m_PVRFilteringMode: 1
@@ -2428,8 +2428,8 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 1, g: 0.9915273, b: 0.5801887, a: 1}
-  m_Intensity: 1
+  m_Color: {r: 1, g: 0.99797213, b: 0.8915094, a: 1}
+  m_Intensity: 9
   m_Range: 18.7
   m_SpotAngle: 179
   m_InnerSpotAngle: 21.80208
@@ -5478,10 +5478,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 1e1cdad6f8bd98149a2007348029303a, type: 2}
+    - target: {fileID: 7079657973654684984, guid: 35877435f187dc640a43fb5f37b6b115, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 734af79ccb205ae4c85a508b1cd3bc24, type: 2}
     - target: {fileID: 7539392462908838902, guid: 35877435f187dc640a43fb5f37b6b115, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9146715380873027781, guid: 35877435f187dc640a43fb5f37b6b115, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 734af79ccb205ae4c85a508b1cd3bc24, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10900,8 +10908,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8807548206854937471, guid: 1802a76daa66980449040cdb98341e2d, type: 3}
+      propertyPath: m_Color.b
+      value: 0.8537736
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807548206854937471, guid: 1802a76daa66980449040cdb98341e2d, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9972668
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807548206854937471, guid: 1802a76daa66980449040cdb98341e2d, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807548206854937471, guid: 1802a76daa66980449040cdb98341e2d, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8807548206854937471, guid: 1802a76daa66980449040cdb98341e2d, type: 3}
+      propertyPath: m_Intensity
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8827223404657024789, guid: 1802a76daa66980449040cdb98341e2d, type: 3}
       propertyPath: m_StaticEditorFlags
