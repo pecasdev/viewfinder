@@ -15,7 +15,6 @@ public class SetSensitivity : MonoBehaviour
     public void UpdateSensitivity(float sliderValue)
     {
         PlayerPrefs.SetFloat("Sensitivty", sliderValue * 0.25f);
-        Debug.Log("Saving value: " + (sliderValue * 0.25f));
         presentCamera.GetComponent<CameraControllerFirst>().Sensitivity = PlayerPrefs.GetFloat("Sensitivty", 2f);
         pastCamera.GetComponent<CameraControllerFirst>().Sensitivity = PlayerPrefs.GetFloat("Sensitivty", 2f);
     }
