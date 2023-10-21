@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -196,7 +196,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -329,7 +329,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 09957c1cff77e4b4cb947289c435d4ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5040,7 +5040,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 2690
+  m_VersionIndex: 2693
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -5093,7 +5093,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c22777d6e868e4f2fb421913386b154e, type: 2}
+  - {fileID: 2100000, guid: fbec8d295f6f947c8b7acffb369cd777, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5208,7 +5208,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5341,7 +5341,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5419,10 +5419,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3128929127406545437}
     m_Modifications:
+    - target: {fileID: 2154451749234007648, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
+      propertyPath: _bloomColor.b
+      value: 0.14556777
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154451749234007648, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
+      propertyPath: _bloomColor.g
+      value: 0.48223057
+      objectReference: {fileID: 0}
+    - target: {fileID: 2154451749234007648, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
+      propertyPath: _bloomColor.r
+      value: 0.8867924
+      objectReference: {fileID: 0}
     - target: {fileID: 4792331339704372004, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
       propertyPath: m_Name
       value: ShelfInteraction
       objectReference: {fileID: 0}
+    - target: {fileID: 4869338816733183329, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
     - target: {fileID: 4922443302250507949, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -5463,6 +5479,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8439550173977937197, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
+    - target: {fileID: 9184710672096814654, guid: 7f930eebe9cfb8f45854eeeb897b3b62, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ffe638b37aa5baa49ac6393548fe6973, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5481,6 +5505,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3128929127406545437}
     m_Modifications:
+    - target: {fileID: 3379176509966424171, guid: 61d9c817c3ffc2745923c63f893f9f31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1bedd3aff5c0d31448fe04966b5f3f4e, type: 2}
+    - target: {fileID: 3863545370283011647, guid: 61d9c817c3ffc2745923c63f893f9f31, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ffe638b37aa5baa49ac6393548fe6973, type: 2}
     - target: {fileID: 4540837373677414789, guid: 61d9c817c3ffc2745923c63f893f9f31, type: 3}
       propertyPath: m_Name
       value: FlowerPotProto
@@ -5641,6 +5673,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3128929127406545437}
     m_Modifications:
+    - target: {fileID: 920217056859945032, guid: 3eb03aa7b8ae4bb4e89dfcbedc2cf64a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ffe638b37aa5baa49ac6393548fe6973, type: 2}
     - target: {fileID: 1148906460872990463, guid: 3eb03aa7b8ae4bb4e89dfcbedc2cf64a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.18
