@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
 using System.Linq;
+using static UnityEngine.GraphicsBuffer;
 
 public class ScreenshotController : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class ScreenshotController : MonoBehaviour
     private GameObject _createdPhoto;
     private Camera pastCamera;
     Plane[] planes;
+
+    // New Photo UI
+    [SerializeField] private UnityEngine.UI.Image _photoDisplayArea;
+    [SerializeField] private GameObject _photoFrame;
+    [SerializeField] private Animator _photoFadeAnimator;
 
     private void Start()
     {
@@ -135,20 +141,45 @@ public class ScreenshotController : MonoBehaviour
 
 
             Sprite targetSp = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), Vector2.one * 0.5f, 1000f);
-            if (_createdPhoto != null)
-            {
-                Destroy(_createdPhoto);
-            }
-            _createdPhoto = Instantiate(_cardPrefab, _creationPoint);
-            _createdPhoto.transform.localRotation = Quaternion.Euler(0, 0, 0);
-            _spriteRenderer = _createdPhoto.transform.GetChild(0).GetComponent<SpriteRenderer>();
-            _spriteRenderer.sprite = targetSp;
-            _createdPhoto.transform.localScale = new Vector3(0.64f, 0.37f, 0.08f);
+
+            DisplayPhoto(targetSp);
+            //DisplayPhotoLegacy(targetSp);
+
             _modelCameraController.CanTakePhoto = false;
             _modelCameraController.SetCameraState(true);
             _modelCameraController.TakePhoto();
         }
     }
+
+    void DisplayPhotoLegacy(Sprite targetSp)
+    {
+        if (_createdPhoto != null)
+        {
+            Destroy(_createdPhoto);
+        }
+        _createdPhoto = Instantiate(_cardPrefab, _creationPoint);
+        _createdPhoto.transform.localRotation = Quaternion.Euler(0, 0, 0);
+        _spriteRenderer = _createdPhoto.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        _spriteRenderer.sprite = targetSp;
+        _createdPhoto.transform.localScale = new Vector3(0.64f, 0.37f, 0.08f);
+    }
+
+    void DisplayPhoto(Sprite photoSprite)
+    {
+        _photoDisplayArea.sprite = photoSprite;
+        Animator _photoFrameAnimator = _photoFrame.GetComponent<Animator>();
+        _photoFrame.SetActive(true);
+        _photoFrameAnimator.Play("ViewPhoto");
+        _photoFadeAnimator.Play("PhotoFadeIn");
+        StartCoroutine(RemovePhoto());
+    }
+
+    IEnumerator RemovePhoto()
+    {
+        yield return new WaitForSeconds(3f);
+        _photoFrame.SetActive(false);
+    }
+
 
     void TeleportObjects(Camera cameraToUse)
     {
