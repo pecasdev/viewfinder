@@ -22,6 +22,9 @@ public class PhotoAlbumManager : MonoBehaviour
     private bool dpad_v_button_pressed = false;
     private bool dpad_h_button_pressed = false;
     private bool b_button_pressed = false;
+
+    private Animator _albumAnimator;
+
     public static PhotoAlbumManager Instance
     {
         get
@@ -36,6 +39,7 @@ public class PhotoAlbumManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        _albumAnimator = GetComponent<Animator>();
     }
 
     void Update()
@@ -69,7 +73,7 @@ public class PhotoAlbumManager : MonoBehaviour
         else if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_v_button_pressed)
         {
             dpad_v_button_pressed = true;
-            ClosePhotoAlbum();
+            StartCoroutine(ClosePhotoAlbum());
         }
 
         // dpad horizontal to cycle prompts
@@ -104,7 +108,7 @@ public class PhotoAlbumManager : MonoBehaviour
             if (Input.GetAxis("Xbox_B_Button") == 1 && !b_button_pressed)
             {
                 b_button_pressed = true;
-                ClosePhotoAlbum();
+                StartCoroutine(ClosePhotoAlbum());
             }
         }
         
@@ -169,7 +173,15 @@ public class PhotoAlbumManager : MonoBehaviour
         // Ignore if the prompt is maximized
         if (!promptImageBig.activeInHierarchy)
         {
-            photoAlbumContainer.SetActive(!photoAlbumContainer.activeInHierarchy);
+            if (photoAlbumContainer.activeInHierarchy)
+            {
+                StartCoroutine(ClosePhotoAlbum());
+            }
+            else
+            {
+                OpenPhotoAlbum();
+            }
+            //photoAlbumContainer.SetActive(!photoAlbumContainer.activeInHierarchy);
             //PromptPreviewManager.Instance.TogglePromptPreview();
         }
 
@@ -180,6 +192,10 @@ public class PhotoAlbumManager : MonoBehaviour
         if (!promptImageBig.activeInHierarchy && !photoAlbumContainer.activeInHierarchy)
         {
             photoAlbumContainer.SetActive(true);
+            if (_albumAnimator)
+            {
+                _albumAnimator.Play("OpenAlbum");
+            }
         }
         else if (photoAlbumContainer.activeInHierarchy)
         {
@@ -187,10 +203,15 @@ public class PhotoAlbumManager : MonoBehaviour
         }
     }
 
-    public void ClosePhotoAlbum()
+    IEnumerator ClosePhotoAlbum()
     {
         if (!promptImageBig.activeInHierarchy)
         {
+            if (_albumAnimator)
+            {
+                _albumAnimator.Play("CloseAlbum");
+            }
+            yield return new WaitForSeconds(1.0f);
             photoAlbumContainer.SetActive(false);
         }
         else if (promptImageBig.activeInHierarchy)
