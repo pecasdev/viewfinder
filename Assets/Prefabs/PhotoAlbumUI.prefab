@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8329784171144951625
 RectTransform:
   m_ObjectHideFlags: 0
@@ -765,6 +765,7 @@ GameObject:
   - component: {fileID: 6527826356757970917}
   - component: {fileID: 1387740419349420846}
   - component: {fileID: 7947702382591828366}
+  - component: {fileID: 6866167588116885016}
   m_Layer: 5
   m_Name: PromptDescriptionText
   m_TagString: Untagged
@@ -888,6 +889,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &6866167588116885016
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4227905590822899574}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4501418454993071033
 GameObject:
   m_ObjectHideFlags: 0
@@ -1056,7 +1069,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00016021729, y: -0.000030517578}
+  m_AnchoredPosition: {x: 0.00016021729, y: 0}
   m_SizeDelta: {x: -0.000061035156, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3951234535937329044
@@ -1545,6 +1558,7 @@ GameObject:
   - component: {fileID: 8128463744473242927}
   - component: {fileID: 7655037507330600806}
   - component: {fileID: 268234148240640017}
+  - component: {fileID: 6024318579150080886}
   m_Layer: 5
   m_Name: PhotoAlbumUI
   m_TagString: Untagged
@@ -1594,7 +1608,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 9
   m_TargetDisplay: 0
 --- !u!114 &8128463744473242927
 MonoBehaviour:
@@ -1653,6 +1667,27 @@ MonoBehaviour:
   promptDescription: {fileID: 7947702382591828366}
   photoAlbumContainer: {fileID: 979818277970017310}
   promptLabelText: {fileID: 5010874886942236921}
+--- !u!95 &6024318579150080886
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6514764016554274675}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 832eb68aceb2b584b864dd0c3f8d2e8f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7503994697176147659
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,7 +1969,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -40.54309, y: 0.000061035156}
+  m_AnchoredPosition: {x: -40.54309, y: 0}
   m_SizeDelta: {x: 81.086, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6955964178055181092

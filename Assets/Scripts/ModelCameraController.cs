@@ -26,11 +26,21 @@ public class ModelCameraController : MonoBehaviour
         get { return _canTakePhoto; }
         set { _canTakePhoto = value; }
     }
+
+    // New Photo UI
+    [SerializeField] private UnityEngine.UI.Image _photoDisplayArea;
+    [SerializeField] private GameObject _photoFrame;
+    [SerializeField] private Animator _photoFadeAnimator;
+    private Animator _photoFrameAnimator;
+
+
     private void Start()
     {
         CanTakePhoto = false;
         //_volume.profile.TryGetSettings(out _vignetting);
         _cameraAnims = GetComponent<Animator>();
+        _photoFrameAnimator = _photoFrame.GetComponent<Animator>();
+
         switch (UnityEngine.Application.platform)
         {
             case RuntimePlatform.WindowsPlayer:
@@ -87,7 +97,14 @@ public class ModelCameraController : MonoBehaviour
     public void TakePhoto()
     {
         StartCoroutine(ShowAperture());
-        _photoValidator.validatePhoto();
+        bool isValid = _photoValidator.validatePhoto();
+        if (isValid)
+        {
+            StartCoroutine(PhotoMatchesPrompt());
+        } else
+        {
+            StartCoroutine(DisplayPhoto());
+        }
         playCameraShutterSound();  
     }
 
@@ -113,4 +130,24 @@ public class ModelCameraController : MonoBehaviour
         _camInterface.SetActive(state);
         //_vignetting.enabled.value = state;
     }
+
+    IEnumerator DisplayPhoto()
+    {
+        _photoFrame.SetActive(true);
+        _photoFrameAnimator.Play("ViewPhoto");
+        yield return new WaitForSeconds(4f);
+        _photoFrame.SetActive(false);
+    }
+
+    IEnumerator PhotoMatchesPrompt()
+    {
+        _photoFrame.SetActive(true);
+        _photoFrameAnimator.Play("PhotoMatchesPrompt");
+        _photoFadeAnimator.Play("PhotoFadeIn");
+        yield return new WaitForSeconds(1f);
+        PhotoAlbumManager.Instance.OpenPhotoAlbum();
+        yield return new WaitForSeconds(1f);
+        _photoFrame.SetActive(false);
+    }
+
 }
