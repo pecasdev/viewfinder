@@ -15,6 +15,7 @@ public class WateringCanController : MonoBehaviour
     [SerializeField] private float _wateringRange = 5.0f;
     [SerializeField] private bool _canWater = false;
     private GameObject watering_can;
+    [SerializeField] private Animator _promptAnimator;
 
     private void Start()
     {
@@ -26,11 +27,18 @@ public class WateringCanController : MonoBehaviour
     void Update()
     {
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            PhotoAlbumManager.Instance.OpenPhotoAlbum();
+            _promptAnimator.Play("PhotoMatchesPrompt");
+
+        }
+
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, _wateringRange))
         {
             
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetAxis("Xbox_Y_Button") == 1)
             {
 
                 if (hitInfo.collider.gameObject.CompareTag("Watering Can"))

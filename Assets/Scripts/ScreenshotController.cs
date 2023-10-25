@@ -38,10 +38,9 @@ public class ScreenshotController : MonoBehaviour
     private Camera pastCamera;
     Plane[] planes;
 
-    // New Photo UI
+
     [SerializeField] private UnityEngine.UI.Image _photoDisplayArea;
-    [SerializeField] private GameObject _photoFrame;
-    [SerializeField] private Animator _photoFadeAnimator;
+
 
     private void Start()
     {
@@ -141,8 +140,8 @@ public class ScreenshotController : MonoBehaviour
 
 
             Sprite targetSp = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), Vector2.one * 0.5f, 1000f);
-
-            DisplayPhoto(targetSp);
+            _photoDisplayArea.sprite = targetSp;
+            //StartCoroutine(PhotoMatchesPrompt());
             //DisplayPhotoLegacy(targetSp);
 
             _modelCameraController.CanTakePhoto = false;
@@ -164,21 +163,7 @@ public class ScreenshotController : MonoBehaviour
         _createdPhoto.transform.localScale = new Vector3(0.64f, 0.37f, 0.08f);
     }
 
-    void DisplayPhoto(Sprite photoSprite)
-    {
-        _photoDisplayArea.sprite = photoSprite;
-        Animator _photoFrameAnimator = _photoFrame.GetComponent<Animator>();
-        _photoFrame.SetActive(true);
-        _photoFrameAnimator.Play("ViewPhoto");
-        _photoFadeAnimator.Play("PhotoFadeIn");
-        StartCoroutine(RemovePhoto());
-    }
-
-    IEnumerator RemovePhoto()
-    {
-        yield return new WaitForSeconds(3f);
-        _photoFrame.SetActive(false);
-    }
+ 
 
 
     void TeleportObjects(Camera cameraToUse)
