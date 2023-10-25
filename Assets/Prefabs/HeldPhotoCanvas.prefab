@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5010796747456385770}
   - component: {fileID: 2885418103662888776}
   m_Layer: 5
-  m_Name: PhotoImageBorder
+  m_Name: PhotoFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,10 +246,10 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_TargetDisplay: 0
 --- !u!114 &5219155267445714736
 MonoBehaviour:
@@ -305,7 +305,7 @@ GameObject:
   - component: {fileID: 5638424114734088071}
   - component: {fileID: 6386692030202204767}
   m_Layer: 5
-  m_Name: PhotoImage
+  m_Name: PhotoDisplayArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
