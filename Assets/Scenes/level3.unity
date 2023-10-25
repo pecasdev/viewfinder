@@ -336,6 +336,9 @@ MonoBehaviour:
     - {fileID: 1510692996}
   - plants:
     - {fileID: 56882021}
+  _photoDisplayArea: {fileID: 675714677}
+  _photoFrame: {fileID: 1954910561}
+  _photoFadeAnimator: {fileID: 1954910563}
 --- !u!114 &848438737 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8794588687163920246, guid: e3d63b581fe4e0e489c4f2503142633c, type: 3}
@@ -634,6 +637,14 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3851816757976638655, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
+      propertyPath: m_text
+      value: Interact
+      objectReference: {fileID: 0}
+    - target: {fileID: 8271632971828610959, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 48
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -658,6 +669,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _wateringRange: 5
   _canWater: 0
+  _promptAnimator: {fileID: 0}
 --- !u!114 &1310157639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -932,6 +944,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3795331936452812675, guid: df9e9b56c6500bb47b1ed82c8004089a, type: 3}
   m_PrefabInstance: {fileID: 5252345523612003547}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1954910563 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2885418103662888776, guid: df9e9b56c6500bb47b1ed82c8004089a, type: 3}
+  m_PrefabInstance: {fileID: 5252345523612003547}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1955756194
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -950,6 +967,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1450671213702910984, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2427770748194332879, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4227905590822899574, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4563935028895426871, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
@@ -1067,7 +1092,27 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6514764016554274675, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1126218421}
+    - targetCorrespondingSourceObject: {fileID: 4227905590822899574, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1955756196}
   m_SourcePrefab: {fileID: 100100000, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
+--- !u!1 &1955756195 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4227905590822899574, guid: 8d0be3f19af04a34287d92db3c9fcf93, type: 3}
+  m_PrefabInstance: {fileID: 1955756194}
+  m_PrefabAsset: {fileID: 0}
+--- !u!225 &1955756196
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955756195}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2025805612 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 136428717747698861, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}

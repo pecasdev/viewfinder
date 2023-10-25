@@ -16,11 +16,18 @@ public class ValidatePlantPhoto : ValidatePhoto
     private GameObject _camera;
     [SerializeField] private List<PlantListWrapper> _promptToPlants;
 
+    // New Photo UI
+    [SerializeField] private UnityEngine.UI.Image _photoDisplayArea;
+    [SerializeField] private GameObject _photoFrame;
+    [SerializeField] private Animator _photoFadeAnimator;
+    private Animator _photoFrameAnimator;
+
     void Start()
     {
         _camera = GameObject.FindGameObjectsWithTag("1st person camera")[0];
-        Debug.Log("Plant Photo");
-      
+        _photoFrameAnimator = _photoFrame.GetComponent<Animator>();
+
+
     }
 
 
@@ -55,14 +62,36 @@ public class ValidatePlantPhoto : ValidatePhoto
         if (base.IsAttemptAcceptable(attemptPos, attemptAngle) && _additionalValidation())
         {
             Debug.Log("REWARD");
+            StartCoroutine(PhotoMatchesPrompt());
             GameManager.Instance.PromptSolved();
             return true;
         }
         else
         {
+            StartCoroutine(DisplayPhoto());
             Debug.Log("NO REWARD");
             return false;
         }
+    }
+
+
+    IEnumerator DisplayPhoto()
+    {
+        _photoFrame.SetActive(true);
+        _photoFrameAnimator.Play("ViewPhoto");
+        yield return new WaitForSeconds(4f);
+        _photoFrame.SetActive(false);
+    }
+
+    IEnumerator PhotoMatchesPrompt()
+    {
+        _photoFrame.SetActive(true);
+        _photoFrameAnimator.Play("PhotoMatchesPrompt");
+        _photoFadeAnimator.Play("PhotoFadeIn");
+        yield return new WaitForSeconds(1f);
+        PhotoAlbumManager.Instance.OpenPhotoAlbum();
+        yield return new WaitForSeconds(1f);
+        _photoFrame.SetActive(false);
     }
 
 }
