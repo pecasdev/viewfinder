@@ -39,7 +39,6 @@ public class ScreenshotController : MonoBehaviour
     Plane[] planes;
 
 
-    [SerializeField] private UnityEngine.UI.Image _photoDisplayArea;
 
 
     private void Start()
@@ -140,8 +139,7 @@ public class ScreenshotController : MonoBehaviour
 
 
             Sprite targetSp = Sprite.Create(screenShot, new Rect(0, 0, screenShot.width, screenShot.height), Vector2.one * 0.5f, 1000f);
-            _photoDisplayArea.sprite = targetSp;
-            //StartCoroutine(PhotoMatchesPrompt());
+            HeldPhotoController.Instance.SetHeldPhotoImage(targetSp);
             //DisplayPhotoLegacy(targetSp);
 
             _modelCameraController.CanTakePhoto = false;
