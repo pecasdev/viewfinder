@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2885418103662888776}
   m_Layer: 5
   m_Name: PhotoFrame
-  m_TagString: Untagged
+  m_TagString: PhotoFrame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 6475823360432773392}
   - component: {fileID: 5219155267445714736}
   - component: {fileID: 1422918920182705990}
+  - component: {fileID: 6164151418554339391}
   m_Layer: 5
   m_Name: HeldPhotoCanvas
   m_TagString: Untagged
@@ -291,6 +292,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6164151418554339391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6062225392400315887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d38d0debb2f2a4647873aa5491f66992, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _photoDisplayArea: {fileID: 1297936379711024733}
+  _photoFrame: {fileID: 3795331936452812675}
+  _photoFadeAnimator: {fileID: 6386692030202204767}
 --- !u!1 &7602676261084358916
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +322,7 @@ GameObject:
   - component: {fileID: 6386692030202204767}
   m_Layer: 5
   m_Name: PhotoDisplayArea
-  m_TagString: Untagged
+  m_TagString: PhotoDisplayArea
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
