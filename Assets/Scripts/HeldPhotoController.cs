@@ -47,6 +47,7 @@ public class HeldPhotoController : MonoBehaviour
         _photoFadeAnimator.Play("PhotoFadeIn");
         yield return new WaitForSeconds(1f);
         PhotoAlbumManager.Instance.OpenPhotoAlbum();
+        PhotoAlbumManager.Instance.RevealCaption();
         yield return new WaitForSeconds(1f);
         _photoFrame.SetActive(false);
     }

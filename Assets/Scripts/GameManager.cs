@@ -89,8 +89,8 @@ public class GameManager : MonoBehaviour
             // Adjust this to set the next prompt (unfinished prompt)
             // currentStage = GetNextUnfinishedPromptIndex();
             //
-            // PhotoAlbumManager.Instance.UpdatePhotoAlbum();
-            // PromptPreviewManager.Instance.UpdatePromptPreview(false);
+            PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+            PromptPreviewManager.Instance.UpdatePromptPreview(false);
         }
     }
 
