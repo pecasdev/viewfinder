@@ -64,9 +64,11 @@ public class ModelCameraController : MonoBehaviour
         if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
         {
             _cameraAnims.SetBool("TakingPhoto", true);
+            PromptPreviewManager.Instance.HidePromptPreview();
         }
         else if (_cameraAnims.GetBool("TakingPhoto") && !_printing)
         {
+            PromptPreviewManager.Instance.ShowPromptPreview();
             _cameraAnims.SetBool("TakingPhoto", false);
             CanTakePhoto = false;
             SetCameraState(false);
@@ -89,6 +91,7 @@ public class ModelCameraController : MonoBehaviour
     public void TakePhoto()
     {
         StartCoroutine(ShowAperture());
+        PhotoAlbumManager.Instance.MinimizePrompt();
         bool isValid = _photoValidator.validatePhoto();
         if (isValid)
         {

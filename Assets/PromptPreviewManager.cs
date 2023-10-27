@@ -35,6 +35,15 @@ public class PromptPreviewManager : MonoBehaviour
         promptPreviewContainer.SetActive(!promptPreviewContainer.activeInHierarchy);
     }
 
+    public void HidePromptPreview()
+    {
+        promptPreviewContainer.SetActive(false);
+    }
+
+    public void ShowPromptPreview() {
+        promptPreviewContainer.SetActive(true);
+    }
+
     public void UpdatePromptPreview(bool gameComplete)
     {
         if (gameComplete)
