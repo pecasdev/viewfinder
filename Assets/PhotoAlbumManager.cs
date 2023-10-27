@@ -187,6 +187,14 @@ public class PhotoAlbumManager : MonoBehaviour
 
     }
 
+    public void RevealCaption()
+    {
+        if (!promptImageBig.activeInHierarchy)
+        {
+            _albumAnimator.Play("RevealPhotoCaption");
+        }
+    }
+
     public void OpenPhotoAlbum()
     {
         if (!promptImageBig.activeInHierarchy && !photoAlbumContainer.activeInHierarchy)
