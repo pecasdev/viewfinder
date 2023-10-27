@@ -76,21 +76,22 @@ public class GameManager : MonoBehaviour
     public void PromptSolved()
     {
         // Disable hint after tutorial stage
-        SolvedPrompts++;
-        prompts[currentStage].IsSolved = true;
-        // Level Complete Logic
-        if (SolvedPrompts >= solutions.Count)
-        {
+        if (prompts[currentStage].IsSolved == false) {
+            SolvedPrompts++;
+            prompts[currentStage].IsSolved = true;
+            // Level Complete Logic
             PhotoAlbumManager.Instance.UpdatePhotoAlbum();
-            PromptPreviewManager.Instance.UpdatePromptPreview(true);
-        }
-        else
-        {
-            // Adjust this to set the next prompt (unfinished prompt)
-            // currentStage = GetNextUnfinishedPromptIndex();
-            //
-            PhotoAlbumManager.Instance.UpdatePhotoAlbum();
-            PromptPreviewManager.Instance.UpdatePromptPreview(false);
+            if (SolvedPrompts >= solutions.Count)
+            {
+                PromptPreviewManager.Instance.UpdatePromptPreview(true);
+            }
+            else
+            {
+                // Adjust this to set the next prompt (unfinished prompt)
+                currentStage = GetNextUnfinishedPromptIndex();
+                //
+                PromptPreviewManager.Instance.UpdatePromptPreview(false);
+            }
         }
     }
 
