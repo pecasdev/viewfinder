@@ -228,42 +228,13 @@ public class PhotoAlbumManager : MonoBehaviour
         }
     }
 
-    public void MaximizePrompt()
-    {
-        photoAlbumContainer.SetActive(false);
-        promptImageBig.SetActive(true);
-        PromptPreviewManager.Instance.HidePromptPreview();
-        Color promptCol = promptImageBig.GetComponent<Image>().color;
-        promptCol.a = 0.5f;
-        if (isPromptSolved)
-        {
-            promptCol.r = 1;
-            promptCol.g = 1;
-            promptCol.b = 1;
-        }
-        else
-        {
-            promptCol.r = 0.5f;
-            promptCol.g = 0.5f;
-            promptCol.b = 0.9f;
-        }
-        promptImageBig.GetComponent<Image>().color = promptCol;
-    }
-
-    public void MinimizePrompt()
-    {
-        promptImageBig.SetActive(false);
-        //photoAlbumContainer.SetActive(true);
-        PromptPreviewManager.Instance.ShowPromptPreview();
-    }
-
     private void TogglePromptSize()
     {
         if (photoAlbumContainer.activeInHierarchy && !promptImageBig.activeInHierarchy)
         {
             photoAlbumContainer.SetActive(false);
             promptImageBig.SetActive(true);
-            PromptPreviewManager.Instance.HidePromptPreview();
+            PromptPreviewManager.Instance.TogglePromptPreview();
             Color promptCol = promptImageBig.GetComponent<Image>().color;
             promptCol.a = 0.5f;
             if (isPromptSolved)
@@ -284,7 +255,7 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             promptImageBig.SetActive(false);
             photoAlbumContainer.SetActive(true);
-            PromptPreviewManager.Instance.ShowPromptPreview();
+            PromptPreviewManager.Instance.TogglePromptPreview();
         }
 
     }

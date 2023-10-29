@@ -50,8 +50,6 @@ public class HeldPhotoController : MonoBehaviour
         PhotoAlbumManager.Instance.RevealCaption();
         yield return new WaitForSeconds(1f);
         _photoFrame.SetActive(false);
-        yield return new WaitForSeconds(2f);
-        PhotoAlbumManager.Instance.UpdatePhotoAlbum();
     }
 
     public void SetHeldPhotoImage(Sprite sprite)

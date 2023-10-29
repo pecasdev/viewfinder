@@ -31,30 +31,19 @@ public class Movep1st : MonoBehaviour
 
     void Update()
     {
-        // bool switchView = Input.GetKeyDown(KeyCode.Q);
-        // if (switchView)
-        // {
-        //     UnityEngine.Debug.Log("key pressed");
-        //     firstPersonCamera.enabled = !firstPersonCamera.enabled;
-        //     thirdPersonCamera.enabled = !thirdPersonCamera.enabled;
-        //     if (firstPersonCamera.enabled)
-        //     {
-        //         mainCamera = firstPersonCamera;
-        //         firstPersonViewOn = true;
-        //     }
-        //     else
-        //     {
-        //         mainCamera = thirdPersonCamera;
-        //         firstPersonViewOn = false;
-        //     }
-        //     switchView = false;
-        // }
+        
     }
 
     void FixedUpdate()
     {
         if (PauseMenu.gameIsPaused) return;
         // get keyboard input
+        moveSpeed = 5.0f;
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            moveSpeed = 7.0f;  // Increase speed by factor of 2
+        }
+
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
         bool playerJumped = Input.GetButton("Jump");
