@@ -37,8 +37,8 @@ public class WateringCanController : MonoBehaviour
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, _wateringRange))
         {
-
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
+            
+            if (Input.GetKeyDown(KeyCode.E) || Input.GetAxis("Xbox_Y_Button") == 1)
             {
 
                 if (hitInfo.collider.gameObject.CompareTag("Watering Can"))

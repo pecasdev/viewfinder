@@ -81,13 +81,13 @@ public class CameraControllerFirst : MonoBehaviour
         {
             Vector3 playerPosition = player.position;
 
-            Vector3 newPosition = new Vector3(player.position.x, playerPosition.y - pastCameraDisplacement + 0.6f, player.position.z);
+            Vector3 newPosition = new Vector3(player.position.x, playerPosition.y - pastCameraDisplacement + 2f, player.position.z);
 
             transform.position = newPosition;
         }
         else
         {
-            transform.position = new Vector3(player.position.x, player.position.y + 0.6f, player.position.z); ;
+            transform.position = new Vector3(player.position.x, player.position.y + 2f, player.position.z); ;
         }
 
         // Y button to teleport player between worlds
