@@ -5,10 +5,12 @@ using UnityEngine;
 public class PropToPickUp : MonoBehaviour, IObjectToPickUp
 {
     private Rigidbody _objRB;
+    RigidbodyConstraints originalConstraints;
     
     void Start()
     {
         _objRB = GetComponent<Rigidbody>();
+        originalConstraints = _objRB.constraints;
     }
 
     public void PickUp(Transform holdArea)
@@ -23,7 +25,7 @@ public class PropToPickUp : MonoBehaviour, IObjectToPickUp
     {
         _objRB.useGravity = true;
         _objRB.drag = 1;
-        _objRB.constraints = RigidbodyConstraints.None;
+        _objRB.constraints = originalConstraints;
         _objRB.transform.parent = null;
     }
 

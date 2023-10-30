@@ -30,6 +30,8 @@ public class PickUpController : MonoBehaviour
             if (heldObj == null)
             {
                 Ray r = new Ray(transform.position, transform.forward);
+                Debug.DrawRay(transform.position, transform.forward, Color.green);
+
                 if (Physics.Raycast(r, out RaycastHit hitInfo, _pickupRange))
                 {
                     Debug.Log("Raycast");
