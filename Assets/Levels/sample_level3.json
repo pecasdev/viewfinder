@@ -1,16 +1,30 @@
 {
   "solutions": [
     {
-      "posSolutionText": "-33.58, 1.60, -6.13",
-      "angleSolutionText": "1.40, 272.40, 0.00"
+      "posSolutionText": "-30.13, 3.00, -6.15",
+      "angleSolutionText": "9.36, 269.83, 0.00",
+      "descriptionText": "Looks like whoever worked here was doing some kind of plant research."
     },
     {
-      "posSolutionText": "-18.00, 1.60, 3.47",
-      "angleSolutionText": "354.80, 88.60, 0.00"
+      "posSolutionText": "-21.11, 3.00, -0.96",
+      "angleSolutionText": "9.21, 1.67, 0.00",
+      "descriptionText": "No one has watered these in a long time..."
+
     },
     {
-      "posSolutionText": "-9.43, 1.60, 5.00",
-      "angleSolutionText": "356.60, 117.40, 0.00"
+      "posSolutionText": "-18.42, 3.00, 1.35",
+      "angleSolutionText": "1.38, 71.81, 0.00",
+      "descriptionText": "This plant looks better when it's not blocking my way"
+    },
+    {
+      "posSolutionText": "-9.90, 3.00, 5.29",
+      "angleSolutionText": "7.52, 118.93, 0.00",
+      "descriptionText": "That flew off the shelf! Good thing it didn't break something..."
+    },
+    {
+      "posSolutionText": "-6.68, 3.00, -2.15",
+      "angleSolutionText": "15.08, 185.21, 0.00",
+      "descriptionText": "This plant looks deadly. And there's a crack in the glass!"
     }
   ]
 }
