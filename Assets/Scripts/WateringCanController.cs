@@ -6,6 +6,9 @@ using UnityEngine;
 interface IPlantToWater
 {
     public void Bloom();
+    public void Highlight();
+
+    public void RemoveHighlight();
 }
 
 
@@ -16,6 +19,7 @@ public class WateringCanController : MonoBehaviour
     [SerializeField] private bool _canWater = false;
     private GameObject watering_can;
     [SerializeField] private Animator _promptAnimator;
+    private IPlantToWater _selectedPlant;
 
     private void Start()
     {
@@ -27,33 +31,69 @@ public class WateringCanController : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            PhotoAlbumManager.Instance.OpenPhotoAlbum();
-            _promptAnimator.Play("PhotoMatchesPrompt");
-
-        }
-
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, _wateringRange))
         {
-            
-            if (Input.GetKeyDown(KeyCode.E) || Input.GetAxis("Xbox_Y_Button") == 1)
+            RemoveWateringCanHighlight();
+            if (hitInfo.collider.gameObject.CompareTag("Watering Can"))
             {
+                HighlightWateringCan();
 
-                if (hitInfo.collider.gameObject.CompareTag("Watering Can"))
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
                 {
                     Debug.Log("Watering Can");
                     _canWater = true;
                     watering_can.SetActive(false);
                 }
+            }
 
-                if (hitInfo.collider.gameObject.TryGetComponent(out IPlantToWater plant) && _canWater)
+            if (hitInfo.collider.gameObject.TryGetComponent(out IPlantToWater plant) && _canWater)
+            {
+                _selectedPlant = plant;
+                _selectedPlant.Highlight();
+
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
                 {
+                    plant.RemoveHighlight();
                     plant.Bloom();
                 }
+                
+            } else
+            {
+                if (_selectedPlant != null)
+                {
+                    _selectedPlant.RemoveHighlight();
+                    _selectedPlant = null;
+                }
+                
             }
+
+            
         }
 
+    }
+
+
+    private void HighlightWateringCan()
+    {
+        if (watering_can.GetComponent<Outline>() != null)
+        {
+            watering_can.GetComponent<Outline>().enabled = true;
+        } else
+        {
+            Outline outline = watering_can.AddComponent<Outline>();
+            outline.OutlineColor = Color.yellow;
+            outline.OutlineWidth = 5.0f;
+            outline.enabled = true;
+        }
+    }
+
+    private void RemoveWateringCanHighlight()
+    {
+        Outline outline = watering_can.GetComponent<Outline>();
+        if (outline != null && outline.enabled)
+        {
+            outline.enabled = false;
+        }
     }
 }
