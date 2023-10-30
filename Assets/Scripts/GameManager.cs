@@ -75,22 +75,26 @@ public class GameManager : MonoBehaviour
 
     public void PromptSolved()
     {
-        // Disable hint after tutorial stage
-        SolvedPrompts++;
-        prompts[currentStage].IsSolved = true;
-        // Level Complete Logic
-        if (SolvedPrompts >= solutions.Count)
+        if (prompts[currentStage].IsSolved == false)
         {
-            PhotoAlbumManager.Instance.UpdatePhotoAlbum();
-            PromptPreviewManager.Instance.UpdatePromptPreview(true);
-        }
-        else
-        {
-            // Adjust this to set the next prompt (unfinished prompt)
-            // currentStage = GetNextUnfinishedPromptIndex();
-            //
-            PhotoAlbumManager.Instance.UpdatePhotoAlbum();
-            PromptPreviewManager.Instance.UpdatePromptPreview(false);
+            // Disable hint after tutorial stage
+            SolvedPrompts++;
+            prompts[currentStage].IsSolved = true;
+            prompts[currentStage].SolvedImage = HeldPhotoController.Instance.GetHeldPhotoImage();
+            // Level Complete Logic
+            if (SolvedPrompts >= solutions.Count)
+            {
+                //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+                PromptPreviewManager.Instance.UpdatePromptPreview(true);
+            }
+            else
+            {
+                // Adjust this to set the next prompt (unfinished prompt)
+                // currentStage = GetNextUnfinishedPromptIndex();
+                //
+                //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+                PromptPreviewManager.Instance.UpdatePromptPreview(false);
+            }
         }
     }
 
@@ -210,15 +214,18 @@ public class Prompt
     bool isSolved;
     string descriptionText;
     Sprite promptImage;
+    Sprite solvedImage;
 
     public Prompt(bool isSolved, string descriptionText, Sprite promptImage)
     {
         this.isSolved = isSolved;
         this.descriptionText = descriptionText;
         this.promptImage = promptImage;
+        this.solvedImage = promptImage;
     }
 
     public string DescriptionText { get => descriptionText; set => descriptionText = value; }
     public bool IsSolved { get => isSolved; set => isSolved = value; }
     public Sprite PromptImage { get => promptImage; set => promptImage = value; }
+    public Sprite SolvedImage { get => solvedImage; set => solvedImage = value; }
 }

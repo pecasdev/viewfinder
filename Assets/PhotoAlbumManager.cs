@@ -140,11 +140,11 @@ public class PhotoAlbumManager : MonoBehaviour
     public void UpdatePhotoAlbum()
     {
         Prompt currentPrompt = GameManager.Instance.GetCurrentPrompt();
-        promptImage.sprite = currentPrompt.PromptImage;
-        promptImageBig.GetComponent<Image>().sprite = currentPrompt.PromptImage;
         isPromptSolved = currentPrompt.IsSolved;
+        promptImageBig.GetComponent<Image>().sprite = currentPrompt.PromptImage;
         if (isPromptSolved)
         {
+            promptImage.sprite = currentPrompt.SolvedImage;
             promptDescription.text = currentPrompt.DescriptionText;
             // increase alpha of the sprite (phantom photo)
             Color promptCol = promptImage.color;
@@ -156,6 +156,7 @@ public class PhotoAlbumManager : MonoBehaviour
         }
         else
         {
+            promptImage.sprite = currentPrompt.PromptImage;
             promptDescription.text = "Maybe if I retook this phantom photo I'll learn about what happened...";
             // decrease alpha of the sprite
             Color promptCol = promptImage.color;
@@ -228,13 +229,42 @@ public class PhotoAlbumManager : MonoBehaviour
         }
     }
 
+    public void MaximizePrompt()
+    {
+        photoAlbumContainer.SetActive(false);
+        promptImageBig.SetActive(true);
+        PromptPreviewManager.Instance.HidePromptPreview();
+        Color promptCol = promptImageBig.GetComponent<Image>().color;
+        promptCol.a = 0.5f;
+        if (isPromptSolved)
+        {
+            promptCol.r = 1;
+            promptCol.g = 1;
+            promptCol.b = 1;
+        }
+        else
+        {
+            promptCol.r = 0.5f;
+            promptCol.g = 0.5f;
+            promptCol.b = 0.9f;
+        }
+        promptImageBig.GetComponent<Image>().color = promptCol;
+    }
+
+    public void MinimizePrompt()
+    {
+        promptImageBig.SetActive(false);
+        //photoAlbumContainer.SetActive(true);
+        PromptPreviewManager.Instance.ShowPromptPreview();
+    }
+
     private void TogglePromptSize()
     {
         if (photoAlbumContainer.activeInHierarchy && !promptImageBig.activeInHierarchy)
         {
             photoAlbumContainer.SetActive(false);
             promptImageBig.SetActive(true);
-            PromptPreviewManager.Instance.TogglePromptPreview();
+            PromptPreviewManager.Instance.HidePromptPreview();
             Color promptCol = promptImageBig.GetComponent<Image>().color;
             promptCol.a = 0.5f;
             if (isPromptSolved)
@@ -255,7 +285,7 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             promptImageBig.SetActive(false);
             photoAlbumContainer.SetActive(true);
-            PromptPreviewManager.Instance.TogglePromptPreview();
+            PromptPreviewManager.Instance.ShowPromptPreview();
         }
 
     }
