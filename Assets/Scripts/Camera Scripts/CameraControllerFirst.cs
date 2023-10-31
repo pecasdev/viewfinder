@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CameraControllerFirst : MonoBehaviour
 {
@@ -91,38 +92,36 @@ public class CameraControllerFirst : MonoBehaviour
         }
 
         // Y button to teleport player between worlds
-        float y_button_val = Input.GetAxis("Xbox_Y_Button");
-        if (y_button_val == 0)
+        if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
-            y_button_pressed = false;
-        }
-
-        //if (Input.GetAxis("Xbox_Y_Button") == 1 && !y_button_pressed)
-        //{
-        //    y_button_pressed = true;
-        //}
-
-        bool switchView = Input.GetKeyDown(KeyCode.Q) || (y_button_val == 1 && !y_button_pressed);
-        if (switchView)
-        {
-            y_button_pressed = true;
-            Vector3 tempPlayer = player.position;
-            if (isPastCamera)
+            float y_button_val = Input.GetAxis("Xbox_Y_Button");
+            if (y_button_val == 0)
             {
-                Vector3 futurePosition = new Vector3(transform.position.x, transform.position.y + pastCameraDisplacement, transform.position.z);
-                transform.position = futurePosition;
+                y_button_pressed = false;
             }
-            else
+
+            //if (Input.GetAxis("Xbox_Y_Button") == 1 && !y_button_pressed)
+            //{
+            //    y_button_pressed = true;
+            //}
+
+            bool switchView = Input.GetKeyDown(KeyCode.Q) || (y_button_val == 1 && !y_button_pressed);
+            if (switchView)
             {
-                Vector3 pastPosition = new Vector3(player.position.x, player.position.y - pastCameraDisplacement, player.position.z);
-                player.position = pastPosition;
+                y_button_pressed = true;
+                Vector3 tempPlayer = player.position;
+                if (isPastCamera)
+                {
+                    Vector3 futurePosition = new Vector3(transform.position.x, transform.position.y + pastCameraDisplacement, transform.position.z);
+                    transform.position = futurePosition;
+                }
+                else
+                {
+                    Vector3 pastPosition = new Vector3(player.position.x, player.position.y - pastCameraDisplacement, player.position.z);
+                    player.position = pastPosition;
+                }
+                pastCameraDisplacement = -pastCameraDisplacement;
             }
-            pastCameraDisplacement = -pastCameraDisplacement;
-
         }
-
-
     }
-
-
 }
