@@ -1677,7 +1677,7 @@ GameObject:
   - component: {fileID: 6704991466268626711}
   - component: {fileID: 4411002868150225709}
   m_Layer: 5
-  m_Name: FTUEUI
+  m_Name: FTUEUI_lvl1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

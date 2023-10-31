@@ -46,7 +46,7 @@ public class Movep1st : MonoBehaviour
 
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
-        bool playerJumped = Input.GetButton("Jump");
+        //bool playerJumped = Input.GetButton("Jump");
 
         // Calculate direction based on camera orientation
         Vector3 cameraForward = mainCamera.transform.forward;
@@ -71,11 +71,11 @@ public class Movep1st : MonoBehaviour
             m_Rigidbody.MoveRotation(m_Rotation);
         }
 
-        if (playerJumped && playerGrounded)
-        {
-            m_Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-            playerGrounded = false;
-        }
+        //if (playerJumped && playerGrounded)
+        //{
+        //    m_Rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        //    playerGrounded = false;
+        //}
 
     }
     void OnCollisionEnter(Collision collision)
