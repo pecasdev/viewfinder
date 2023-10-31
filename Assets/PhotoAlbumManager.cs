@@ -49,10 +49,10 @@ public class PhotoAlbumManager : MonoBehaviour
         {
             TogglePhotoAlbum();
         }
-        if (Input.GetKeyDown("n"))
-        {
-            TogglePromptSize();
-        }
+        //if (Input.GetKeyDown("n"))
+        //{
+        //    TogglePromptSize();
+        //}
         if (Input.GetKeyDown("9")) { ChangeStage(GameManager.StageOrder.Previous); }
         if (Input.GetKeyDown("0")) { ChangeStage(GameManager.StageOrder.Next); }
 
@@ -65,12 +65,12 @@ public class PhotoAlbumManager : MonoBehaviour
             dpad_v_button_pressed = false;
         }
 
-        if (Input.GetAxis("DPAD_v Windows") == -1 && !dpad_v_button_pressed)
+        if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_v_button_pressed)
         {
             dpad_v_button_pressed = true;
             OpenPhotoAlbum();
         }
-        else if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_v_button_pressed)
+        else if (Input.GetAxis("DPAD_v Windows") == -1 && !dpad_v_button_pressed)
         {
             dpad_v_button_pressed = true;
             StartCoroutine(ClosePhotoAlbum());
@@ -206,10 +206,10 @@ public class PhotoAlbumManager : MonoBehaviour
                 _albumAnimator.Play("OpenAlbum");
             }
         }
-        else if (photoAlbumContainer.activeInHierarchy)
-        {
-            TogglePromptSize();
-        }
+        //else if (photoAlbumContainer.activeInHierarchy)
+        //{
+        //    TogglePromptSize();
+        //}
     }
 
     IEnumerator ClosePhotoAlbum()
@@ -223,70 +223,70 @@ public class PhotoAlbumManager : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
             photoAlbumContainer.SetActive(false);
         }
-        else if (promptImageBig.activeInHierarchy)
-        {
-            TogglePromptSize();
-        }
+        //else if (promptImageBig.activeInHierarchy)
+        //{
+        //    TogglePromptSize();
+        //}
     }
 
-    public void MaximizePrompt()
-    {
-        photoAlbumContainer.SetActive(false);
-        promptImageBig.SetActive(true);
-        PromptPreviewManager.Instance.HidePromptPreview();
-        Color promptCol = promptImageBig.GetComponent<Image>().color;
-        promptCol.a = 0.5f;
-        if (isPromptSolved)
-        {
-            promptCol.r = 1;
-            promptCol.g = 1;
-            promptCol.b = 1;
-        }
-        else
-        {
-            promptCol.r = 0.5f;
-            promptCol.g = 0.5f;
-            promptCol.b = 0.9f;
-        }
-        promptImageBig.GetComponent<Image>().color = promptCol;
-    }
+    //public void MaximizePrompt()
+    //{
+    //    photoAlbumContainer.SetActive(false);
+    //    promptImageBig.SetActive(true);
+    //    PromptPreviewManager.Instance.HidePromptPreview();
+    //    Color promptCol = promptImageBig.GetComponent<Image>().color;
+    //    promptCol.a = 0.5f;
+    //    if (isPromptSolved)
+    //    {
+    //        promptCol.r = 1;
+    //        promptCol.g = 1;
+    //        promptCol.b = 1;
+    //    }
+    //    else
+    //    {
+    //        promptCol.r = 0.5f;
+    //        promptCol.g = 0.5f;
+    //        promptCol.b = 0.9f;
+    //    }
+    //    promptImageBig.GetComponent<Image>().color = promptCol;
+    //}
 
-    public void MinimizePrompt()
-    {
-        promptImageBig.SetActive(false);
-        //photoAlbumContainer.SetActive(true);
-        PromptPreviewManager.Instance.ShowPromptPreview();
-    }
+    //public void MinimizePrompt()
+    //{
+    //    promptImageBig.SetActive(false);
+    //    //photoAlbumContainer.SetActive(true);
+    //    PromptPreviewManager.Instance.ShowPromptPreview();
+    //}
 
-    private void TogglePromptSize()
-    {
-        if (photoAlbumContainer.activeInHierarchy && !promptImageBig.activeInHierarchy)
-        {
-            photoAlbumContainer.SetActive(false);
-            promptImageBig.SetActive(true);
-            PromptPreviewManager.Instance.HidePromptPreview();
-            Color promptCol = promptImageBig.GetComponent<Image>().color;
-            promptCol.a = 0.5f;
-            if (isPromptSolved)
-            {
-                promptCol.r = 1;
-                promptCol.g = 1;
-                promptCol.b = 1;
-            }
-            else
-            {
-                promptCol.r = 0.5f;
-                promptCol.g = 0.5f;
-                promptCol.b = 0.9f;
-            }
-            promptImageBig.GetComponent<Image>().color = promptCol;
-        }
-        else if (promptImageBig.activeInHierarchy && !photoAlbumContainer.activeInHierarchy)
-        {
-            promptImageBig.SetActive(false);
-            photoAlbumContainer.SetActive(true);
-            PromptPreviewManager.Instance.ShowPromptPreview();
-        }
+    //private void TogglePromptSize()
+    //{
+    //    if (photoAlbumContainer.activeInHierarchy && !promptImageBig.activeInHierarchy)
+    //    {
+    //        photoAlbumContainer.SetActive(false);
+    //        promptImageBig.SetActive(true);
+    //        PromptPreviewManager.Instance.HidePromptPreview();
+    //        Color promptCol = promptImageBig.GetComponent<Image>().color;
+    //        promptCol.a = 0.5f;
+    //        if (isPromptSolved)
+    //        {
+    //            promptCol.r = 1;
+    //            promptCol.g = 1;
+    //            promptCol.b = 1;
+    //        }
+    //        else
+    //        {
+    //            promptCol.r = 0.5f;
+    //            promptCol.g = 0.5f;
+    //            promptCol.b = 0.9f;
+    //        }
+    //        promptImageBig.GetComponent<Image>().color = promptCol;
+    //    }
+    //    else if (promptImageBig.activeInHierarchy && !photoAlbumContainer.activeInHierarchy)
+    //    {
+    //        promptImageBig.SetActive(false);
+    //        photoAlbumContainer.SetActive(true);
+    //        PromptPreviewManager.Instance.ShowPromptPreview();
+    //    }
 
-    }
+    //}
 }
