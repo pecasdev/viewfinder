@@ -1,29 +1,31 @@
 {
   "solutions": [
     {
-      "posSolutionText": "72.64, -46.25, 5.53",
-      "angleSolutionText": "356.67, 33.10, 0.00",
-      "descriptionText": "The great Andrea Longhi's workstation. Who would have guessed that such great works were created on this small and messy table."
+
+      "posSolutionText": "58.85, 5.34, -10.00",
+      "angleSolutionText": "1.20, 359.80, 0.00",
+      "descriptionText": "This person was a painter.. Not very organised."
     },
     {
-      "posSolutionText": "60.06, 3.73, 7.57",
-      "angleSolutionText": "4.85, 229.36, 0.00",
-      "descriptionText": "This used to be one of the most recognizable paintings in the world. Now... scorched beyond recognition, like everything else."
+      "posSolutionText": "58.85, -44.83, -10.00",
+      "angleSolutionText": "0.00, 0.20, 0.00",
+      "descriptionText": "Scorched beyond recognition, just like most of the things here."
     },
     {
-      "posSolutionText": "58.79, -46.25, 6.12",
-      "angleSolutionText": "359.82, 359.55, 0.00",
-      "descriptionText": "This type of paint material was banned due to its highly flammable property. All the art in here uses this stuff, no wonder the whole room went up in a blaze."
+      "posSolutionText": "79.23, -44.85, 8.12",
+      "angleSolutionText": "358.20, 214.61, 0.00",
+      "descriptionText": "The whole room is covered in art that uses this stuff, no wonder it went up in a blaze."
     },
     {
-      "posSolutionText": "67.49, -46.25, -10.20",
-      "angleSolutionText": "341.41, 26.29, 0.00",
-      "descriptionText": "Great attention to detail for art, but not for his lighting fixture. That doesn't look like it's going to hold much longer."
+      "posSolutionText": "70.99, 5.13, -7.27",
+      "angleSolutionText": "40.80, 54.13, 0.00",
+      "descriptionText": "That doesn't look like it's going to hold much longer."
     },
     {
-      "posSolutionText": "72.13, 3.73, -4.84",
-      "angleSolutionText": "41.59, 127.27, 0.00",
-      "descriptionText": "That must be how the fire started. We may put to rest the rumours of Andrea Longhi taking his own life."
+      "posSolutionText": "66.49, -44.85, -6.02",
+      "angleSolutionText": "331.40, 53.62, 0.00",
+      "descriptionText": "That must be how the fire started."
+
     }
   ]
 }
