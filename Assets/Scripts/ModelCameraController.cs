@@ -38,9 +38,9 @@ public class ModelCameraController : MonoBehaviour
             case RuntimePlatform.WindowsPlayer:
             case RuntimePlatform.WindowsEditor:
                 leftTrigger = "Left Trigger Windows";
-                rightTrigger = "Right Trigger Windows";
+                //rightTrigger = "Right Trigger Windows";
                 rightButton = "Right Button Windows";
-                leftButton = "Left Button Windows";
+                //leftButton = "Left Button Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
@@ -59,8 +59,8 @@ public class ModelCameraController : MonoBehaviour
     void Update()
     {
         if (PauseMenu.gameIsPaused) return;
-        float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
-        //float triggerValue = Input.GetAxis(leftTrigger);
+        //float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
+        float triggerValue = Input.GetAxis(leftTrigger);
         if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
         {
             _cameraAnims.SetBool("TakingPhoto", true);
@@ -91,7 +91,7 @@ public class ModelCameraController : MonoBehaviour
     public void TakePhoto()
     {
         StartCoroutine(ShowAperture());
-        PhotoAlbumManager.Instance.MinimizePrompt();
+        //PhotoAlbumManager.Instance.MinimizePrompt();
         bool isValid = _photoValidator.validatePhoto();
         if (isValid)
         {

@@ -12,15 +12,13 @@ public class ControlsUIController : MonoBehaviour
     [SerializeField] private float _waitTime = 7.0f;
 
 
-
     void Start()
     {
         _controlUIAnimator = GetComponent<Animator>();
-        StartCoroutine(PlayControls());
+        StartCoroutine(PlayFTUE());
     }
 
-
-    IEnumerator PlayControls()
+    IEnumerator PlayFTUE()
     {
         Debug.Log("Play");
         yield return new WaitForSeconds(1.0f);
@@ -31,6 +29,8 @@ public class ControlsUIController : MonoBehaviour
         DisplayButtonText();
         yield return new WaitForSeconds(_waitTime);
         StartCoroutine(HideControlsUI());
+        yield return new WaitForSeconds(2.0f);
+        FTUEManager.Instance.NextFtue();
     }
 
 
