@@ -25,8 +25,7 @@ public class PickUpController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E)){
-            Debug.Log("E");
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button")){
             if (heldObj == null)
             {
                 Ray r = new Ray(transform.position, transform.forward);
