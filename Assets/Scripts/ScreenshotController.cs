@@ -44,6 +44,7 @@ public class ScreenshotController : MonoBehaviour
     private void Start()
     {
         pastCamera = GameObject.FindGameObjectWithTag("Past Camera").GetComponent<Camera>();
+        pastCamera.enabled = false;
         if (pastCamera == null)
         {
             UnityEngine.Debug.LogError("No camera found with the tag Past camera");
