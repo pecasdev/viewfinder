@@ -64,6 +64,8 @@ public class ScreenshotController : MonoBehaviour
                 leftButton = "Left Button Mac";
                 break;
         }
+        UnityEngine.Debug.Log(rightButton);
+        UnityEngine.Debug.Log(leftButton);
 
     }
 
