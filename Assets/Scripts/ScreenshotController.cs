@@ -44,6 +44,7 @@ public class ScreenshotController : MonoBehaviour
     private void Start()
     {
         pastCamera = GameObject.FindGameObjectWithTag("Past Camera").GetComponent<Camera>();
+        pastCamera.enabled = false;
         if (pastCamera == null)
         {
             UnityEngine.Debug.LogError("No camera found with the tag Past camera");
@@ -63,6 +64,8 @@ public class ScreenshotController : MonoBehaviour
                 leftButton = "Left Button Mac";
                 break;
         }
+        UnityEngine.Debug.Log(rightButton);
+        UnityEngine.Debug.Log(leftButton);
 
     }
 
