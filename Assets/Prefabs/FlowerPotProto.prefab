@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4540837373677414789
+--- !u!1 &3908642781387540260
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4686894051418978398}
-  - component: {fileID: 2845567474776992225}
-  - component: {fileID: 3379176509966424171}
-  - component: {fileID: 1851321881518663239}
+  - component: {fileID: 6045893233260363905}
+  - component: {fileID: 3663984868795855179}
+  - component: {fileID: 4569871570445862559}
   m_Layer: 0
-  m_Name: FlowerPotProto
+  m_Name: FlowerPot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4686894051418978398
+--- !u!4 &6045893233260363905
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4540837373677414789}
+  m_GameObject: {fileID: 3908642781387540260}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -37.114, y: 1.3825874, z: 4.0152373}
-  m_LocalScale: {x: 0.2, y: 0.20000002, z: 0.2}
+  m_LocalPosition: {x: 0, y: -0.347, z: 0}
+  m_LocalScale: {x: 0.49999988, y: 0.4999999, z: 0.49999988}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3315924847165612621}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 4686894051418978398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2845567474776992225
+--- !u!33 &3663984868795855179
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4540837373677414789}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &3379176509966424171
+  m_GameObject: {fileID: 3908642781387540260}
+  m_Mesh: {fileID: -5076798556035486163, guid: 078d5556d2897524e89de222fcde251f, type: 3}
+--- !u!23 &4569871570445862559
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4540837373677414789}
+  m_GameObject: {fileID: 3908642781387540260}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c2b2f59446f350b4a9e00e0344fdac06, type: 2}
+  - {fileID: 2100000, guid: 6eceac00eb944cc4db8526ca452bd618, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,27 +84,38 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1851321881518663239
-BoxCollider:
+--- !u!1 &4540837373677414789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4686894051418978398}
+  m_Layer: 0
+  m_Name: FlowerPotProto
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4686894051418978398
+Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4540837373677414789}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -37.114, y: 1.3825874, z: 4.0152373}
+  m_LocalScale: {x: 0.2, y: 0.20000002, z: 0.2}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 6045893233260363905}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5713031954771622409
 GameObject:
   m_ObjectHideFlags: 0
@@ -136,11 +146,11 @@ Transform:
   m_GameObject: {fileID: 5713031954771622409}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1649857, y: 0.75206274, z: -0.02000093}
-  m_LocalScale: {x: 0.25, y: 0.56115365, z: 0.25}
+  m_LocalPosition: {x: 0, y: 2.05, z: 0}
+  m_LocalScale: {x: 0.5000001, y: 1.2000003, z: 0.5000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 4686894051418978398}
+  m_Father: {fileID: 6045893233260363905}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8129379666454673885
 MeshFilter:
