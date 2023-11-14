@@ -5,14 +5,28 @@ using UnityEngine.SceneManagement;
 
 public class LoadLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public void LoadScene()
     {
         SceneManager.LoadScene("level1_new", LoadSceneMode.Single);
+    }
+
+    public void LoadLevelSelect()
+    {
+        SceneManager.LoadScene("LevelSelect", LoadSceneMode.Single);
+    }
+
+    public void LoadLevel1()
+    {
+        SceneManager.LoadScene("level1_new", LoadSceneMode.Single);
+    }
+
+    public void LoadLevel2()
+    {
+        SceneManager.LoadScene("ArchitectDemo", LoadSceneMode.Single);
+    }
+
+    public void LoadLevel3()
+    {
+        SceneManager.LoadScene("level3", LoadSceneMode.Single);
     }
 }
