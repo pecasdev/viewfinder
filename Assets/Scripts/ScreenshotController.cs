@@ -12,6 +12,7 @@ public class ScreenshotController : MonoBehaviour
 {
     string leftButton;
     string rightButton;
+    string rightTrigger;
 
     [SerializeField] private int _resWidth = 1920;
     [SerializeField] private int _resHeight = 1080;
@@ -56,12 +57,14 @@ public class ScreenshotController : MonoBehaviour
             case RuntimePlatform.WindowsEditor:
                 rightButton = "Right Button Windows";
                 leftButton = "Left Button Windows";
+                rightTrigger = "Right Trigger Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
             case RuntimePlatform.OSXEditor:
                 rightButton = "Right Button Mac";
                 leftButton = "Left Button Mac";
+                rightTrigger = "Right Trigger Mac";
                 break;
         }
         UnityEngine.Debug.Log(rightButton);
@@ -80,7 +83,8 @@ public class ScreenshotController : MonoBehaviour
                 _usePastCamera = false;
                 break;
         }
-        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetButtonDown(leftButton)))
+        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetAxis(rightTrigger) == -1f))
+        //if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetButtonDown(leftButton)))
         {
             _modelCameraController.SetCameraState(false);
             RenderTexture rt = new RenderTexture(_resWidth, _resHeight, 24);
