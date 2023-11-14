@@ -55,16 +55,20 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
     {
         if (_isWilted)
         {
-            if (GetComponent<Outline>() != null)
+            Outline outline = GetComponent<Outline>();
+            if (outline != null)
             {
-                GetComponent<Outline>().enabled = true;
+                outline.OutlineMode = Outline.Mode.OutlineAll;
+                outline.OutlineColor = Color.yellow;
+                outline.OutlineWidth = 5f;
+                outline.enabled = true;
             }
             else
             {
-                Outline outline = gameObject.AddComponent<Outline>();
+                outline = gameObject.AddComponent<Outline>();
+                outline.OutlineMode = Outline.Mode.OutlineAll;
                 outline.OutlineColor = Color.yellow;
-                outline.OutlineWidth = 5.0f;
-                outline.enabled = true;
+                outline.OutlineWidth = 5f;
             }
         }
     }
@@ -74,6 +78,7 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         Outline outline = GetComponent<Outline>();
         if (outline != null && outline.enabled)
         {
+            outline.OutlineColor = Color.yellow;
             outline.enabled = false;
         }
     }

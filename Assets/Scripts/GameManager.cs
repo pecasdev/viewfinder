@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
@@ -86,6 +87,7 @@ public class GameManager : MonoBehaviour
             {
                 //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
                 PromptPreviewManager.Instance.UpdatePromptPreview(true);
+                StartCoroutine(LoadNextLevel());
             }
             else
             {
@@ -95,6 +97,17 @@ public class GameManager : MonoBehaviour
                 //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
                 PromptPreviewManager.Instance.UpdatePromptPreview(false);
             }
+        }
+    }
+
+    IEnumerator LoadNextLevel()
+    {
+        Debug.Log("next level");
+        yield return new WaitForSeconds(10.0f);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex < 3)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 

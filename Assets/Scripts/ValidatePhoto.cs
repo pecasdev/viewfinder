@@ -6,8 +6,8 @@ using UnityEngine;
 public class ValidatePhoto : MonoBehaviour
 {
 
-    public const float ACCEPT_POS_DEVIATION = 5;
-    public const float ACCEPT_ANGLE_DEVIATION = 10;
+    public const float ACCEPT_POS_DEVIATION = 15;
+    public const float ACCEPT_ANGLE_DEVIATION = 20;
     private new GameObject camera;
 
 

@@ -1,0 +1,30 @@
+{
+  "solutions": [
+    {
+      "posSolutionText": "-17.37, 1.50, -6.14",
+      "angleSolutionText": "13.60, 272.00, 0.00",
+      "descriptionText": "Looks like whoever worked here was doing some kind of plant research."
+    },
+    {
+      "posSolutionText": "-8.50, 1.84, 1.55",
+      "angleSolutionText": "7.40, 178.60, 0.00",
+      "descriptionText": "No one has watered these in a long time..."
+
+    },
+    {
+      "posSolutionText": "-0.69, 1.50, -0.51",
+      "angleSolutionText": "2.00, 52.00, 0.00",
+      "descriptionText": "This plant looks better when it's not blocking my way"
+    },
+    {
+      "posSolutionText": "12.56, 1.50, 3.30",
+      "angleSolutionText": "5.40, 102.00, 0.00",
+      "descriptionText": "That flew off the shelf! Good thing it didn't break something..."
+    },
+    {
+      "posSolutionText": "16.09, 1.50, -3.38",
+      "angleSolutionText": "4.20, 183.40, 0.00",
+      "descriptionText": "This plant looks deadly. And there's a crack in the glass!"
+    }
+  ]
+}

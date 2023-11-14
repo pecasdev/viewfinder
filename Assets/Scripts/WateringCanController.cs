@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 interface IPlantToWater
@@ -30,11 +32,19 @@ public class WateringCanController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!_canWater)
+        {
+            RemoveWateringCanHighlight();
+        }
+        if (_selectedPlant != null)
+        {
+            _selectedPlant.RemoveHighlight();
+            _selectedPlant = null;
+        }
 
         Ray r = new Ray(transform.position, transform.forward);
         if (Physics.Raycast(r, out RaycastHit hitInfo, _wateringRange))
         {
-            RemoveWateringCanHighlight();
             if (hitInfo.collider.gameObject.CompareTag("Watering Can"))
             {
                 HighlightWateringCan();
@@ -58,17 +68,7 @@ public class WateringCanController : MonoBehaviour
                     plant.Bloom();
                 }
                 
-            } else
-            {
-                if (_selectedPlant != null)
-                {
-                    _selectedPlant.RemoveHighlight();
-                    _selectedPlant = null;
-                }
-                
             }
-
-            
         }
 
     }
@@ -76,15 +76,21 @@ public class WateringCanController : MonoBehaviour
 
     private void HighlightWateringCan()
     {
-        if (watering_can.GetComponent<Outline>() != null)
+        Outline outline = watering_can.GetComponent<Outline>();
+        if (outline != null)
         {
-            watering_can.GetComponent<Outline>().enabled = true;
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            outline.OutlineColor = Color.yellow;
+            outline.OutlineWidth = 5f;
+            outline.enabled = true;
         } else
         {
-            Outline outline = watering_can.AddComponent<Outline>();
+            Debug.Log("creating outline");
+            outline = watering_can.AddComponent<Outline>();
+            outline.OutlineMode = Outline.Mode.OutlineAll;
             outline.OutlineColor = Color.yellow;
-            outline.OutlineWidth = 5.0f;
-            outline.enabled = true;
+            outline.OutlineWidth = 5f;
+
         }
     }
 
