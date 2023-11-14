@@ -1026,11 +1026,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptSprites:
-  - {fileID: 21300000, guid: f32dcca7317569c408e8a401a4b6eb6e, type: 3}
-  - {fileID: 21300000, guid: 968d7c2b483c57e48b398b9e60d495bb, type: 3}
-  - {fileID: 21300000, guid: 672fd92b8f6a4444b9dcd3561eb03a9d, type: 3}
-  - {fileID: 21300000, guid: fd7a7997cea925f4ca61044516d54797, type: 3}
-  - {fileID: 21300000, guid: cf6af7436eb6f7e4eba205f8dc81ebe6, type: 3}
+  - {fileID: 21300000, guid: 57d9531923743f248b70af511b35f44b, type: 3}
+  - {fileID: 21300000, guid: f13f956d2248f004bbdd85079b5ed060, type: 3}
+  - {fileID: 21300000, guid: 63dba33748babbd48940a0c688e8be5b, type: 3}
+  - {fileID: 21300000, guid: acab0f8af2bad6844bd6013379d66fa4, type: 3}
+  - {fileID: 21300000, guid: 43865b50e6780e241a796653394ffba8, type: 3}
   levelJson: {fileID: 4900000, guid: db4c5fbef41dc8149b3bc201393ea7bf, type: 3}
 --- !u!4 &645719717
 Transform:
