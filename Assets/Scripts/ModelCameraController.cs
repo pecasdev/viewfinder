@@ -61,7 +61,7 @@ public class ModelCameraController : MonoBehaviour
         if (PauseMenu.gameIsPaused) return;
         //float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
         float triggerValue = Input.GetAxis(leftTrigger);
-        if (Input.GetMouseButton(1) || (triggerValue < -0.1f))
+        if ((Input.GetMouseButton(1) || (triggerValue < -0.1f)) && HeldPhotoController.Instance.CanTakePhoto)
         {
             _cameraAnims.SetBool("TakingPhoto", true);
             PromptPreviewManager.Instance.HidePromptPreview();
@@ -71,6 +71,10 @@ public class ModelCameraController : MonoBehaviour
             PromptPreviewManager.Instance.ShowPromptPreview();
             _cameraAnims.SetBool("TakingPhoto", false);
             CanTakePhoto = false;
+            SetCameraState(false);
+        }
+        if (!Input.GetMouseButton(1) && _camInterface.activeInHierarchy)
+        {
             SetCameraState(false);
         }
     }
