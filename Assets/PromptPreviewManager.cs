@@ -99,7 +99,7 @@ public class PromptPreviewManager : MonoBehaviour
         {
             stageText.GetComponent<TextMeshProUGUI>().color = Color.green;
             hintText.SetActive(true);
-            hintText.GetComponent<TextMeshProUGUI>().text = "You Win! Loading Next Level...";
+            //hintText.GetComponent<TextMeshProUGUI>().text = "You Win! Loading Next Level...";
         }
         else
         {

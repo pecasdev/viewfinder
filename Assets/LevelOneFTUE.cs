@@ -30,7 +30,7 @@ public class LevelOneFTUE : MonoBehaviour
     {
         if (stepIdx == 0)
         {
-            if (Input.GetAxis(x_btn) == 1) // open album
+            if (Input.GetAxis(x_btn) == 1) // swap worlds
             {
                 if (!x_btn_Registered)
                 {

@@ -15,7 +15,7 @@ public class CameraControllerFirst : MonoBehaviour
     public float pastCameraDisplacement = 50f;
     string RightStickHorizontal;
     string RightStickVertical;
-    bool y_button_pressed = false;
+    bool x_button_pressed = false;
 
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
 
@@ -44,7 +44,7 @@ public class CameraControllerFirst : MonoBehaviour
 
     void Update()
     {
-        if (PauseMenu.gameIsPaused) return;
+        //if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.MovementFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing) || () return;
         float mouseX;
         float mouseY;
 
@@ -91,13 +91,13 @@ public class CameraControllerFirst : MonoBehaviour
             transform.position = new Vector3(player.position.x, player.position.y + 2f, player.position.z); ;
         }
 
-        // Y button to teleport player between worlds
+        // X button to teleport player between worlds
         if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
-            float y_button_val = Input.GetAxis("Xbox_Y_Button");
-            if (y_button_val == 0)
+            float x_button_val = Input.GetAxis("Xbox_X_Button");
+            if (x_button_val == 0)
             {
-                y_button_pressed = false;
+                x_button_pressed = false;
             }
 
             //if (Input.GetAxis("Xbox_Y_Button") == 1 && !y_button_pressed)
@@ -105,10 +105,10 @@ public class CameraControllerFirst : MonoBehaviour
             //    y_button_pressed = true;
             //}
 
-            bool switchView = Input.GetKeyDown(KeyCode.Q) || (y_button_val == 1 && !y_button_pressed);
+            bool switchView = Input.GetKeyDown(KeyCode.Q) || (x_button_val == 1 && !x_button_pressed);
             if (switchView)
             {
-                y_button_pressed = true;
+                x_button_pressed = true;
                 Vector3 tempPlayer = player.position;
                 if (isPastCamera)
                 {

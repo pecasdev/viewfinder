@@ -36,7 +36,7 @@ public class Movep1st : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (PauseMenu.gameIsPaused) return;
+        if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.MovementFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Level2MechanicFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Level3MechanicFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
         // get keyboard input
         moveSpeed = 5.0f;
         if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))

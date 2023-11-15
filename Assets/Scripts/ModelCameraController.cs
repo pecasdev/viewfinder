@@ -38,9 +38,9 @@ public class ModelCameraController : MonoBehaviour
             case RuntimePlatform.WindowsPlayer:
             case RuntimePlatform.WindowsEditor:
                 leftTrigger = "Left Trigger Windows";
-                //rightTrigger = "Right Trigger Windows";
+                rightTrigger = "Right Trigger Windows";
                 rightButton = "Right Button Windows";
-                //leftButton = "Left Button Windows";
+                leftButton = "Left Button Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
@@ -58,10 +58,10 @@ public class ModelCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PauseMenu.gameIsPaused) return;
+        if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.CameraFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
         //float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
         float triggerValue = Input.GetAxis(leftTrigger);
-        if ((Input.GetMouseButton(1) || (triggerValue < -0.1f)) && HeldPhotoController.Instance.CanTakePhoto)
+        if ((Input.GetMouseButton(1) || (triggerValue < -0.1f)) && HeldPhotoController.Instance.CanTakePhoto || Input.GetAxis(leftButton)== 1f && HeldPhotoController.Instance.CanTakePhoto)
         {
             _cameraAnims.SetBool("TakingPhoto", true);
             PromptPreviewManager.Instance.HidePromptPreview();
@@ -96,11 +96,19 @@ public class ModelCameraController : MonoBehaviour
     {
         StartCoroutine(ShowAperture());
         //PhotoAlbumManager.Instance.MinimizePrompt();
-        bool isValid = _photoValidator.validatePhoto();
-        if (isValid)
+        if (GameManager.Instance.currentGameSate == GameManager.GameState.Playing)
         {
-            StartCoroutine(HeldPhotoController.Instance.PhotoMatchesPrompt());
-        } else
+            bool isValid = _photoValidator.validatePhoto();
+            if (isValid)
+            {
+                StartCoroutine(HeldPhotoController.Instance.PhotoMatchesPrompt());
+            }
+            else
+            {
+                StartCoroutine(HeldPhotoController.Instance.DisplayPhoto());
+            }
+        }
+        else if (GameManager.Instance.currentGameSate == GameManager.GameState.CameraFTUE)
         {
             StartCoroutine(HeldPhotoController.Instance.DisplayPhoto());
         }

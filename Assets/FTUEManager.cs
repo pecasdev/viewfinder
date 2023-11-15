@@ -30,11 +30,6 @@ public class FTUEManager : MonoBehaviour
     {
         instance = this;
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
 
     public void StartFTUE(GameState gameState)
     {
@@ -97,6 +92,8 @@ public class FTUEManager : MonoBehaviour
         else
         {
             Debug.Log("All FTUEs complete");
+            GameManager.Instance.currentGameSate = GameState.Playing;
+            GameManager.Instance.controlsUI.SetActive(true);
         }
     }
     public void DisableAllFtues()
@@ -106,5 +103,4 @@ public class FTUEManager : MonoBehaviour
             child.gameObject.SetActive(false);
         }
     }
-
 }

@@ -73,6 +73,7 @@ public class CameraFTUE : MonoBehaviour
             PlayerPrefs.SetInt("cameraFTUEComplete", 1);
             yield return new WaitForSeconds(3f);
             steps[stepIdx].SetActive(false);
+            GameManager.Instance.currentGameSate = GameManager.GameState.Playing;
             FTUEManager.Instance.CheckFTUE();
         }
     }

@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private List<Prompt> prompts = new List<Prompt>();
     public GameState currentGameSate;
     public int currentLevel;
+    public GameObject controlsUI;
+    public GameObject gameoverUI;
 
     public enum StageOrder
     {
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        currentGameSate = GameState.Playing;
         PhotoAlbumManager.Instance.UpdatePhotoAlbum();
         PromptPreviewManager.Instance.UpdatePromptPreview(false);
         FTUEManager.Instance.CheckFTUE();
@@ -100,7 +103,20 @@ public class GameManager : MonoBehaviour
             if (SolvedPrompts >= solutions.Count)
             {
                 //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
+                if (currentLevel == 1)
+                {
+                    PlayerPrefs.SetInt("level1Complete", 1);
+                }
+                else if (currentLevel == 2)
+                {
+                    PlayerPrefs.SetInt("level2Complete", 1);
+                }
+                else if (currentLevel == 3)
+                {
+                    PlayerPrefs.SetInt("level3Complete", 1);
+                }
                 PromptPreviewManager.Instance.UpdatePromptPreview(true);
+                gameoverUI.SetActive(true);
             }
             else
             {
