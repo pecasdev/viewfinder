@@ -12,6 +12,8 @@ public class PromptPreviewManager : MonoBehaviour
     public GameObject stageText;
     public GameObject hintText;
     public GameObject promptPreviewContainer;
+    private Animator promptPreviewAnimator;
+    private bool promptEnlarged = false;
 
     private static PromptPreviewManager instance = null;
     public static PromptPreviewManager Instance
@@ -28,7 +30,24 @@ public class PromptPreviewManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        promptPreviewAnimator = GetComponent<Animator>();
     }
+
+
+    private void Update()
+    {
+        if (Input.GetButtonUp("Jump"))
+        {
+            MinimizePrompt();
+        }
+        if (Input.GetButtonDown("Jump"))
+        {
+            EnlargePrompt();
+        }
+        
+    }
+
+
 
     public void TogglePromptPreview()
     {
@@ -43,6 +62,35 @@ public class PromptPreviewManager : MonoBehaviour
     public void ShowPromptPreview()
     {
         promptPreviewContainer.SetActive(true);
+    }
+
+    private void TogglePromptSize()
+    {
+        if (promptEnlarged)
+        {
+            MinimizePrompt();
+        } else
+        {
+            EnlargePrompt();
+        }
+    }
+
+    private void EnlargePrompt()
+    {
+        if (!promptEnlarged)
+        {
+            promptPreviewAnimator.Play("EnlargePrompt");
+            promptEnlarged = true;
+        }
+    }
+
+    private void MinimizePrompt()
+    {
+        if (promptEnlarged)
+        {
+            promptPreviewAnimator.Play("MinimizePrompt");
+            promptEnlarged = false;
+        }
     }
 
     public void UpdatePromptPreview(bool gameComplete)
