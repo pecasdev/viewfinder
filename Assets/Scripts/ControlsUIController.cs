@@ -15,23 +15,23 @@ public class ControlsUIController : MonoBehaviour
     void Start()
     {
         _controlUIAnimator = GetComponent<Animator>();
-        StartCoroutine(PlayFTUE());
+        //StartCoroutine(PlayFTUE());
     }
 
-    IEnumerator PlayFTUE()
-    {
-        Debug.Log("Play");
-        yield return new WaitForSeconds(1.0f);
-        DisplayTriggerText();
-        yield return new WaitForSeconds(_waitTime);
-        StartCoroutine(HideControlsUI());
-        yield return new WaitForSeconds(2.0f);
-        DisplayButtonText();
-        yield return new WaitForSeconds(_waitTime);
-        StartCoroutine(HideControlsUI());
-        yield return new WaitForSeconds(2.0f);
-        FTUEManager.Instance.NextFtue();
-    }
+    //IEnumerator PlayFTUE()
+    //{
+    //    //Debug.Log("Play");
+    //    //yield return new WaitForSeconds(1.0f);
+    //    //DisplayTriggerText();
+    //    //yield return new WaitForSeconds(_waitTime);
+    //    //StartCoroutine(HideControlsUI());
+    //    //yield return new WaitForSeconds(2.0f);
+    //    //DisplayButtonText();
+    //    //yield return new WaitForSeconds(_waitTime);
+    //    //StartCoroutine(HideControlsUI());
+    //    //yield return new WaitForSeconds(2.0f);
+    //    //FTUEManager.Instance.NextGeneralFtue();
+    //}
 
 
     public void DisplayTriggerText()

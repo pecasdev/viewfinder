@@ -16,11 +16,25 @@ public class GameManager : MonoBehaviour
     private int currentStage = 0;
     private List<Solution> solutions = new();
     private List<Prompt> prompts = new List<Prompt>();
+    public GameState currentGameSate;
+    public int currentLevel;
 
     public enum StageOrder
     {
         Previous,
         Next
+    }
+
+    public enum GameState
+    {
+        MovementFTUE,
+        CameraFTUE,
+        AlbumFTUE,
+        Level1MechanicFTUE,
+        Level2MechanicFTUE,
+        Level3MechanicFTUE,
+        Playing,
+        PausedMenu
     }
     public static GameManager Instance
     {
@@ -69,9 +83,9 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        //hintText.GetComponent<TextMeshProUGUI>().text = "Press P to take a photo!";
         PhotoAlbumManager.Instance.UpdatePhotoAlbum();
         PromptPreviewManager.Instance.UpdatePromptPreview(false);
+        FTUEManager.Instance.CheckFTUE();
     }
 
     public void PromptSolved()
@@ -87,7 +101,6 @@ public class GameManager : MonoBehaviour
             {
                 //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
                 PromptPreviewManager.Instance.UpdatePromptPreview(true);
-                StartCoroutine(LoadNextLevel());
             }
             else
             {
@@ -97,17 +110,6 @@ public class GameManager : MonoBehaviour
                 //PhotoAlbumManager.Instance.UpdatePhotoAlbum();
                 PromptPreviewManager.Instance.UpdatePromptPreview(false);
             }
-        }
-    }
-
-    IEnumerator LoadNextLevel()
-    {
-        Debug.Log("next level");
-        yield return new WaitForSeconds(10.0f);
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex < 3)
-        {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
     }
 
