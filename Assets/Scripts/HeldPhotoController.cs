@@ -9,6 +9,8 @@ public class HeldPhotoController : MonoBehaviour
     [SerializeField] private GameObject _photoFrame;
     [SerializeField] private Animator _photoFadeAnimator;
     private Animator _photoFrameAnimator;
+    private bool canTakePhoto = true;
+
 
     private static HeldPhotoController instance = null;
     public static HeldPhotoController Instance
@@ -34,14 +36,17 @@ public class HeldPhotoController : MonoBehaviour
 
     public IEnumerator DisplayPhoto()
     {
+        CanTakePhoto = false;
         _photoFrame.SetActive(true);
         _photoFrameAnimator.Play("ViewPhoto");
         yield return new WaitForSeconds(4f);
         _photoFrame.SetActive(false);
+        CanTakePhoto = true;
     }
 
     public IEnumerator PhotoMatchesPrompt()
     {
+        CanTakePhoto = false;
         _photoFrame.SetActive(true);
         _photoFrameAnimator.Play("PhotoMatchesPrompt");
         _photoFadeAnimator.Play("PhotoFadeIn");
@@ -51,7 +56,8 @@ public class HeldPhotoController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         _photoFrame.SetActive(false);
         PhotoAlbumManager.Instance.UpdatePhotoAlbum();
-        
+        CanTakePhoto = true;
+
     }
 
     public void SetHeldPhotoImage(Sprite sprite)
@@ -63,5 +69,9 @@ public class HeldPhotoController : MonoBehaviour
     {
         return _photoDisplayArea.sprite;
     }
-
+    public bool CanTakePhoto
+    {
+        get { return canTakePhoto; }
+        private set { canTakePhoto = value; }
+    }
 }
