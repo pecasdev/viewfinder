@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public GameState currentGameSate;
     public int currentLevel;
     public GameObject controlsUI;
+    public GameObject gameoverUI;
 
     public enum StageOrder
     {
@@ -115,6 +116,7 @@ public class GameManager : MonoBehaviour
                     PlayerPrefs.SetInt("level3Complete", 1);
                 }
                 PromptPreviewManager.Instance.UpdatePromptPreview(true);
+                gameoverUI.SetActive(true);
             }
             else
             {
