@@ -61,7 +61,7 @@ public class ModelCameraController : MonoBehaviour
         if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.CameraFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
         //float triggerValue = Input.GetAxis(leftTrigger) + Input.GetAxis(rightTrigger);
         float triggerValue = Input.GetAxis(leftTrigger);
-        if ((Input.GetMouseButton(1) || (triggerValue < -0.1f)) && HeldPhotoController.Instance.CanTakePhoto || Input.GetAxis(leftButton)== 1f && HeldPhotoController.Instance.CanTakePhoto)
+        if ((Input.GetMouseButton(1) || (triggerValue < -0.1f)) && HeldPhotoController.Instance.CanTakePhoto)
         {
             _cameraAnims.SetBool("TakingPhoto", true);
             PromptPreviewManager.Instance.HidePromptPreview();
@@ -73,7 +73,7 @@ public class ModelCameraController : MonoBehaviour
             CanTakePhoto = false;
             SetCameraState(false);
         }
-        if (!Input.GetMouseButton(1) && _camInterface.activeInHierarchy)
+        if ((!Input.GetMouseButton(1) && triggerValue >= -0.1f) && _camInterface.activeInHierarchy)
         {
             SetCameraState(false);
         }
