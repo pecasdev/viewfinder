@@ -31,6 +31,7 @@ public class LevelTwoFTUE : MonoBehaviour
         if (stepIdx == 0)
         {
             if (Input.GetAxis(x_btn) == 1 || Input.GetKeyDown(KeyCode.E)) // open album
+
             {
                 if (!x_btn_Registered)
                 {
