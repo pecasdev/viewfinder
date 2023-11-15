@@ -20,7 +20,7 @@ public class LevelTwoFTUE : MonoBehaviour
                 break;
         }
         stepIdx = 0;
-        GameManager.Instance.currentGameSate = GameManager.GameState.Level1MechanicFTUE;
+        GameManager.Instance.currentGameSate = GameManager.GameState.Level2MechanicFTUE;
         steps[stepIdx].SetActive(true);
         x_btn_Registered = false;
     }

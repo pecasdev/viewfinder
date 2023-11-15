@@ -8,10 +8,11 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenu, optionsMenu;
-    public static bool gameIsPaused = false;
+    //public static bool gameIsPaused = false;
     public GameObject pauseFirstButton, optionsFirstButton;
     private bool b_button_pressed;
     private bool start_button_pressed;
+    private GameManager.GameState prev_State;
 
     public enum UIAction
     {
@@ -40,13 +41,13 @@ public class PauseMenu : MonoBehaviour
         if (Input.GetAxis("Xbox_Start_Button") == 1 && !start_button_pressed)
         {
             start_button_pressed = true;
-            if (gameIsPaused)
+            if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu)
             {
                 CloseOptionsMenu();
             }        
             TogglePause();
         }
-        else if (gameIsPaused)
+        else if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu)
         {
 
             float b_button_val = Input.GetAxis("Xbox_B_Button");
@@ -72,9 +73,19 @@ public class PauseMenu : MonoBehaviour
 
     private void TogglePause()
     {
-        gameIsPaused = !gameIsPaused;
+        if (GameManager.Instance.currentGameSate != GameManager.GameState.PausedMenu)
+        {
+            prev_State = GameManager.Instance.currentGameSate;
+            GameManager.Instance.currentGameSate = GameManager.GameState.PausedMenu;
+        }
+        else
+        {
+            GameManager.Instance.currentGameSate = prev_State;
+        }
+        
+        //gameIsPaused = !gameIsPaused;
         // TODO: Add this if/else logic in other functions
-        if (gameIsPaused)
+        if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu)
         {
             ToggleUI(pauseMenu, pauseFirstButton);
         }
@@ -123,7 +134,7 @@ public class PauseMenu : MonoBehaviour
 
     public void RestartLevel()
     {
-        gameIsPaused = false;
+        GameManager.Instance.currentGameSate = GameManager.GameState.Playing;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 

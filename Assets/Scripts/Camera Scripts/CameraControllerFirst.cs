@@ -44,7 +44,7 @@ public class CameraControllerFirst : MonoBehaviour
 
     void Update()
     {
-        if (PauseMenu.gameIsPaused) return;
+        //if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.MovementFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing) || () return;
         float mouseX;
         float mouseY;
 
@@ -91,7 +91,7 @@ public class CameraControllerFirst : MonoBehaviour
             transform.position = new Vector3(player.position.x, player.position.y + 2f, player.position.z); ;
         }
 
-        // Y button to teleport player between worlds
+        // X button to teleport player between worlds
         if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
             float x_button_val = Input.GetAxis("Xbox_X_Button");

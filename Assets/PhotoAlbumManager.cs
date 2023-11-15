@@ -44,7 +44,7 @@ public class PhotoAlbumManager : MonoBehaviour
 
     void Update()
     {
-        if (PauseMenu.gameIsPaused) return;
+        if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.AlbumFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
         if (Input.GetKeyDown("m"))
         {
             TogglePhotoAlbum();
@@ -97,7 +97,7 @@ public class PhotoAlbumManager : MonoBehaviour
         }
 
         // b button to exit prompt
-        if (!PauseMenu.gameIsPaused)
+        if (GameManager.Instance.currentGameSate != GameManager.GameState.PausedMenu && (GameManager.Instance.currentGameSate == GameManager.GameState.AlbumFTUE || GameManager.Instance.currentGameSate == GameManager.GameState.Playing))
         {
             float b_button_val = Input.GetAxis("Xbox_B_Button");
             if (b_button_val == 0)

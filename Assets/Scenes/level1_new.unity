@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1590,9 +1590,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4900000, guid: 8f7cdaa79c6b2a641b048138f3057005, type: 3}
     - target: {fileID: 4174096880434302545, guid: 9a7d34e19f2710a479c08e56c1f9b72d, type: 3}
+      propertyPath: controlsUI
+      value: 
+      objectReference: {fileID: 841372231}
+    - target: {fileID: 4174096880434302545, guid: 9a7d34e19f2710a479c08e56c1f9b72d, type: 3}
       propertyPath: currentLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4174096880434302545, guid: 9a7d34e19f2710a479c08e56c1f9b72d, type: 3}
+      propertyPath: promptPreviewManager
+      value: 
+      objectReference: {fileID: 1511250951}
     - target: {fileID: 4174096880434302545, guid: 9a7d34e19f2710a479c08e56c1f9b72d, type: 3}
       propertyPath: promptSprites.Array.size
       value: 5
@@ -1665,6 +1673,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 745031042632341494, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -56.69995
+      objectReference: {fileID: 0}
+    - target: {fileID: 841632712577230953, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 18.922852
+      objectReference: {fileID: 0}
+    - target: {fileID: 2167396117698630987, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -48.6333
+      objectReference: {fileID: 0}
+    - target: {fileID: 2528920599771599413, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -48.6333
+      objectReference: {fileID: 0}
     - target: {fileID: 2753778266088048467, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1745,9 +1769,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3867459506912292705, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 18.922852
+      objectReference: {fileID: 0}
+    - target: {fileID: 5586437957747950328, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -48.6333
+      objectReference: {fileID: 0}
+    - target: {fileID: 6285972635636473897, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -48.6333
+      objectReference: {fileID: 0}
     - target: {fileID: 7212556186861799336, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
       propertyPath: m_Name
       value: FTUEUI_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7549294660622621640, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 18.922852
+      objectReference: {fileID: 0}
+    - target: {fileID: 8331015220551243391, guid: 4bd35447c1948844b90c1f88f6be8027, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -48.6333
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3367,6 +3411,11 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 722d223e761213242a47e6ac39d42e8b, type: 3}
   m_PrefabInstance: {fileID: 1956595886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &841372231 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8579287806370722075, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
+  m_PrefabInstance: {fileID: 1794924838}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &843006020
 GameObject:
@@ -5879,6 +5928,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1506012759}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1511250951 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2735249257983064560, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
+  m_PrefabInstance: {fileID: 1794924838}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1537604961 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2426396874781539448, guid: 35877435f187dc640a43fb5f37b6b115, type: 3}
@@ -6985,9 +7039,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2735249257983064560, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3804809820233848878, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
       propertyPath: m_Name
       value: PromptPreviewManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 3804809820233848878, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5166538944356424731, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
       propertyPath: m_Color.a
