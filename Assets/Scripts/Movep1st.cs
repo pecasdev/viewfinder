@@ -36,7 +36,6 @@ public class Movep1st : MonoBehaviour
 
     void FixedUpdate()
     {
-        UnityEngine.Debug.Log("Current gamestate: " + GameManager.Instance.currentGameSate);
         if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.MovementFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Level2MechanicFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Level3MechanicFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
         // get keyboard input
         moveSpeed = 5.0f;
