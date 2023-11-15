@@ -44,7 +44,7 @@ public class MovementFTUE : MonoBehaviour
     {
         if (stepIdx == 0)
         {
-            if (Input.GetAxis(LeftStickHorizontal) != 0 || Input.GetAxis(LeftStickVertical) != 0) // check for movement
+            if (Input.GetAxis(LeftStickHorizontal) != 0 || Input.GetAxis(LeftStickVertical) != 0 || Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)) // check for movement
             {
                 if (!leftStickRegistered)
                 {
@@ -55,7 +55,7 @@ public class MovementFTUE : MonoBehaviour
         }
         if (stepIdx == 1)
         {
-            if (Input.GetAxis(RightStickHorizontal) != 0 || Input.GetAxis(RightStickVertical) != 0) // check for looking around
+            if (Input.GetAxis(RightStickHorizontal) != 0 || Input.GetAxis(RightStickVertical) != 0 || Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) // check for looking around
             {
                 if (!rightStickRegistered)
                 {
