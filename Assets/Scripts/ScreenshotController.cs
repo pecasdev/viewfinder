@@ -7,11 +7,13 @@ using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
 using System.Linq;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.SceneManagement;
 
 public class ScreenshotController : MonoBehaviour
 {
     string leftButton;
     string rightButton;
+    string rightTrigger;
 
     [SerializeField] private int _resWidth = 1920;
     [SerializeField] private int _resHeight = 1080;
@@ -43,12 +45,16 @@ public class ScreenshotController : MonoBehaviour
 
     private void Start()
     {
-        pastCamera = GameObject.FindGameObjectWithTag("Past Camera").GetComponent<Camera>();
-        pastCamera.enabled = false;
-        if (pastCamera == null)
+        if (SceneManager.GetActiveScene().buildIndex == 1)
         {
-            UnityEngine.Debug.LogError("No camera found with the tag Past camera");
+            pastCamera = GameObject.FindGameObjectWithTag("Past Camera").GetComponent<Camera>();
+            pastCamera.enabled = false;
+            if (pastCamera == null)
+            {
+                UnityEngine.Debug.LogError("No camera found with the tag Past camera");
+            }
         }
+        
 
         switch (UnityEngine.Application.platform)
         {
@@ -56,12 +62,14 @@ public class ScreenshotController : MonoBehaviour
             case RuntimePlatform.WindowsEditor:
                 rightButton = "Right Button Windows";
                 leftButton = "Left Button Windows";
+                rightTrigger = "Right Trigger Windows";
                 break;
 
             case RuntimePlatform.OSXPlayer:
             case RuntimePlatform.OSXEditor:
                 rightButton = "Right Button Mac";
                 leftButton = "Left Button Mac";
+                rightTrigger = "Right Trigger Mac";
                 break;
         }
         UnityEngine.Debug.Log(rightButton);
@@ -80,7 +88,7 @@ public class ScreenshotController : MonoBehaviour
                 _usePastCamera = false;
                 break;
         }
-        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetButtonDown(leftButton)))
+        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetAxis(rightTrigger) == -1f))
         {
             _modelCameraController.SetCameraState(false);
             RenderTexture rt = new RenderTexture(_resWidth, _resHeight, 24);
