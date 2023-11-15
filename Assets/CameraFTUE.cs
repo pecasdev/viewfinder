@@ -40,7 +40,7 @@ public class CameraFTUE : MonoBehaviour
     {
         if (stepIdx == 0)
         {
-            if (Input.GetAxis(leftTrigger) == -1) // check for looking into camera
+            if (Input.GetAxis(leftTrigger) == -1 || Input.GetKeyDown(KeyCode.Mouse1)) // check for looking into camera
             {
                 if (!leftTriggerRegistered)
                 {
@@ -51,7 +51,7 @@ public class CameraFTUE : MonoBehaviour
         }
         if (stepIdx == 1)
         {
-            if (Input.GetAxis(rightTrigger) == -1) // check for looking around
+            if (Input.GetAxis(rightTrigger) == -1 || Input.GetKeyDown(KeyCode.Mouse0)) // check for looking around
             {
                 if (!rightTriggerRegistered)
                 {

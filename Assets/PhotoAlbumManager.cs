@@ -45,7 +45,7 @@ public class PhotoAlbumManager : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.AlbumFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
-        if (Input.GetKeyDown("m"))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             TogglePhotoAlbum();
         }
@@ -53,8 +53,9 @@ public class PhotoAlbumManager : MonoBehaviour
         //{
         //    TogglePromptSize();
         //}
-        if (Input.GetKeyDown("9")) { ChangeStage(GameManager.StageOrder.Previous); }
-        if (Input.GetKeyDown("0")) { ChangeStage(GameManager.StageOrder.Next); }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) { ChangeStage(GameManager.StageOrder.Previous); }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) { ChangeStage(GameManager.StageOrder.Next); }
+        if (Input.GetKeyDown(KeyCode.B)) { StartCoroutine(ClosePhotoAlbum()); }
 
 
         // xbox controls
