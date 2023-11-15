@@ -392,7 +392,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1912573019563541526}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46b83d94340e62043a93bf5b7c316066, type: 3}
   m_Name: 
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4086055730187368978}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46b83d94340e62043a93bf5b7c316066, type: 3}
   m_Name: 
@@ -1054,6 +1054,7 @@ GameObject:
   - component: {fileID: 4242322680943021445}
   - component: {fileID: 5839505832261116039}
   - component: {fileID: 5743774194194484580}
+  - component: {fileID: 1612953658632250242}
   m_Layer: 5
   m_Name: CameraControlsUI
   m_TagString: Untagged
@@ -1160,7 +1161,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5311382418707342141}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 46b83d94340e62043a93bf5b7c316066, type: 3}
   m_Name: 
@@ -1168,6 +1169,18 @@ MonoBehaviour:
   _triggerText: {fileID: 2464542559200196223}
   _buttonText: {fileID: 497211129562309335}
   _waitTime: 7
+--- !u!114 &1612953658632250242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5311382418707342141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 692bba00afcfd354a862f40be1cced3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5844289732914320554
 GameObject:
   m_ObjectHideFlags: 0
@@ -1780,10 +1793,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94a118e1dcb32ce4ab0dda561e8e7d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ftues:
-  - {fileID: 5311382418707342141}
-  - {fileID: 4086055730187368978}
-  - {fileID: 1912573019563541526}
+  movementFTUE: {fileID: 0}
+  cameraFTUE: {fileID: 5311382418707342141}
+  albumFTUE: {fileID: 4086055730187368978}
+  mechanicFTUE: {fileID: 0}
 --- !u!1 &7601544926642114278
 GameObject:
   m_ObjectHideFlags: 0
