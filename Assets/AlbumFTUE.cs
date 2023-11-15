@@ -38,7 +38,7 @@ public class AlbumFTUE : MonoBehaviour
     {
         if (stepIdx == 0)
         {
-            if (Input.GetAxis(d_pad_v) == 1) // open album
+            if (Input.GetAxis(d_pad_v) == 1 || Input.GetKeyDown(KeyCode.UpArrow)) // open album
             {
                 if (!d_pad_v_Registered)
                 {
@@ -49,7 +49,7 @@ public class AlbumFTUE : MonoBehaviour
         }
         if (stepIdx == 1)
         {
-            if (Input.GetAxis(d_pad_h) == 1 || Input.GetAxis(d_pad_h) == -1) // switch pages
+            if (Input.GetAxis(d_pad_h) == 1 || Input.GetAxis(d_pad_h) == -1 || Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.RightArrow)) // switch pages
             {
                 if (!d_pad_h_Registered)
                 {
@@ -60,7 +60,7 @@ public class AlbumFTUE : MonoBehaviour
         }
         if (stepIdx == 2)
         {
-            if (Input.GetAxis(b_btn) == 1) // close album
+            if (Input.GetAxis(b_btn) == 1 || Input.GetKeyDown(KeyCode.B)) // close album
             {
                 if (!b_btn_Registered)
                 {
