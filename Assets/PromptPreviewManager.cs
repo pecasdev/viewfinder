@@ -36,15 +36,17 @@ public class PromptPreviewManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonUp("Jump"))
+        if (GameManager.Instance.currentGameSate != GameManager.GameState.PausedMenu)
         {
-            MinimizePrompt();
+            if (Input.GetButtonUp("Jump"))
+            {
+                MinimizePrompt();
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                EnlargePrompt();
+            }
         }
-        if (Input.GetButtonDown("Jump"))
-        {
-            EnlargePrompt();
-        }
-        
     }
 
 
