@@ -14,6 +14,12 @@ public class PromptPreviewManager : MonoBehaviour
     public GameObject promptPreviewContainer;
     private Animator promptPreviewAnimator;
     private bool promptEnlarged = false;
+    [SerializeField]
+    private Image promptStatusImg;
+    [SerializeField]
+    private Sprite checkmarkSprite;
+    [SerializeField]
+    private Sprite xmarkSprite;
 
     private static PromptPreviewManager instance = null;
     public static PromptPreviewManager Instance
@@ -115,6 +121,7 @@ public class PromptPreviewManager : MonoBehaviour
                 promptCol.g = 1;
                 promptCol.b = 1;
                 promptImage.GetComponent<Image>().color = promptCol;
+                promptStatusImg.sprite = checkmarkSprite;
             }
             else
             {
@@ -124,6 +131,7 @@ public class PromptPreviewManager : MonoBehaviour
                 promptCol.g = 0.8f;
                 promptCol.b = 0.8f;
                 promptImage.GetComponent<Image>().color = promptCol;
+                promptStatusImg.sprite = xmarkSprite;
             }
         }
         stageText.GetComponent<TextMeshProUGUI>().text = "Prompts Completed: " + (GameManager.Instance.SolvedPrompts) + "/" + GameManager.Instance.GetTotalStages();
