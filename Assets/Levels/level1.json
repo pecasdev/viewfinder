@@ -1,31 +1,29 @@
 {
   "solutions": [
     {
-
       "posSolutionText": "58.85, 5.34, -10.00",
       "angleSolutionText": "1.20, 359.80, 0.00",
-      "descriptionText": "This room is burnt up...things are thrown all over the place...what the hell happened here?"
+      "descriptionText": "My name is Giorno Venturi. A gifted artist celebrated far and wide. I've created countless masterpieces that were meant to stand the test of time. Now they are nothing more than ash and cinder."
     },
     {
       "posSolutionText": "58.85, -44.83, -10.00",
       "angleSolutionText": "0.00, 0.20, 0.00",
-      "descriptionText": "My name is Andrea Longhi. A gifted artist celebrated far and wide. I've created countless masterpieces, but satisfaction? A cruel stranger, always just out of reach. They're all screaming, pleading, yearning for something more, something divine..."
+      "descriptionText": "The culmination of my works, so close to perfection... Perfection is a cruel stranger, always out of reach. They're always yearning for something more, something divine, something unattainable."
     },
     {
       "posSolutionText": "79.23, -44.85, 8.12",
       "angleSolutionText": "358.20, 214.61, 0.00",
-      "descriptionText": "Ah, my sacred sanctum! Where I created my last artwork, painted with luminescent paints I created myself! A never-diminishing, eternal glow, destined to last through centuries untold. Just as it should... just as it must... An everlasting beacon of my unraveled genius!"
-    },
-    {
-      "posSolutionText": "70.99, 5.13, -7.27",
-      "angleSolutionText": "40.80, 54.13, 0.00",
-      "descriptionText": "If it weren't for this DARN LANTEN! Who would of thought...who would of thought...WHO WOULD OF THOUGHT...DAMMIT! DAMMIT! DAMMIT! DAMMIT! DAMMIT! DAMMIT! DAMMIT! DAMMIT! DAMMIT! DAMMIT!"
+      "descriptionText": "Ah, my sacred sanctum! Where I created my last artwork, painted with luminescent paints I created myself! A never-diminishing, eternal glow, destined to last through centuries untold."
     },
     {
       "posSolutionText": "66.49, -44.85, -6.02",
       "angleSolutionText": "331.40, 53.62, 0.00",
-      "descriptionText": "It fell from the ceilling and hit my unfinished work... and KA-BOOM! The next thing I know, the entire studio was in flames...devouring my life’s work. I stood there, soulless, letting the flames consume me whole. And watched my memory burning to ashes, ashes of my dream..."
-
+      "descriptionText": "The lantern fell from the ceilling and the next thing I knew, the entire studio was in flames. I stood there, soulless, letting the flames consume me whole as I watched my memory burn to ashes, the ashes of my dreams."
+    },
+    {
+      "posSolutionText": "70.99, 5.13, -7.27",
+      "angleSolutionText": "40.80, 54.13, 0.00",
+      "descriptionText": "I had been consumed by my work far before the flames. I was always yearning for something more, something divine, something unattainable. The flames melted off the shackles of my ambition, freeing me."
     }
   ]
 }
