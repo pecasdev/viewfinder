@@ -19,9 +19,16 @@ public class PhotoAlbumManager : MonoBehaviour
     private GameObject photoAlbumContainer;
     [SerializeField]
     private TextMeshProUGUI promptLabelText;
+    [SerializeField]
+    private Image promptStatusImg;
+    [SerializeField]
+    private Sprite checkmarkSprite;
+    [SerializeField]
+    private Sprite xmarkSprite;
     private bool dpad_v_button_pressed = false;
     private bool dpad_h_button_pressed = false;
     private bool b_button_pressed = false;
+    [SerializeField] GameObject glow;
 
     private Animator _albumAnimator;
 
@@ -45,7 +52,7 @@ public class PhotoAlbumManager : MonoBehaviour
     void Update()
     {
         if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.AlbumFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
-        if (Input.GetKeyDown("m"))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             TogglePhotoAlbum();
         }
@@ -53,8 +60,9 @@ public class PhotoAlbumManager : MonoBehaviour
         //{
         //    TogglePromptSize();
         //}
-        if (Input.GetKeyDown("9")) { ChangeStage(GameManager.StageOrder.Previous); }
-        if (Input.GetKeyDown("0")) { ChangeStage(GameManager.StageOrder.Next); }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) { ChangeStage(GameManager.StageOrder.Previous); }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) { ChangeStage(GameManager.StageOrder.Next); }
+        if (Input.GetKeyDown(KeyCode.B)) { StartCoroutine(ClosePhotoAlbum()); }
 
 
         // xbox controls
@@ -153,6 +161,8 @@ public class PhotoAlbumManager : MonoBehaviour
             promptCol.g = 1;
             promptCol.b = 1;
             promptImage.GetComponent<Image>().color = promptCol;
+            promptStatusImg.sprite = checkmarkSprite;
+            glow.SetActive(false);
         }
         else
         {
@@ -165,6 +175,8 @@ public class PhotoAlbumManager : MonoBehaviour
             promptCol.g = 0.8f;
             promptCol.b = 0.8f;
             promptImage.GetComponent<Image>().color = promptCol;
+            promptStatusImg.sprite = xmarkSprite;
+            glow.SetActive(true);
         }
         promptLabelText.text = "Prompt " + (GameManager.Instance.CurrentStage + 1) + "/" + GameManager.Instance.GetTotalStages();
     }

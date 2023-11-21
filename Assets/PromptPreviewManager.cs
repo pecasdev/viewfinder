@@ -14,6 +14,14 @@ public class PromptPreviewManager : MonoBehaviour
     public GameObject promptPreviewContainer;
     private Animator promptPreviewAnimator;
     private bool promptEnlarged = false;
+    [SerializeField]
+    private Image promptStatusImg;
+    [SerializeField]
+    private Sprite checkmarkSprite;
+    [SerializeField]
+    private Sprite xmarkSprite;
+    [SerializeField] private GameObject glow;
+
 
     private static PromptPreviewManager instance = null;
     public static PromptPreviewManager Instance
@@ -36,15 +44,17 @@ public class PromptPreviewManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonUp("Jump"))
+        if (GameManager.Instance.currentGameSate != GameManager.GameState.PausedMenu)
         {
-            MinimizePrompt();
+            if (Input.GetButtonUp("Jump"))
+            {
+                MinimizePrompt();
+            }
+            if (Input.GetButtonDown("Jump"))
+            {
+                EnlargePrompt();
+            }
         }
-        if (Input.GetButtonDown("Jump"))
-        {
-            EnlargePrompt();
-        }
-        
     }
 
 
@@ -113,6 +123,8 @@ public class PromptPreviewManager : MonoBehaviour
                 promptCol.g = 1;
                 promptCol.b = 1;
                 promptImage.GetComponent<Image>().color = promptCol;
+                promptStatusImg.sprite = checkmarkSprite;
+                glow.SetActive(false);
             }
             else
             {
@@ -122,6 +134,9 @@ public class PromptPreviewManager : MonoBehaviour
                 promptCol.g = 0.8f;
                 promptCol.b = 0.8f;
                 promptImage.GetComponent<Image>().color = promptCol;
+                promptStatusImg.sprite = xmarkSprite;
+                glow.SetActive(true);
+
             }
         }
         stageText.GetComponent<TextMeshProUGUI>().text = "Prompts Completed: " + (GameManager.Instance.SolvedPrompts) + "/" + GameManager.Instance.GetTotalStages();

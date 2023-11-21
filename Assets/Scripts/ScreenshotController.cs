@@ -88,7 +88,7 @@ public class ScreenshotController : MonoBehaviour
                 _usePastCamera = false;
                 break;
         }
-        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || Input.GetButtonDown(rightButton) || Input.GetAxis(rightTrigger) == -1f))
+        if (_modelCameraController.CanTakePhoto && (Input.GetMouseButtonDown(0) || Input.GetKeyDown("p") || _modelCameraController.CanTakePhoto && Input.GetButtonDown(rightButton) || _modelCameraController.CanTakePhoto && Input.GetAxis(rightTrigger) == -1f))
         {
             _modelCameraController.SetCameraState(false);
             RenderTexture rt = new RenderTexture(_resWidth, _resHeight, 24);

@@ -30,7 +30,7 @@ public class LevelOneFTUE : MonoBehaviour
     {
         if (stepIdx == 0)
         {
-            if (Input.GetAxis(x_btn) == 1) // swap worlds
+            if (Input.GetAxis(x_btn) == 1 || Input.GetKeyDown(KeyCode.Q)) // swap worlds
             {
                 if (!x_btn_Registered)
                 {
