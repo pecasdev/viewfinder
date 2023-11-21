@@ -1942,6 +1942,7 @@ MonoBehaviour:
   promptStatusImg: {fileID: 726951602944442566}
   checkmarkSprite: {fileID: 21300000, guid: ac41a3b937296184abf7703acafa2f3b, type: 3}
   xmarkSprite: {fileID: 21300000, guid: 54ebe4775efe3994a84cb1edf03bc6da, type: 3}
+  glow: {fileID: 2366643380317628331}
 --- !u!95 &8695236764966770421
 Animator:
   serializedVersion: 5
