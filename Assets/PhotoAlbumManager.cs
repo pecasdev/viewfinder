@@ -28,6 +28,7 @@ public class PhotoAlbumManager : MonoBehaviour
     private bool dpad_v_button_pressed = false;
     private bool dpad_h_button_pressed = false;
     private bool b_button_pressed = false;
+    [SerializeField] GameObject glow;
 
     private Animator _albumAnimator;
 
@@ -161,6 +162,7 @@ public class PhotoAlbumManager : MonoBehaviour
             promptCol.b = 1;
             promptImage.GetComponent<Image>().color = promptCol;
             promptStatusImg.sprite = checkmarkSprite;
+            glow.SetActive(false);
         }
         else
         {
@@ -174,6 +176,7 @@ public class PhotoAlbumManager : MonoBehaviour
             promptCol.b = 0.8f;
             promptImage.GetComponent<Image>().color = promptCol;
             promptStatusImg.sprite = xmarkSprite;
+            glow.SetActive(true);
         }
         promptLabelText.text = "Prompt " + (GameManager.Instance.CurrentStage + 1) + "/" + GameManager.Instance.GetTotalStages();
     }
