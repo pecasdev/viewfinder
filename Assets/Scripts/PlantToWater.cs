@@ -12,7 +12,7 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
     [SerializeField] private Color _bloomColor = new Color(89f, 181f, 56f, 1f);
     [SerializeField] private float _bloomingSeconds = 2f;
     private float _targetPoint = 0f;
-    private Transform _highlight;
+    
 
     public bool isWilted
     {
@@ -29,6 +29,11 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         {
             _plantAnimator = transform.GetComponent<Animator>();
         }
+        Outline _outline = gameObject.AddComponent<Outline>();
+        _outline.OutlineMode = Outline.Mode.OutlineAll;
+        _outline.OutlineColor = Color.yellow;
+        _outline.OutlineWidth = 5f;
+        RemoveHighlight();
     }
 
     void Update()
@@ -46,7 +51,6 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         {
             Debug.Log("Bloom!");
             _plantAnimator.SetTrigger("Bloom");
-           
             _isWilted = false;
         }
     }

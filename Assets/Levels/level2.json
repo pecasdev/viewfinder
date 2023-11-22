@@ -1,29 +1,29 @@
 {
     "solutions": [
       {
-        "posSolutionText": "0.30, 3.00, 4.35",
-        "angleSolutionText": "354.20, 265.80, 0.00",
-        "descriptionText": "He was a very popular architect, the public loved him. But his buildings.. they weren't safe"
+        "posSolutionText": "0.63, 3.00, 3.31",
+        "angleSolutionText": "359.40, 278.40, 0.00",
+        "descriptionText": "I was very popular, the public loved me! But there were those who said my buildings weren't safe. I thought they were overreacting"
       },
       {
-        "posSolutionText": "7.58, 3.00, 9.72",
-        "angleSolutionText": "355.60, 306.20, 0.00",
-        "descriptionText": "So many rooms.. This looks like a hotel"
+        "posSolutionText": "5.60, 3.00, 5.66",
+        "angleSolutionText": "358.40, 342.80, 0.00",
+        "descriptionText": "These were the rooms of my latest project, a highly exclusive hotel"
       },
       {
-        "posSolutionText": "11.53, 3.00, 5.90",
-        "angleSolutionText": "7.40, 342.20, 0.00",
-        "descriptionText": "There's no support for that thinner column..."
+        "posSolutionText": "12.60, 3.00, 5.61",
+        "angleSolutionText": "0.00, 318.80, 0.00",
+        "descriptionText": "I chose to not support a section of the building in favor of an observation column"
       },
       {
-        "posSolutionText": "11.88, 3.00, 8.31",
-        "angleSolutionText": "3.60, 132.20, 0.00",
-        "descriptionText": "God there must have been hundreds crushed under the rubble"
+        "posSolutionText": "13.75, 3.00, 6.90",
+        "angleSolutionText": "0.60, 125.00, 0.00",
+        "descriptionText": "Hundreds were crushed under the rubble..."
       },
       {
-        "posSolutionText": "3.60, 3.00, 3.09",
-        "angleSolutionText": "0.60, 111.20, 0.00",
-        "descriptionText": "..."
+        "posSolutionText": "10.52, 3.00, -1.88",
+        "angleSolutionText": "0.60, 317.20, 0.00",
+        "descriptionText": "And I couldn't bear knowing it was my fault"
       }
     ]
   }
