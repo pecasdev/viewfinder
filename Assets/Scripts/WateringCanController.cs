@@ -22,6 +22,8 @@ public class WateringCanController : MonoBehaviour
     private GameObject watering_can;
     [SerializeField] private Animator _promptAnimator;
     private IPlantToWater _selectedPlant;
+    [SerializeField] private AudioSource _growSound;
+    [SerializeField] private AudioSource _wateringSound;
 
     private void Start()
     {
@@ -64,8 +66,8 @@ public class WateringCanController : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
                 {
-                    plant.RemoveHighlight();
-                    plant.Bloom();
+                    _wateringSound.Play();
+                    StartCoroutine(GrowPlant(plant));
                 }
                 
             }
@@ -73,6 +75,14 @@ public class WateringCanController : MonoBehaviour
 
     }
 
+    private IEnumerator GrowPlant(IPlantToWater plant)
+    {
+        plant.RemoveHighlight();
+        yield return new WaitForSeconds(0.5f);
+        _growSound.Play();
+        plant.Bloom();
+
+    }
 
     private void HighlightWateringCan()
     {
