@@ -29,6 +29,11 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         {
             _plantAnimator = transform.GetComponent<Animator>();
         }
+        Outline _outline = gameObject.AddComponent<Outline>();
+        _outline.OutlineMode = Outline.Mode.OutlineAll;
+        _outline.OutlineColor = Color.yellow;
+        _outline.OutlineWidth = 5f;
+        RemoveHighlight();
     }
 
     void Update()
