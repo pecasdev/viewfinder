@@ -16,6 +16,8 @@ public class Movep1st : MonoBehaviour
     public float jumpForce = 5.0f;
     public bool firstPersonViewOn = true;
     public LayerMask groundLayer;
+    public bool sprint_pressed = false;
+    private bool lock_sprint_button = false;
 
     bool playerGrounded = true;
 
@@ -39,7 +41,16 @@ public class Movep1st : MonoBehaviour
         if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.MovementFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Level2MechanicFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Level3MechanicFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
         // get keyboard input
         moveSpeed = 5.0f;
-        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        
+        if (Input.GetAxis("Left_Stick_Button") <= 0){
+            lock_sprint_button = false;
+        }
+        if (Input.GetAxis("Left_Stick_Button") > 0 && !lock_sprint_button)
+        {
+            sprint_pressed = !sprint_pressed;
+            lock_sprint_button = true;
+        }
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift) || sprint_pressed)
         {
             moveSpeed = 7.0f;  // Increase speed by factor of 2
         }
