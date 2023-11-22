@@ -7,6 +7,11 @@ using UnityEngine.UI;
 
 public class PhotoAlbumManager : MonoBehaviour
 {
+    public AudioClip[] pageFlipSounds;
+    public AudioClip bookOpenSound;
+    public AudioClip bookCloseSound;
+    private AudioSource audioSource;
+
     private static PhotoAlbumManager instance = null;
     private bool isPromptSolved = false;
     [SerializeField]
@@ -47,8 +52,26 @@ public class PhotoAlbumManager : MonoBehaviour
     {
         instance = this;
         _albumAnimator = GetComponent<Animator>();
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
 
+    private void playBookOpen()
+    {
+        audioSource.clip = bookOpenSound;
+        audioSource.Play();
+    }
+    private void playBookClose()
+    {
+        audioSource.clip = bookCloseSound;
+        audioSource.Play();
+    }
+
+    private void playPageFlipSound()
+    {
+        int index = UnityEngine.Random.Range(0, pageFlipSounds.Length);
+        audioSource.clip = pageFlipSounds[index];
+        audioSource.Play();
+    }
     void Update()
     {
         if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu || (GameManager.Instance.currentGameSate != GameManager.GameState.AlbumFTUE && GameManager.Instance.currentGameSate != GameManager.GameState.Playing)) return;
@@ -60,8 +83,8 @@ public class PhotoAlbumManager : MonoBehaviour
         //{
         //    TogglePromptSize();
         //}
-        if (Input.GetKeyDown(KeyCode.LeftArrow)) { ChangeStage(GameManager.StageOrder.Previous); }
-        if (Input.GetKeyDown(KeyCode.RightArrow)) { ChangeStage(GameManager.StageOrder.Next); }
+        if (Input.GetKeyDown(KeyCode.LeftArrow)) { ChangeStage(GameManager.StageOrder.Previous); playPageFlipSound(); }
+        if (Input.GetKeyDown(KeyCode.RightArrow)) { ChangeStage(GameManager.StageOrder.Next); playPageFlipSound(); }
         if (Input.GetKeyDown(KeyCode.B)) { StartCoroutine(ClosePhotoAlbum()); }
 
 
@@ -96,12 +119,14 @@ public class PhotoAlbumManager : MonoBehaviour
             Debug.Log("DPAD_h left");
             dpad_h_button_pressed = true;
             ChangeStage(GameManager.StageOrder.Previous);
+            playPageFlipSound();
         }
         else if (Input.GetAxis("DPAD_h Windows") == 1 && !dpad_h_button_pressed)
         {
             Debug.Log("DPAD_h right");
             dpad_h_button_pressed = true;
             ChangeStage(GameManager.StageOrder.Next);
+            playPageFlipSound();
         }
 
         // b button to exit prompt
@@ -210,6 +235,7 @@ public class PhotoAlbumManager : MonoBehaviour
 
     public void OpenPhotoAlbum()
     {
+        playBookOpen();
         if (!promptImageBig.activeInHierarchy && !photoAlbumContainer.activeInHierarchy)
         {
             photoAlbumContainer.SetActive(true);
@@ -226,6 +252,7 @@ public class PhotoAlbumManager : MonoBehaviour
 
     IEnumerator ClosePhotoAlbum()
     {
+        playBookClose();
         if (!promptImageBig.activeInHierarchy)
         {
             if (_albumAnimator)

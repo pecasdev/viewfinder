@@ -7,6 +7,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 public class ModelCameraController : MonoBehaviour
 {
+    public AudioClip validPhotoSound;
     public AudioClip[] shutterSounds;
     private AudioSource audioSource;
 
@@ -79,6 +80,11 @@ public class ModelCameraController : MonoBehaviour
         }
     }
 
+    private void playValidPhotoSound()
+    {
+        audioSource.clip = validPhotoSound;
+        audioSource.Play();
+    }
     private void playCameraShutterSound()
     {
         int index = Random.Range(0, shutterSounds.Length);
@@ -101,6 +107,7 @@ public class ModelCameraController : MonoBehaviour
             bool isValid = _photoValidator.validatePhoto();
             if (isValid)
             {
+                Invoke("playValidPhotoSound", 0.5f); 
                 StartCoroutine(HeldPhotoController.Instance.PhotoMatchesPrompt());
             }
             else
