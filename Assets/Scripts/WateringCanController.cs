@@ -63,15 +63,18 @@ public class WateringCanController : MonoBehaviour
                 }
             }
 
-            if (hitInfo.collider.gameObject.TryGetComponent(out IPlantToWater plant) && _canWater)
+            if (hitInfo.collider.gameObject.TryGetComponent(out PlantToWater plant) && _canWater)
             {
                 _selectedPlant = plant;
                 _selectedPlant.Highlight();
 
                 if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
                 {
-                    StartCoroutine(WaterPlant());
-                    StartCoroutine(GrowPlant(plant));
+                    if (plant.isWilted)
+                    {
+                        StartCoroutine(WaterPlant());
+                        StartCoroutine(GrowPlant(plant));
+                    }
                 }
                 
             }
