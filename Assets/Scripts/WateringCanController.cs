@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,6 +28,9 @@ public class WateringCanController : MonoBehaviour
     [SerializeField] private GameObject _heldWateringCan;
     private Animator wateringCanAnimator;
     [SerializeField] GameObject _camera;
+    [SerializeField] Image wateringStatusUI;
+    [SerializeField] TextMeshProUGUI mechanicInfoText;
+    [SerializeField] Sprite checkmarkSprite;
 
     private void Start()
     {
@@ -59,6 +63,8 @@ public class WateringCanController : MonoBehaviour
                 {
                     Debug.Log("Watering Can");
                     _canWater = true;
+                    wateringStatusUI.sprite = checkmarkSprite;
+                    mechanicInfoText.text = "Water Plant (highlighted)";
                     watering_can.SetActive(false);
                 }
             }
