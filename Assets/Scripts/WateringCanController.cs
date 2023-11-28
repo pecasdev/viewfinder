@@ -21,7 +21,6 @@ public class WateringCanController : MonoBehaviour
     [SerializeField] private float _wateringRange = 5.0f;
     [SerializeField] private bool _canWater = false;
     private GameObject watering_can;
-    [SerializeField] private Animator _promptAnimator;
     private IPlantToWater _selectedPlant;
     [SerializeField] private AudioSource _growSound;
     [SerializeField] private AudioSource _wateringSound;
@@ -31,6 +30,8 @@ public class WateringCanController : MonoBehaviour
     [SerializeField] Image wateringStatusUI;
     [SerializeField] TextMeshProUGUI mechanicInfoText;
     [SerializeField] Sprite checkmarkSprite;
+    [SerializeField] private TextMeshProUGUI hoverText;
+    [SerializeField] private GameObject hoverCanvas;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class WateringCanController : MonoBehaviour
         {
             _selectedPlant.RemoveHighlight();
             _selectedPlant = null;
+            hoverCanvas.SetActive(false);
         }
 
         Ray r = new Ray(transform.position, transform.forward);
@@ -61,7 +63,7 @@ public class WateringCanController : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
                 {
-                    Debug.Log("Watering Can");
+                    RemoveWateringCanHighlight();
                     _canWater = true;
                     wateringStatusUI.sprite = checkmarkSprite;
                     mechanicInfoText.text = "Water Plant (highlighted)";
@@ -72,14 +74,18 @@ public class WateringCanController : MonoBehaviour
             if (hitInfo.collider.gameObject.TryGetComponent(out PlantToWater plant) && _canWater)
             {
                 _selectedPlant = plant;
-                _selectedPlant.Highlight();
-
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
+                if (plant.isWilted)
                 {
-                    if (plant.isWilted)
+                    _selectedPlant.Highlight();
+                    hoverCanvas.SetActive(true);
+                    hoverText.text = "Water";
+
+
+                    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
                     {
                         StartCoroutine(WaterPlant());
                         StartCoroutine(GrowPlant(plant));
+                        
                     }
                 }
                 
@@ -90,6 +96,7 @@ public class WateringCanController : MonoBehaviour
 
     private IEnumerator WaterPlant()
     {
+        hoverCanvas.SetActive(false);
         _camera.SetActive(false);
         _heldWateringCan.SetActive(true);
         wateringCanAnimator.Play("WaterPlant");
@@ -111,6 +118,8 @@ public class WateringCanController : MonoBehaviour
 
     private void HighlightWateringCan()
     {
+        hoverCanvas.SetActive(true);
+        hoverText.text = "Pick up";
         Outline outline = watering_can.GetComponent<Outline>();
         if (outline != null)
         {
@@ -131,6 +140,7 @@ public class WateringCanController : MonoBehaviour
 
     private void RemoveWateringCanHighlight()
     {
+        hoverCanvas.SetActive(false);
         Outline outline = watering_can.GetComponent<Outline>();
         if (outline != null && outline.enabled)
         {
