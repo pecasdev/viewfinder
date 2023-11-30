@@ -9,4 +9,9 @@ public class ResetGame : MonoBehaviour
     {
         PlayerPrefs.DeleteAll();
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+    }
 }
