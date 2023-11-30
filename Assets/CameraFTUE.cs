@@ -64,7 +64,7 @@ public class CameraFTUE : MonoBehaviour
 
     IEnumerator NextStep()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         steps[stepIdx].SetActive(false);
         stepIdx++;
         steps[stepIdx].SetActive(true);

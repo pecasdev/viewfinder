@@ -73,7 +73,7 @@ public class AlbumFTUE : MonoBehaviour
 
     IEnumerator NextStep()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1f);
         steps[stepIdx].SetActive(false);
         stepIdx++;
         steps[stepIdx].SetActive(true);
