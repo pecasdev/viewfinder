@@ -68,7 +68,7 @@ public class MovementFTUE : MonoBehaviour
 
     IEnumerator NextStep()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(2f);
         steps[stepIdx].SetActive(false);
         stepIdx++;
         steps[stepIdx].SetActive(true);

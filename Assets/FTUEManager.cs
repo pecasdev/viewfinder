@@ -77,18 +77,18 @@ public class FTUEManager : MonoBehaviour
         {
             StartFTUE(GameState.AlbumFTUE);
         }
-        else if (GameManager.Instance.currentLevel == 1 && PlayerPrefs.GetInt("level1MechanicFTUE", 0) == 0)
-        {
-            StartFTUE(GameState.Level1MechanicFTUE);
-        }
-        else if (GameManager.Instance.currentLevel == 2 && PlayerPrefs.GetInt("level2MechanicFTUE", 0) == 0)
-        {
-            StartFTUE(GameState.Level2MechanicFTUE);
-        }
-        else if (GameManager.Instance.currentLevel == 3 && PlayerPrefs.GetInt("level3MechanicFTUE", 0) == 0)
-        {
-            StartFTUE(GameState.Level3MechanicFTUE);
-        }
+        //else if (GameManager.Instance.currentLevel == 1 && PlayerPrefs.GetInt("level1MechanicFTUE", 0) == 0)
+        //{
+        //    StartFTUE(GameState.Level1MechanicFTUE);
+        //}
+        //else if (GameManager.Instance.currentLevel == 2 && PlayerPrefs.GetInt("level2MechanicFTUE", 0) == 0)
+        //{
+        //    StartFTUE(GameState.Level2MechanicFTUE);
+        //}
+        //else if (GameManager.Instance.currentLevel == 3 && PlayerPrefs.GetInt("level3MechanicFTUE", 0) == 0)
+        //{
+        //    StartFTUE(GameState.Level3MechanicFTUE);
+        //}
         else
         {
             Debug.Log("All FTUEs complete");
