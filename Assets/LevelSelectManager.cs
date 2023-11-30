@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelSelectManager : MonoBehaviour
 {
@@ -23,6 +24,14 @@ public class LevelSelectManager : MonoBehaviour
         if (PlayerPrefs.GetInt("level3Complete", 0) == 1)
         {
             level3BtnText.text = "Play Again";
+        }
+    }
+
+    private void Update()
+    {
+        if (Input.GetAxis("Xbox_B_Button") == 1 || Input.GetKeyDown(KeyCode.B)) // close album
+        {
+            SceneManager.LoadScene("StartScene", LoadSceneMode.Single);
         }
     }
 }
