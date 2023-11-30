@@ -1,40 +1,39 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PropToPickUp : MonoBehaviour, IObjectToPickUp
 {
-    private Rigidbody _objRB;
+    private Transform _objRB;
     RigidbodyConstraints originalConstraints;
+    bool originalGravity;
     
     void Start()
     {
-        _objRB = GetComponent<Rigidbody>();
-        originalConstraints = _objRB.constraints;
+        _objRB = GetComponent<Transform>();
+        //originalConstraints = _objRB.constraints;
+        //originalGravity = _objRB.useGravity;
     }
 
     public void PickUp(Transform holdArea)
     {
-        _objRB.useGravity = false;
-        _objRB.drag = 10;
-        _objRB.constraints = RigidbodyConstraints.FreezeRotation;
-        _objRB.transform.parent = holdArea;
+        _objRB.transform.position = holdArea.position;
+        print("debug test");
     }
 
     public void PutDown()
     {
-        _objRB.useGravity = true;
-        _objRB.drag = 1;
-        _objRB.constraints = originalConstraints;
         _objRB.transform.parent = null;
     }
 
-    public void Move(Transform holdArea, float pickUpForce)
+    public void Move(Transform holdArea)
     {
-        if (Vector3.Distance(transform.position, holdArea.position) > 1.0f)
-        {
-            Vector3 moveDirection = (holdArea.position - transform.position);
-            _objRB.AddForce(moveDirection * pickUpForce);
-        }
+        _objRB.transform.position = holdArea.position;
+
+        Vector3 holdRotation = holdArea.transform.localEulerAngles;
+        holdRotation.x = _objRB.transform.localEulerAngles.x;
+
+        _objRB.transform.localEulerAngles = holdRotation;
     }
 }

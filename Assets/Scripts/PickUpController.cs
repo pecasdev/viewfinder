@@ -9,7 +9,7 @@ interface IObjectToPickUp
     public void PickUp(Transform holdArea);
     public void PutDown();
 
-    public void Move(Transform holdArea, float pickUpForce);
+    public void Move(Transform holdArea);
 }
 
 // Attach to player camera
@@ -52,8 +52,16 @@ public class PickUpController : MonoBehaviour
 
         if (heldObj != null)
         {
-            heldObj.Move(_holdArea, _pickupForce);
+            heldObj.Move(_holdArea);
         }
         
+    }
+
+    private void LateUpdate()
+    {
+        if (heldObj != null)
+        {
+            heldObj.Move(_holdArea);
+        }
     }
 }
