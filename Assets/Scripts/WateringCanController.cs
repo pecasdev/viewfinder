@@ -65,11 +65,12 @@ public class WateringCanController : MonoBehaviour
                 {
                     RemoveWateringCanHighlight();
                     _canWater = true;
-                    wateringStatusUI.sprite = checkmarkSprite;
-                    mechanicInfoText.text = "Water Plant (highlighted)";
+                    /*wateringStatusUI.sprite = checkmarkSprite;
+                    mechanicInfoText.text = "Water Plant (highlighted)";*/
                     watering_can.SetActive(false);
                 }
             }
+
 
             if (hitInfo.collider.gameObject.TryGetComponent(out PlantToWater plant) && _canWater)
             {
@@ -85,10 +86,10 @@ public class WateringCanController : MonoBehaviour
                     {
                         StartCoroutine(WaterPlant());
                         StartCoroutine(GrowPlant(plant));
-                        
+
                     }
                 }
-                
+
             }
         }
 

@@ -12,11 +12,13 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
     private bool _isWilted = true;
     private Renderer _plantRenderer;
     [SerializeField] private Animator _plantAnimator;
-    [SerializeField] private Color _wiltedColor = new Color(145f, 123f, 26f, 1f);
-    [SerializeField] private Color _bloomColor = new Color(89f, 181f, 56f, 1f);
-    [SerializeField] private float _bloomingSeconds = 2f;
+    [SerializeField] private Color _wiltedColour = new Color(70f, 70f, 70f, 1f);
+    [SerializeField] private Color _bloomColour = Color.white;
+    [SerializeField] private Material _wiltedMaterial;
+    [SerializeField] private Material _bloomMaterial;
+    private float _bloomingSeconds = 4f;
     private float _targetPoint = 0f;
-    
+
 
     public bool isWilted
     {
@@ -32,13 +34,12 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
     void Start()
     {
         _plantRenderer = GetComponent<Renderer>();
-        _plantRenderer.material.SetColor("_Color", _wiltedColor);
         if (transform.GetComponent<Animator>())
         {
             _plantAnimator = transform.GetComponent<Animator>();
         }
         Outline _outline = gameObject.AddComponent<Outline>();
-        _outline.OutlineMode = Outline.Mode.OutlineAll;
+        _outline.OutlineMode = Outline.Mode.OutlineVisible;
         _outline.OutlineColor = Color.yellow;
         _outline.OutlineWidth = 5f;
         RemoveHighlight();
@@ -46,9 +47,9 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
 
     void Update()
     {
-        if (_isWilted == false && _plantRenderer.material.color != _bloomColor)
+        if (_isWilted == false && (_plantRenderer.material.color != _bloomColour))
         {
-            ColourTransition();
+            MaterialTransition();
         }
     }
 
@@ -58,9 +59,14 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         if (_isWilted)
         {
             Debug.Log("Bloom!");
-            _plantAnimator.SetTrigger("Bloom");
+            if (_plantAnimator)
+            {
+                _plantAnimator.SetTrigger("Bloom");
+            }
             _isWilted = false;
             Invoke("playSoundAfterWatered", delayForSoundAfterWatered);
+            _plantRenderer.material = _wiltedMaterial;
+            //_plantRenderer.material.SetColor("_Color", _wiltedColour);
         }
     }
 
@@ -80,7 +86,7 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
             Outline outline = GetComponent<Outline>();
             if (outline != null)
             {
-                outline.OutlineMode = Outline.Mode.OutlineAll;
+                outline.OutlineMode = Outline.Mode.OutlineVisible;
                 outline.OutlineColor = Color.yellow;
                 outline.OutlineWidth = 5f;
                 outline.enabled = true;
@@ -88,7 +94,7 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
             else
             {
                 outline = gameObject.AddComponent<Outline>();
-                outline.OutlineMode = Outline.Mode.OutlineAll;
+                outline.OutlineMode = Outline.Mode.OutlineVisible;
                 outline.OutlineColor = Color.yellow;
                 outline.OutlineWidth = 5f;
             }
@@ -108,6 +114,13 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
     private void ColourTransition()
     {
         _targetPoint += Time.deltaTime / _bloomingSeconds;
-        _plantRenderer.material.color = Color.Lerp(_wiltedColor, _bloomColor, _targetPoint);
+        _plantRenderer.material.color = Color.Lerp(_wiltedColour, _bloomColour, _targetPoint);
+
+    }
+
+    private void MaterialTransition()
+    {
+        _targetPoint += Time.deltaTime / _bloomingSeconds;
+        _plantRenderer.material.Lerp(_wiltedMaterial, _bloomMaterial, _targetPoint);
     }
 }
