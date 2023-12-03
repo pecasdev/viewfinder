@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     private List<Prompt> prompts = new List<Prompt>();
     public GameState currentGameSate;
     public int currentLevel;
-    public GameObject controlsUI;
+    //public GameObject controlsUI;
     public GameObject gameoverUI;
 
     public enum StageOrder
