@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class HeldPhotoController : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip captionAppearSound;
+
     // New Photo UI
     [SerializeField] private UnityEngine.UI.Image _photoDisplayArea;
     [SerializeField] private GameObject _photoFrame;
@@ -27,6 +30,7 @@ public class HeldPhotoController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        audioSource = gameObject.GetComponent<AudioSource>();
     }
     void Start()
     {
@@ -53,6 +57,8 @@ public class HeldPhotoController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         PhotoAlbumManager.Instance.OpenPhotoAlbum();
         PhotoAlbumManager.Instance.RevealCaption();
+        audioSource.clip = captionAppearSound;
+        audioSource.Play();
         yield return new WaitForSeconds(1f);
         _photoFrame.SetActive(false);
         PhotoAlbumManager.Instance.UpdatePhotoAlbum();

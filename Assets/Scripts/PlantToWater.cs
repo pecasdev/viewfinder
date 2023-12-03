@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class PlantToWater : MonoBehaviour, IPlantToWater
 {
+    public float delayForSoundAfterWatered = 2;
+    public AudioClip soundToPlayAfterWatered = null;
+    private AudioSource audioSource;
+
     private bool _isWilted = true;
     private Renderer _plantRenderer;
     [SerializeField] private Animator _plantAnimator;
@@ -19,6 +23,10 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
         get => _isWilted;
     }
 
+    void Awake()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +60,16 @@ public class PlantToWater : MonoBehaviour, IPlantToWater
             Debug.Log("Bloom!");
             _plantAnimator.SetTrigger("Bloom");
             _isWilted = false;
+            Invoke("playSoundAfterWatered", delayForSoundAfterWatered);
+        }
+    }
+
+    private void playSoundAfterWatered()
+    {
+        if (soundToPlayAfterWatered != null)
+        {
+            audioSource.clip = soundToPlayAfterWatered;
+            audioSource.Play();
         }
     }
 

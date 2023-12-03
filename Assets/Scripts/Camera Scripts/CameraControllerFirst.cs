@@ -7,6 +7,9 @@ using UnityEngine.SceneManagement;
 
 public class CameraControllerFirst : MonoBehaviour
 {
+    private AudioSource audioSource;
+    public AudioClip worldSwapSound;
+
     public Transform player;  // Reference to the player's transform
     [Range(0.1f, 9f)][SerializeField] float sensitivity = 2f;
     [Range(0f, 90f)][SerializeField] float yRotationLimit = 90f;
@@ -18,6 +21,11 @@ public class CameraControllerFirst : MonoBehaviour
     bool x_button_pressed = false;
 
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
+
+    private void Awake()
+    {
+        audioSource = gameObject.GetComponent<AudioSource>();
+    }
 
     void Start()
     {
@@ -121,6 +129,8 @@ public class CameraControllerFirst : MonoBehaviour
                     player.position = pastPosition;
                 }
                 pastCameraDisplacement = -pastCameraDisplacement;
+                audioSource.clip = worldSwapSound;
+                audioSource.Play();
             }
         }
     }
