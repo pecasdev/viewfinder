@@ -39,7 +39,7 @@ public class HeldPhotoController : MonoBehaviour
         CanTakePhoto = false;
         _photoFrame.SetActive(true);
         _photoFrameAnimator.Play("ViewPhoto");
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2f);
         _photoFrame.SetActive(false);
         CanTakePhoto = true;
     }
