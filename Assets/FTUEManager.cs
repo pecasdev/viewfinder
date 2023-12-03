@@ -93,7 +93,7 @@ public class FTUEManager : MonoBehaviour
         {
             Debug.Log("All FTUEs complete");
             GameManager.Instance.currentGameSate = GameState.Playing;
-            GameManager.Instance.controlsUI.SetActive(true);
+            //GameManager.Instance.controlsUI.SetActive(true);
         }
     }
     public void DisableAllFtues()
