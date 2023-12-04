@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: d8fbeb05f92e5e647937cd3bd71cd8c9
+  m_OcclusionCullingData: {fileID: 36300000, guid: 3af940157a8369247b21dc65ea108552, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -1312,9 +1312,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   promptSprites:
-  - {fileID: 21300000, guid: 5b39b00cd8a897d4cbc2a3c6e3d9b8ba, type: 3}
-  - {fileID: 21300000, guid: 89a3acb07f3712048ba81e30870ff8da, type: 3}
-  - {fileID: 21300000, guid: 3d211f21bcb86f148bc9bc4af5d53137, type: 3}
+  - {fileID: 21300000, guid: 123933b952126a24d8a67d5e044ab231, type: 3}
+  - {fileID: 21300000, guid: 8e2151cbd1b6f774aaf6e468c26d6c74, type: 3}
+  - {fileID: 21300000, guid: 0cb1d811a6c04234b997f28588a48990, type: 3}
   - {fileID: 21300000, guid: f0276afa66165fd40b12d80733546199, type: 3}
   - {fileID: 21300000, guid: 6908aeb65bb41ac4caaffb876a4ae7fe, type: 3}
   levelJson: {fileID: 4900000, guid: db4c5fbef41dc8149b3bc201393ea7bf, type: 3}
@@ -1379,9 +1379,9 @@ MonoBehaviour:
   - plants:
     - {fileID: 1376843806}
     - {fileID: 995578048}
+  - plants: []
   - plants:
     - {fileID: 1974294264}
-  - plants: []
 --- !u!114 &719709879 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8756978809813848102, guid: fdcaa340407b69244bbe12bacb242c97, type: 3}
@@ -2342,7 +2342,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2951,6 +2951,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1126302384495809213, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: far clip plane
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 1322621619850570814, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 2.84375
@@ -2997,7 +3001,7 @@ PrefabInstance:
       objectReference: {fileID: 675714677}
     - target: {fileID: 8592513454632006196, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: _savePhotoToLocal
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8592513454632006196, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: _photoFadeAnimator
@@ -3580,10 +3584,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 723242129}
-    - target: {fileID: 3072111605661872923, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3835571062886943529, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -3600,10 +3600,6 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 826918475}
-    - target: {fileID: 6432044749399780139, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
-      propertyPath: m_VersionIndex
-      value: 5550
-      objectReference: {fileID: 0}
     - target: {fileID: 7788345154910402747, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
       propertyPath: m_Mesh
       value: 
