@@ -1,30 +1,30 @@
 {
   "solutions": [
     {
-      "posSolutionText": "-17.37, 1.50, -6.14",
-      "angleSolutionText": "13.60, 272.00, 0.00",
+      "posSolutionText": "-15.50, 1.53, -6.46",
+      "angleSolutionText": "9.80, 270.40, 0.00",
       "descriptionText": "I spent long nights sitting here reading and researching botany before I died..."
     },
     {
-      "posSolutionText": "-8.50, 1.84, 1.55",
-      "angleSolutionText": "7.40, 178.60, 0.00",
-      "descriptionText": "No one has watered these in a long time..."
+      "posSolutionText": "-6.63, 1.89, 1.99",
+      "angleSolutionText": "6.40, 8.00, 0.00",
+      "descriptionText": "No one has watered these plants in a long time... The lab must have been abandonned after the accident"
 
     },
     {
-      "posSolutionText": "-0.69, 1.50, -0.51",
-      "angleSolutionText": "2.00, 52.00, 0.00",
+      "posSolutionText": "-2.69, 1.50, 5.31",
+      "angleSolutionText": "357.20, 89.80, 0.00",
       "descriptionText": "These pesky plants always end up blocking my way when they haven't been watered"
     },
     {
-      "posSolutionText": "12.56, 1.50, 3.30",
-      "angleSolutionText": "5.40, 102.00, 0.00",
-      "descriptionText": "I really should have moved these plants away from the shelves. Good thing it didn't break something this time. Last time I wasn't as lucky..."
+      "posSolutionText": "16.84, 1.50, 7.63",
+      "angleSolutionText": "4.60, 63.60, 0.00",
+      "descriptionText": "These rare plants produce a poisonous gas. When consumed in large quantities, it can be quite deadly..."
     },
     {
-      "posSolutionText": "16.09, 1.50, -3.38",
-      "angleSolutionText": "4.20, 183.40, 0.00",
-      "descriptionText": "These rare plants produce a poisonous gas. If only the glass hadn't broke... I could have continued my research."
+      "posSolutionText": "16.17, 1.50, -2.93",
+      "angleSolutionText": "8.40, 135.80, 0.00",
+      "descriptionText": " For the study of plants to be both my reason to live and my cause of death. What a cruel irony. If only the glass hadn't broke... I could have continued my research."
     }
   ]
 }
