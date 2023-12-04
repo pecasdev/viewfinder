@@ -23,12 +23,23 @@ public class Movep1st : MonoBehaviour
 
     Rigidbody m_Rigidbody;
 
+    public AudioSource movementAudioSource;
+    public AudioClip movementAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
         m_Rigidbody = GetComponent<Rigidbody>();
         mainCamera = firstPersonCamera;
         thirdPersonCamera.enabled = false;
+
+        // Set up the audio source
+        if (movementAudioSource == null)
+        {
+            movementAudioSource = gameObject.AddComponent<AudioSource>();
+        }
+        movementAudioSource.clip = movementAudioClip;
+        movementAudioSource.loop = true;
     }
 
     void Update()
@@ -70,6 +81,24 @@ public class Movep1st : MonoBehaviour
         cameraRight.Normalize();
 
         m_Movement = cameraForward * vertical + cameraRight * horizontal;
+
+        // Check if the player is moving
+        if (m_Movement != Vector3.zero)
+        {
+            // If not already playing, start the sound
+            if (!movementAudioSource.isPlaying)
+            {
+                movementAudioSource.Play();
+            }
+        }
+        else
+        {
+            // If no movement and the sound is playing, stop it
+            if (movementAudioSource.isPlaying)
+            {
+                movementAudioSource.Stop();
+            }
+        }
 
         // apply movement to the Rigidbody
         m_Rigidbody.MovePosition(m_Rigidbody.position + m_Movement * moveSpeed * Time.fixedDeltaTime);
