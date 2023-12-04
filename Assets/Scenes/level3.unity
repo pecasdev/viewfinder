@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3608,6 +3608,14 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 313887917}
+    - target: {fileID: 8024414740923474856, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
+      propertyPath: m_Volume
+      value: 0.201
+      objectReference: {fileID: 0}
+    - target: {fileID: 8400533559325798343, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
+      propertyPath: soundToPlayAfterWatered
+      value: 
+      objectReference: {fileID: 8300000, guid: 5609db41263f36149b7ac3782bd00350, type: 3}
     - target: {fileID: 8901144373498105116, guid: 99bd6cdb089c7fe40942694ba71b764e, type: 3}
       propertyPath: m_Mesh
       value: 
