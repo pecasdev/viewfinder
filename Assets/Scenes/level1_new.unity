@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -138,6 +138,10 @@ PrefabInstance:
     - target: {fileID: 6923926290313133263, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: m_Name
       value: Character Full Power
+      objectReference: {fileID: 0}
+    - target: {fileID: 8592513454632006196, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
+      propertyPath: _savePhotoToLocal
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9212654044968833753, guid: 6cbb854d18e9d7f4b99465db79238392, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1543,7 +1547,7 @@ PrefabInstance:
     - target: {fileID: 4174096880434302545, guid: 9a7d34e19f2710a479c08e56c1f9b72d, type: 3}
       propertyPath: controlsUI
       value: 
-      objectReference: {fileID: 841372231}
+      objectReference: {fileID: 0}
     - target: {fileID: 4174096880434302545, guid: 9a7d34e19f2710a479c08e56c1f9b72d, type: 3}
       propertyPath: gameoverUI
       value: 
@@ -3330,11 +3334,6 @@ BoxCollider:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 722d223e761213242a47e6ac39d42e8b, type: 3}
   m_PrefabInstance: {fileID: 1956595886}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &841372231 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8579287806370722075, guid: 7a8e01e7987a20141aa985a50158960a, type: 3}
-  m_PrefabInstance: {fileID: 1794924838}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &843006020
 GameObject:
