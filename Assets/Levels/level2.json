@@ -1,28 +1,28 @@
 {
     "solutions": [
       {
-        "posSolutionText": "0.63, 3.00, 3.31",
-        "angleSolutionText": "359.40, 278.40, 0.00",
+        "posSolutionText": "-1.42, 3.00, 3.75",
+        "angleSolutionText": "352.20, 270.40, 0.00",
         "descriptionText": "I was very popular, the public loved me! But there were those who said my buildings weren't safe. I thought they were overreacting"
       },
       {
-        "posSolutionText": "5.60, 3.00, 5.66",
-        "angleSolutionText": "358.40, 342.80, 0.00",
+        "posSolutionText": "5.16, 3.00, 6.02",
+        "angleSolutionText": "354.20, 342.20, 0.00",
         "descriptionText": "These were the rooms of my latest project, a highly exclusive hotel"
       },
       {
-        "posSolutionText": "12.60, 3.00, 5.61",
-        "angleSolutionText": "0.00, 318.80, 0.00",
+        "posSolutionText": "6.63, 3.00, 12.93",
+        "angleSolutionText": "357.60, 90.20, 0.00",
         "descriptionText": "I chose to not support a section of the building in favor of an observation column"
       },
       {
-        "posSolutionText": "13.75, 3.00, 6.90",
-        "angleSolutionText": "0.60, 125.00, 0.00",
+        "posSolutionText": "14.11, 3.00, 7.34",
+        "angleSolutionText": "357.40, 144.80, 0.00",
         "descriptionText": "Hundreds were crushed under the rubble..."
       },
       {
-        "posSolutionText": "10.22, 3.00, -1.65",
-        "angleSolutionText": "354.40, 316.20, 0.00",
+        "posSolutionText": "10.24, 3.00, -0.61",
+        "angleSolutionText": "352.00, 309.60, 0.00",
         "descriptionText": "And I couldn't bear knowing it was my fault"
       }
     ]
