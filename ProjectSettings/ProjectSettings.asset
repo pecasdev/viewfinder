@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: CSC404 Group 4
-  productName: Viewfinder
+  productName: Phantom Photos
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
@@ -135,7 +135,7 @@ PlayerSettings:
   vulkanEnableLateAcquireNextImage: 0
   vulkanEnableCommandBufferRecycling: 1
   loadStoreDebugModeEnabled: 0
-  bundleVersion: 1.0 (Milestone 1)
+  bundleVersion: Final
   preloadedAssets:
   - {fileID: 20000000, guid: c807c528fc0e0e84884b9356de879c26, type: 2}
   metroInputSource: 0
@@ -157,7 +157,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Standalone: com.CSC404-Group-4.Viewfinder
+    Standalone: com.CSC404-Group-4.Phantom-Photos
   buildNumber:
     Standalone: 0
     VisionOS: 0
