@@ -35,6 +35,10 @@ public class PhotoAlbumManager : MonoBehaviour
     private bool b_button_pressed = false;
     [SerializeField] GameObject glow;
 
+    string DPAD_v;
+    string DPAD_h;
+    string Xbox_B_Button;
+
     private Animator _albumAnimator;
 
     public static PhotoAlbumManager Instance
@@ -53,6 +57,23 @@ public class PhotoAlbumManager : MonoBehaviour
         instance = this;
         _albumAnimator = GetComponent<Animator>();
         audioSource = gameObject.GetComponent<AudioSource>();
+
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                DPAD_h = "DPAD_h Windows";
+                DPAD_v = "DPAD_v Windows";
+                Xbox_B_Button = "Xbox_B_Button";
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                DPAD_h = "DPAD_h Mac";
+                DPAD_v = "DPAD_v Mac";
+                Xbox_B_Button = "Xbox_B_Button Mac";
+                break;
+        }
     }
 
     private void playBookOpen()
@@ -90,55 +111,106 @@ public class PhotoAlbumManager : MonoBehaviour
 
         // xbox controls
         // dpad vertical to open/close album
-        float dpad_v_Value = Input.GetAxis("DPAD_v Windows");
-        if (dpad_v_Value == 0)
-        {
-            dpad_v_button_pressed = false;
-        }
 
-        if (Input.GetAxis("DPAD_v Windows") == 1 && !dpad_v_button_pressed)
+        switch (UnityEngine.Application.platform)
         {
-            dpad_v_button_pressed = true;
-            OpenPhotoAlbum();
-        }
-        else if (Input.GetAxis("DPAD_v Windows") == -1 && !dpad_v_button_pressed)
-        {
-            dpad_v_button_pressed = true;
-            StartCoroutine(ClosePhotoAlbum());
-        }
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                float dpad_v_Value = Input.GetAxis(DPAD_v);
+                if (dpad_v_Value == 0)
+                {
+                    dpad_v_button_pressed = false;
+                }
 
-        // dpad horizontal to cycle prompts
-        float dpad_h_Value = Input.GetAxis("DPAD_h Windows");
-        if (dpad_h_Value == 0)
-        {
-            dpad_h_button_pressed = false;
-        }
+                if (Input.GetAxis(DPAD_v) == 1 && !dpad_v_button_pressed)
+                {
+                    dpad_v_button_pressed = true;
+                    OpenPhotoAlbum();
+                }
+                else if (Input.GetAxis(DPAD_v) == -1 && !dpad_v_button_pressed)
+                {
+                    dpad_v_button_pressed = true;
+                    StartCoroutine(ClosePhotoAlbum());
+                }
 
-        if (Input.GetAxis("DPAD_h Windows") == -1 && !dpad_h_button_pressed)
-        {
-            Debug.Log("DPAD_h left");
-            dpad_h_button_pressed = true;
-            ChangeStage(GameManager.StageOrder.Previous);
-            playPageFlipSound();
+                // dpad horizontal to cycle prompts
+                float dpad_h_Value = Input.GetAxis(DPAD_h);
+                if (dpad_h_Value == 0)
+                {
+                    dpad_h_button_pressed = false;
+                }
+                Debug.Log(Input.GetAxis(DPAD_h) + ","+ Input.GetAxis(DPAD_v));
+                if (Input.GetAxis(DPAD_h) == -1 && !dpad_h_button_pressed)
+                {
+                    Debug.Log("DPAD_h left");
+                    dpad_h_button_pressed = true;
+                    ChangeStage(GameManager.StageOrder.Previous);
+                    playPageFlipSound();
+                }
+                else if (Input.GetAxis(DPAD_h) == 1 && !dpad_h_button_pressed)
+                {
+                    Debug.Log("DPAD_h right");
+                    dpad_h_button_pressed = true;
+                    ChangeStage(GameManager.StageOrder.Next);
+                    playPageFlipSound();
+                }
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                dpad_v_Value = Input.GetAxis(DPAD_v);
+                dpad_h_Value = Input.GetAxis(DPAD_h);
+                if (dpad_v_Value == 0 && dpad_h_Value == -1)
+                {
+                    dpad_v_button_pressed = false;
+                }
+
+                if (dpad_h_Value == -1 && dpad_v_Value == 1 && !dpad_v_button_pressed)
+                {
+                    dpad_v_button_pressed = true;
+                    OpenPhotoAlbum();
+                }
+                else if (dpad_h_Value == 1 && dpad_v_Value == -1 && !dpad_v_button_pressed)
+                {
+                    dpad_v_button_pressed = true;
+                    StartCoroutine(ClosePhotoAlbum());
+                }
+
+                // dpad horizontal to cycle prompts
+                
+                if (dpad_v_Value == 0 && dpad_h_Value == -1)
+                {
+                    dpad_h_button_pressed = false;
+                }
+                Debug.Log(Input.GetAxis(DPAD_h) + ","+ Input.GetAxis(DPAD_v));
+                if (dpad_v_Value == -1 && dpad_h_Value == -1 && !dpad_h_button_pressed)
+                {
+                    Debug.Log("DPAD_h left");
+                    dpad_h_button_pressed = true;
+                    ChangeStage(GameManager.StageOrder.Previous);
+                    playPageFlipSound();
+                }
+                else if (dpad_h_Value == 1 && dpad_v_Value == 1 && !dpad_h_button_pressed)
+                {
+                    Debug.Log("DPAD_h right");
+                    dpad_h_button_pressed = true;
+                    ChangeStage(GameManager.StageOrder.Next);
+                    playPageFlipSound();
+                }
+                break;
         }
-        else if (Input.GetAxis("DPAD_h Windows") == 1 && !dpad_h_button_pressed)
-        {
-            Debug.Log("DPAD_h right");
-            dpad_h_button_pressed = true;
-            ChangeStage(GameManager.StageOrder.Next);
-            playPageFlipSound();
-        }
+        
 
         // b button to exit prompt
         if (GameManager.Instance.currentGameSate != GameManager.GameState.PausedMenu && (GameManager.Instance.currentGameSate == GameManager.GameState.AlbumFTUE || GameManager.Instance.currentGameSate == GameManager.GameState.Playing))
         {
-            float b_button_val = Input.GetAxis("Xbox_B_Button");
+            float b_button_val = Input.GetAxis(Xbox_B_Button);
             if (b_button_val == 0)
             {
                 b_button_pressed = false;
             }
 
-            if (Input.GetAxis("Xbox_B_Button") == 1 && !b_button_pressed)
+            if (Input.GetAxis(Xbox_B_Button) == 1 && !b_button_pressed)
             {
                 b_button_pressed = true;
                 StartCoroutine(ClosePhotoAlbum());
