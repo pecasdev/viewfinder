@@ -24,6 +24,12 @@ public class AlbumFTUE : MonoBehaviour
                 d_pad_v = "DPAD_v Windows";
                 b_btn = "Xbox_B_Button";
                 break;
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                d_pad_h = "DPAD_h Mac";
+                d_pad_v = "DPAD_v Mac";
+                b_btn = "Xbox_B_Button Mac";
+                break;
         }
         stepIdx = 0;
         GameManager.Instance.currentGameSate = GameManager.GameState.AlbumFTUE;

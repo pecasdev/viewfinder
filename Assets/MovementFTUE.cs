@@ -30,6 +30,8 @@ public class MovementFTUE : MonoBehaviour
             case RuntimePlatform.OSXEditor:
                 RightStickHorizontal = "RightStickHorizontal Mac";
                 RightStickVertical = "RightStickVertical Mac";
+                LeftStickHorizontal = "LeftStickHorizontal Mac";
+                LeftStickVertical = "LeftStickVertical Mac";
                 break;
         }
         stepIdx = 0;

@@ -33,10 +33,25 @@ public class WateringCanController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI hoverText;
     [SerializeField] private GameObject hoverCanvas;
 
+    string Xbox_X_Button;
+
     private void Start()
     {
         watering_can = GameObject.FindGameObjectWithTag("Watering Can");
         wateringCanAnimator = _heldWateringCan.GetComponent<Animator>();
+
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                Xbox_X_Button = "Xbox_X_Button";
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                Xbox_X_Button = "Xbox_X_Button Mac";
+                break;
+        }
     }
 
 
@@ -61,7 +76,7 @@ public class WateringCanController : MonoBehaviour
             {
                 HighlightWateringCan();
 
-                if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
+                if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown(Xbox_X_Button))
                 {
                     RemoveWateringCanHighlight();
                     _canWater = true;
@@ -82,7 +97,7 @@ public class WateringCanController : MonoBehaviour
                     hoverText.text = "Water";
 
 
-                    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button"))
+                    if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown(Xbox_X_Button))
                     {
                         StartCoroutine(WaterPlant());
                         StartCoroutine(GrowPlant(plant));

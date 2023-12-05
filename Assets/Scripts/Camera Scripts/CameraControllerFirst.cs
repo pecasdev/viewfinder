@@ -18,6 +18,7 @@ public class CameraControllerFirst : MonoBehaviour
     public float pastCameraDisplacement = 50f;
     string RightStickHorizontal;
     string RightStickVertical;
+    string XButton;
     bool x_button_pressed = false;
 
     public float Sensitivity { get => sensitivity; set => sensitivity = value; }
@@ -38,12 +39,14 @@ public class CameraControllerFirst : MonoBehaviour
             case RuntimePlatform.WindowsEditor:
                 RightStickHorizontal = "RightStickHorizontal Windows";
                 RightStickVertical = "RightStickVertical Windows";
+                XButton = "Xbox_X_Button";
                 break;
 
             case RuntimePlatform.OSXPlayer:
             case RuntimePlatform.OSXEditor:
                 RightStickHorizontal = "RightStickHorizontal Mac";
                 RightStickVertical = "RightStickVertical Mac";
+                XButton = "Xbox_X_Button Mac";
                 break;
         }
 
@@ -102,7 +105,7 @@ public class CameraControllerFirst : MonoBehaviour
         // X button to teleport player between worlds
         if (SceneManager.GetActiveScene().buildIndex == 1) 
         {
-            float x_button_val = Input.GetAxis("Xbox_X_Button");
+            float x_button_val = Input.GetAxis(XButton);
             if (x_button_val == 0)
             {
                 x_button_pressed = false;

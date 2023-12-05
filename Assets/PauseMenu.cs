@@ -14,6 +14,9 @@ public class PauseMenu : MonoBehaviour
     private bool start_button_pressed;
     private GameManager.GameState prev_State;
 
+    string Xbox_Start_Button;
+    string Xbox_B_Button;
+
     public enum UIAction
     {
         On,
@@ -23,7 +26,20 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                Xbox_Start_Button = "Xbox_Start_Button";
+                Xbox_B_Button = "Xbox_B_Button";
+                break;
 
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                Xbox_Start_Button = "Xbox_Start_Button Mac";
+                Xbox_B_Button = "Xbox_B_Button Mac";
+                break;
+        }
     }
 
     // Update is called once per frame
@@ -33,12 +49,12 @@ public class PauseMenu : MonoBehaviour
         {
             TogglePause();
         }
-        float start_button_val = Input.GetAxis("Xbox_Start_Button");
+        float start_button_val = Input.GetAxis(Xbox_Start_Button);
         if (start_button_val == 0)
         {
             start_button_pressed = false;
         }
-        if (Input.GetAxis("Xbox_Start_Button") == 1 && !start_button_pressed)
+        if (Input.GetAxis(Xbox_Start_Button) == 1 && !start_button_pressed)
         {
             start_button_pressed = true;
             if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu)
@@ -50,13 +66,13 @@ public class PauseMenu : MonoBehaviour
         else if (GameManager.Instance.currentGameSate == GameManager.GameState.PausedMenu)
         {
 
-            float b_button_val = Input.GetAxis("Xbox_B_Button");
+            float b_button_val = Input.GetAxis(Xbox_B_Button);
             if (b_button_val == 0)
             {
                 b_button_pressed = false;
             }
 
-            if (Input.GetAxis("Xbox_B_Button") == 1 && !b_button_pressed)
+            if (Input.GetAxis(Xbox_B_Button) == 1 && !b_button_pressed)
             {
                 b_button_pressed = true;
                 if (pauseMenu.activeInHierarchy)
