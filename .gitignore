@@ -71,3 +71,15 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+Assets/TextMesh Pro/Resources/Fonts & Materials/LiberationSans SDF - Fallback.asset
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+Assets/BotanistLevelPropAssets/TestTube/TestTubeMat.mat
+Assets/BotanistLevelPropAssets/jar/TransparentJarMat 1.mat
+Assets/BotanistLevelPropAssets/CrackedJar/TranparentCrackedJarMAT 1.mat
+Assets/BotanistLevelPropAssets/BotanistDesk/MagnifyingGlass/PR_MagnifyingGlass1.mat
+Assets/BotanistLevelPropAssets/BotanistDesk/Inkwell/M_InkwellGlass.mat
+Assets/BotanistLevelPropAssets/BotanistDesk/Hourglass/M_HourglassGlass.mat
+Assets/BotanistLevelPropAssets/beaker/Beaker2Mat.mat
+Assets/BotanistLevelPropAssets/beaker/Beaker1Mat.mat
