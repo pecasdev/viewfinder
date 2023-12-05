@@ -714,6 +714,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc00e2b76dd432746ae10219f905fe88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldSwapSound: {fileID: 0}
   player: {fileID: 2986764036308628696}
   sensitivity: 1
   yRotationLimit: 90
@@ -1346,6 +1347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc00e2b76dd432746ae10219f905fe88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  worldSwapSound: {fileID: 8300000, guid: 61f7ed333eee6b54c82881e488d89435, type: 3}
   player: {fileID: 2986764036308628696}
   sensitivity: 1
   yRotationLimit: 90

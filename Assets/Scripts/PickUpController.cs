@@ -19,13 +19,29 @@ public class PickUpController : MonoBehaviour
     [SerializeField] private float _pickupRange = 5.0f;
     [SerializeField] private float _pickupForce = 150.0f;
     private IObjectToPickUp heldObj;
-    
 
+    string Xbox_X_Button;
+    
+    private void Start()
+    {
+        switch (UnityEngine.Application.platform)
+        {
+            case RuntimePlatform.WindowsPlayer:
+            case RuntimePlatform.WindowsEditor:
+                Xbox_X_Button = "Xbox_X_Button";
+                break;
+
+            case RuntimePlatform.OSXPlayer:
+            case RuntimePlatform.OSXEditor:
+                Xbox_X_Button = "Xbox_X_Button Mac";
+                break;
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown("Xbox_X_Button")){
+        if (Input.GetKeyDown(KeyCode.E) || Input.GetButtonDown(Xbox_X_Button)){
             if (heldObj == null)
             {
                 Ray r = new Ray(transform.position, transform.forward);
